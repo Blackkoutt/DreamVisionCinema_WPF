@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "DreamVisionCinema_WPF_Logic/1.0.0": {
+        "runtime": {
+          "DreamVisionCinema_WPF_Logic.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DreamVisionCinema_WPF_Logic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
