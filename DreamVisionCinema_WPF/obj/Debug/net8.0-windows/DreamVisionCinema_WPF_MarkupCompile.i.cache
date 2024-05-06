@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Mateusz\Desktop\wpf_nowy\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\
 DreamVisionCinema_WPF
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\Mateusz\Desktop\wpf_nowy\DreamVisionCinema_WPF\DreamVisionCinema_WPF\App.xaml
-11407045341
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\App.xaml
+3556393826
 
-61816052464
-198915248976
-MainWindow.xaml;
+8-389055554
+210-1911940892
+MainWindow.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\MainAdminPanel.xaml;
 
-False
+True
 

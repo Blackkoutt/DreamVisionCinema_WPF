@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mateusz\\Desktop\\wpf_nowy\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj",
+      "projectUniqueName": "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj",
       "projectName": "DreamVisionCinema_WPF_Logic",
-      "projectPath": "C:\\Users\\Mateusz\\Desktop\\wpf_nowy\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj",
+      "projectPath": "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj",
       "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mateusz\\Desktop\\wpf_nowy\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\obj\\",
+      "outputPath": "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

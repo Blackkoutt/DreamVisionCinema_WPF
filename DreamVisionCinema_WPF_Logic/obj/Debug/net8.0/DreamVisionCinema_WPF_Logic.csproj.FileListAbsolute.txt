@@ -9,3 +9,15 @@ C:\Users\Mateusz\Desktop\wpf_nowy\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Lo
 C:\Users\Mateusz\Desktop\wpf_nowy\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\refint\DreamVisionCinema_WPF_Logic.dll
 C:\Users\Mateusz\Desktop\wpf_nowy\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\DreamVisionCinema_WPF_Logic.pdb
 C:\Users\Mateusz\Desktop\wpf_nowy\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\ref\DreamVisionCinema_WPF_Logic.dll
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\bin\Debug\net8.0\DreamVisionCinema_WPF_Logic.deps.json
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\bin\Debug\net8.0\DreamVisionCinema_WPF_Logic.dll
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\bin\Debug\net8.0\DreamVisionCinema_WPF_Logic.pdb
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\DreamVisionCinema_WPF_Logic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\DreamVisionCinema_WPF_Logic.AssemblyInfoInputs.cache
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\DreamVisionCinema_WPF_Logic.AssemblyInfo.cs
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\DreamVisionCinema_WPF_Logic.csproj.CoreCompileInputs.cache
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\DreamVisionCinema_WPF_Logic.sourcelink.json
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\DreamVisionCinema_WPF_Logic.dll
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\refint\DreamVisionCinema_WPF_Logic.dll
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\DreamVisionCinema_WPF_Logic.pdb
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\obj\Debug\net8.0\ref\DreamVisionCinema_WPF_Logic.dll

@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ClGAbJG9TrnetwPYWvMRvJr3T9XKFfQoap5AGFHDBdeb8uIDc4u0/5g80WNb8JH8PxSKL1yPDHv2fB4dLC2b3w==",
+  "dgSpecHash": "raIanCLnwH0qi1IkNfRZoG0O1U1Phg2EhASUj7uFGEmAfUglcPxoa5NYE4X7aI4HIS+8SmoOO4+8r1QpyW42Xg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mateusz\\Desktop\\wpf_nowy\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mateusz\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\fontawesome5\\2.1.11\\fontawesome5.2.1.11.nupkg.sha512"
+  ],
   "logs": []
 }

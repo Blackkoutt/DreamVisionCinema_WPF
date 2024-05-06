@@ -9,7 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
+    <None Remove="Assets\app_icon.ico" />
+    <None Remove="Assets\app_icon1.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\app_icon.ico" />
+    <Resource Include="Assets\app_icon1.ico" />
   </ItemGroup>
 
 </Project>
