@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="primaryBackground">#22214a</SolidColorBrush>
+    <SolidColorBrush x:Key="secondaryBackground">#1f1e44</SolidColorBrush>
+    <SolidColorBrush x:Key="white">#fff</SolidColorBrush>
+
+    <SolidColorBrush x:Key="purple_1">#9370db</SolidColorBrush>
+
+    <SolidColorBrush x:Key="purple_2">#4e51d9</SolidColorBrush>
+    <SolidColorBrush x:Key="purple_2_hover">#5f62e9</SolidColorBrush>
+
+    <SolidColorBrush x:Key="red_1">#a83232</SolidColorBrush>
+    <SolidColorBrush x:Key="red_1_hover">#b94343</SolidColorBrush>
+
+    <SolidColorBrush x:Key="orange_1">#db8f02</SolidColorBrush>
+    <SolidColorBrush x:Key="orange_1_hover">#ec9f13</SolidColorBrush>
+    
+
+    <SolidColorBrush x:Key="green_confirm_1">#32a852</SolidColorBrush>
+    <SolidColorBrush x:Key="green_confirm_1_hover">#43b963</SolidColorBrush>
+
+    <SolidColorBrush x:Key="grid_background">#2b2a63</SolidColorBrush>
+    <SolidColorBrush x:Key="grid_foreground">#222528</SolidColorBrush>
+    <SolidColorBrush x:Key="grid_row_background">#373680</SolidColorBrush>
+    <SolidColorBrush x:Key="grid_row_background_hover">#623ed0</SolidColorBrush>
+    
+    
+</ResourceDictionary>

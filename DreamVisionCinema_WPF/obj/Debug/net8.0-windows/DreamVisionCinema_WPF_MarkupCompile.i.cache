@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\App.xaml
-3556393826
+7-1835174002
 
-8-389055554
-210-1911940892
-MainWindow.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\MainAdminPanel.xaml;
+9-603321893
+2112062783106
+MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\DataGrid.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\MainAdminPanel.xaml;Views\AdminViews\MoviesList.xaml;
 
-True
+False
 

@@ -32,6 +32,16 @@
             "related": ".Net.xml;.xml"
           }
         }
+      },
+      "DreamVisionCinema_WPF_Logic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/DreamVisionCinema_WPF_Logic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DreamVisionCinema_WPF_Logic.dll": {}
+        }
       }
     }
   },
@@ -102,10 +112,16 @@
         "lib/uap10.0/FontAwesome5.dll",
         "lib/uap10.0/FontAwesome5.xml"
       ]
+    },
+    "DreamVisionCinema_WPF_Logic/1.0.0": {
+      "type": "project",
+      "path": "../DreamVisionCinema_WPF_Logic/DreamVisionCinema_WPF_Logic.csproj",
+      "msbuildProject": "../DreamVisionCinema_WPF_Logic/DreamVisionCinema_WPF_Logic.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
+      "DreamVisionCinema_WPF_Logic >= 1.0.0",
       "FontAwesome.Sharp >= 6.3.0",
       "FontAwesome5 >= 2.1.11"
     ]
@@ -141,7 +157,11 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj": {
+              "projectPath": "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
