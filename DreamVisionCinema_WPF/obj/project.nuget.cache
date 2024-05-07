@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "nZxShBzkAmmeVNRQcYCdcOONADci28JSmJ/izESeee890Qef77+SPkgWrzK+0fK4SaSIb6874cs8fZTH/8cTcQ==",
+  "dgSpecHash": "rabtqw4rF8dz05xHJnXX5tixUvztxjyHnUjdhyL7n2YccnK1muJdaFX3DF0n+ZumUJkQXQvlKKkcrxWvWF6c8A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mateusz\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512",
-    "C:\\Users\\Mateusz\\.nuget\\packages\\fontawesome5\\2.1.11\\fontawesome5.2.1.11.nupkg.sha512"
+    "C:\\Users\\Mateusz\\.nuget\\packages\\fontawesome5\\2.1.11\\fontawesome5.2.1.11.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\netcore5.0.microsoft.expression.drawing\\1.0.0\\netcore5.0.microsoft.expression.drawing.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }

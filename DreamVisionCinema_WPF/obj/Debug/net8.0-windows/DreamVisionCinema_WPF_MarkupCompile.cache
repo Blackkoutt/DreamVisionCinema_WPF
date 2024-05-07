@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\App.xaml
-82096080020
+15-1081060664
 
-8740055050
-2112062783106
-MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\DataGrid.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\MainAdminPanel.xaml;Views\AdminViews\MoviesList.xaml;Views\AdminViews\ReservationList.xaml;
+151924468957
+212-921292165
+Controls\CircularProgressBar.xaml;Controls\DefaultInput.xaml;Controls\InputTypeNumber.xaml;MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\DataGrid.xaml;Views\AdminViews\AddMovie.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\DeleteMessage.xaml;Views\AdminViews\EditMovie.xaml;Views\AdminViews\MainAdminPanel.xaml;Views\AdminViews\MoviesList.xaml;Views\AdminViews\ReservationList.xaml;Views\AdminViews\StatisticsPanel.xaml;
 
 False
 

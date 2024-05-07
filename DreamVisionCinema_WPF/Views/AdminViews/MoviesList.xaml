@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.AdminViews"
         mc:Ignorable="d"
-        Title="Lista filmów" Height="801" Width="1178"
+        Title="Lista filmów" Height="701" Width="1178"
         Background="{StaticResource ResourceKey=primaryBackground}"
         Icon="../../Assets/app_icon1.ico"
         >
@@ -21,15 +21,15 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Foreground="White" FontSize="20" VerticalAlignment="Center"> Lista zawiera 100 filmów</TextBlock>
             <Label Grid.Column="2"  Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="18" VerticalAlignment="Center">Szukaj:</Label>
-            <TextBox Grid.Column="3" Margin="10,0,20,0" Width="250" Padding="0,1,0,1" FontSize="15" VerticalContentAlignment="Center"/>
-            <Button Grid.Column="4" Padding="5,2,5,2" Background="#4e51d9" IsDefault="True">
+            <TextBox Grid.Column="3" Margin="10,0,20,0" Height="30" Width="250" Padding="0,1,0,1" FontSize="15" VerticalContentAlignment="Center"/>
+            <Button Grid.Column="4" Height="42" Padding="5,0,5,0"  Style="{StaticResource searchButton}" IsDefault="True">
                 <StackPanel Orientation="Horizontal">
                     <fa5:ImageAwesome Icon="Solid_Search" Foreground="{StaticResource ResourceKey=white}" Width="15" Height="15"/>
                     <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15" >Szukaj</Label>
                 </StackPanel>
             </Button>
         </Grid>
-        <DataGrid ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  RowStyle="{DynamicResource DataGridRowStyle2}" CellStyle="{DynamicResource DataGridCellStyle2}" Style="{DynamicResource DataGridStyle2}" x:Name="moviesList" Padding="10, 12"
+        <DataGrid ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"  RowStyle="{DynamicResource DataGridRowStyle2}" CellStyle="{DynamicResource DataGridCellStyle2}" Style="{DynamicResource DataGridStyle2}" x:Name="moviesList" Padding="10, 12"
                     Margin="0,50,0,0">
             <DataGrid.Columns>
 
@@ -58,14 +58,7 @@
                         </StackPanel>
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" Binding="{Binding Price}">
-                    <DataGridTextColumn.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,0,5,0">Cena</TextBlock>
-                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
-                        </StackPanel>
-                    </DataGridTextColumn.Header>
-                </DataGridTextColumn>
+                
                 <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" Binding="{Binding Duration}">
                     <DataGridTextColumn.Header>
                         <StackPanel Orientation="Horizontal">
@@ -82,6 +75,19 @@
                         </StackPanel>
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
+                <DataGridTemplateColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" >
+                    <DataGridTemplateColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0">Cena</TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                        </StackPanel>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Price, StringFormat={}{0} zł}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="Akcja" IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100"  HeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

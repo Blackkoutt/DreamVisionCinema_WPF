@@ -7,7 +7,25 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\CircularProgressBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\DefaultInput.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\InputTypeNumber.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AdminViews\AddMovie.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AdminViews\AdminAuthentication.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AdminViews\DeleteMessage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AdminViews\EditMovie.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\AdminViews\MainAdminPanel.xaml.cs">
@@ -19,8 +37,20 @@
     <Compile Update="Views\AdminViews\ReservationList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AdminViews\StatisticsPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\CircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\DefaultInput.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\InputTypeNumber.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -33,7 +63,16 @@
     <Page Update="Styles\DataGrid.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\AdminViews\AddMovie.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\AdminViews\AdminAuthentication.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AdminViews\DeleteMessage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AdminViews\EditMovie.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AdminViews\MainAdminPanel.xaml">
@@ -43,6 +82,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AdminViews\ReservationList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AdminViews\StatisticsPanel.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
