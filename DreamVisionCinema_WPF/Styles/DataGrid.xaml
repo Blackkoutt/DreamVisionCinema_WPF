@@ -215,7 +215,7 @@
     </Style>
 
 
-    
+
     <Style x:Key="DataGridColumnHeaderStyle2" BasedOn="{StaticResource DataGridColumnHeaderStyle1}" TargetType="{x:Type DataGridColumnHeader}">
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">

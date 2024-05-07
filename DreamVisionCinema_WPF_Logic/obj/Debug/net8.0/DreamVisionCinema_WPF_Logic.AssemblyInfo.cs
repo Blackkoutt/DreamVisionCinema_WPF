@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DreamVisionCinema_WPF_Logic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34f8cb8854b81ba87955ddebc04eefdbb855487c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d3b749ad317336bc9b67c875569b92cb2549c798")]
 [assembly: System.Reflection.AssemblyProductAttribute("DreamVisionCinema_WPF_Logic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DreamVisionCinema_WPF_Logic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

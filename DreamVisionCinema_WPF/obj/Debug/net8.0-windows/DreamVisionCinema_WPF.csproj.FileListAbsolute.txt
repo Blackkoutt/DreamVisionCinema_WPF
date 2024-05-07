@@ -36,3 +36,5 @@ C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj
 C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\DreamVisionCinema_WPF.genruntimeconfig.cache
 C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\ref\DreamVisionCinema_WPF.dll
 C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\Styles\DataGrid.baml
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\Views\AdminViews\ReservationList.baml
+C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\Views\AdminViews\ReservationList.g.cs
