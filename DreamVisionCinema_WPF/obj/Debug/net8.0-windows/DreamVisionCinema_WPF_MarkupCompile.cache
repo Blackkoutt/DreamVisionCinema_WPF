@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\
+C:\Users\kubap\OneDrive\Pulpit\6_SEMESTR_MATERIAŁY\WPF\ProjektWPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\
 DreamVisionCinema_WPF
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\App.xaml
-82096080020
+C:\Users\kubap\OneDrive\Pulpit\6_SEMESTR_MATERIAŁY\WPF\ProjektWPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\App.xaml
+11-762775662
 
-8740055050
-2112062783106
-MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\DataGrid.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\MainAdminPanel.xaml;Views\AdminViews\MoviesList.xaml;Views\AdminViews\ReservationList.xaml;
+16208936198
+2111328251786
+MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\DataGrid.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\MainAdminPanel.xaml;Views\AdminViews\MoviesList.xaml;Views\AdminViews\ReservationList.xaml;Views\ClientViews\HomeView.xaml;Views\ClientViews\MainClientPanel.xaml;Views\ClientViews\MovieListView.xaml;
 
 False
 

@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="DreamVisionCinema_WPF.Views.ClientViews.MovieListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews"
+             xmlns:fa5="http://schemas.fontawesome.com/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="50, 40">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Foreground="White" FontSize="20" VerticalAlignment="Center"> Repertuar:</TextBlock>
+            <Label Grid.Column="2"  Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="18" VerticalAlignment="Center">Szukaj:</Label>
+            <TextBox Grid.Column="3" Margin="10,0,20,0" Width="250" Padding="0,1,0,1" FontSize="15" VerticalContentAlignment="Center"/>
+            <Button Grid.Column="4" Padding="5,2,5,2" Background="#4e51d9" IsDefault="True">
+                <StackPanel Orientation="Horizontal">
+                    <fa5:ImageAwesome Icon="Solid_Search" Foreground="{StaticResource ResourceKey=white}" Width="15" Height="15"/>
+                    <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15" >Szukaj</Label>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <DataGrid ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  RowStyle="{DynamicResource DataGridRowStyle2}" CellStyle="{DynamicResource DataGridCellStyle2}" Style="{DynamicResource DataGridStyle2}" x:Name="moviesList" Padding="10, 12"
+                Margin="0,50,0,0">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="20" Binding="{Binding Id}">
+
+                    <DataGridTextColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0">#</TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                        </StackPanel>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding Title}">
+                    <DataGridTextColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0">Tytuł</TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                        </StackPanel>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="150" Binding="{Binding Date}">
+                    <DataGridTextColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0">Data</TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                        </StackPanel>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" Binding="{Binding Price}">
+                    <DataGridTextColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0">Cena</TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                        </StackPanel>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" Binding="{Binding Duration}">
+                    <DataGridTextColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0">Czas trwania</TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                        </StackPanel>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" Binding="{Binding Room.Number}">
+                    <DataGridTextColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0">Numer sali</TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                        </StackPanel>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Akcja" IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100"  HeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource buyTicketButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa5:ImageAwesome Icon="Solid_ShoppingBasket" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                                    <Label Margin="5,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14">Kup Bilet</Label>
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+    </ScrollViewer>
+    
+</UserControl>

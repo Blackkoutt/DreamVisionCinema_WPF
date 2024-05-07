@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DreamVisionCinema_WPF_Logic
-build_property.ProjectDir = C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\
+build_property.ProjectDir = C:\Users\kubap\OneDrive\Pulpit\6_SEMESTR_MATERIAŁY\WPF\ProjektWPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF_Logic\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

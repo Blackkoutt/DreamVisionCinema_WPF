@@ -1,0 +1,122 @@
+﻿<Window x:Class="DreamVisionCinema_WPF.Views.ClientViews.MainClientPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:fa5="http://schemas.fontawesome.com/icons/"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews.ViewModel"
+        xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews"
+        mc:Ignorable="d"
+        Title="MainClientPanel" Height="600" Width="920"
+        Background="{StaticResource ResourceKey=primaryBackground}"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="175"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--Pasek na samej górze zastępujący ten windosowy-->
+        <Border Grid.ColumnSpan="2"
+                Background="{StaticResource ResourceKey=secondaryBackground}"
+                MouseDown="Border_MouseDown">
+
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="DreamVisionCinema"
+                       Foreground="Gray"
+                       FontWeight="SemiBold"/>
+
+                <StackPanel HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+
+                    <Button Width="20" Height="20"
+                        Content="━"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="{StaticResource ResourceKey=purple_1}"
+                        FontWeight="Bold"
+                            Click="ButtonMinimize_Click"/>
+                    
+                    <Button Width="20" Height="20"
+                            Content="☐"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="{StaticResource ResourceKey=purple_1}"
+                            FontWeight="Bold"
+                            Click="ButtonMaximize_Click"/>
+
+                    <Button Width="20" Height="20"
+                        Content="✕"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="{StaticResource ResourceKey=purple_1}"
+                        FontWeight="Bold"
+                            Click="ButtonClose_Click"/>
+
+
+                </StackPanel>
+            </Grid>
+        </Border>
+        <!--Obraz w Lewym górnym rogu-->
+        <Border Grid.Row="1"
+                Background="{StaticResource ResourceKey=secondaryBackground}">
+            <Image Grid.Row="1" Source="pack://application:,,,/Assets/logo.png" />
+        </Border>
+        
+        
+        <!--Guziki po lewej stronie-->
+
+        <Border Grid.Row="2"
+                Background="{StaticResource ResourceKey=secondaryBackground}">
+            <StackPanel>
+                <RadioButton Content="Kup Bilet na Film"
+                         Height="50"
+                         Foreground="White"
+                         Style="{StaticResource MenuButton}"
+                         Command="{Binding MovieListViewCommand}"/>
+
+                <RadioButton Content="Pokaż listę rezerwacji"
+                Height="50"
+                Foreground="White"
+                Style="{StaticResource MenuButton}"/>
+
+            <RadioButton Content="Wróć"
+                Height="50"
+                Foreground="White"
+                Style="{StaticResource MenuButton}"
+                         Command="{Binding HomeViewCommand}"/>
+
+            </StackPanel>
+        </Border>
+
+        
+        <!--Nazwa zakładki-->
+        <Border Grid.Column="1"
+                Grid.Row="1"
+                Background="{StaticResource primaryBackground}"
+                Padding="10">
+            <StackPanel Orientation="Horizontal">
+                <fa5:ImageAwesome Icon="Solid_Home" Foreground="{StaticResource ResourceKey=purple_1}" Width="30" Height="30"/>
+                <TextBlock Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14" VerticalAlignment="Center">Strona główna</TextBlock>
+            </StackPanel>
+        </Border>
+
+        <ContentControl Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="10"
+                        Content="{Binding CurentView}"/>
+
+    </Grid>
+</Window>

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj": {}
+    "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj": {
+    "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj",
+        "projectUniqueName": "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj",
         "projectName": "DreamVisionCinema_WPF_Logic",
-        "projectPath": "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj",
-        "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mateusz\\Desktop\\DVC_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\obj\\",
+        "projectPath": "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj",
+        "packagesPath": "C:\\Users\\kubap\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Mateusz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kubap\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -64,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

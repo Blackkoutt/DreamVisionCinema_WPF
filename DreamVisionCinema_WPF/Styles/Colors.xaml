@@ -24,6 +24,11 @@
     <SolidColorBrush x:Key="grid_foreground">#222528</SolidColorBrush>
     <SolidColorBrush x:Key="grid_row_background">#373680</SolidColorBrush>
     <SolidColorBrush x:Key="grid_row_background_hover">#623ed0</SolidColorBrush>
-    
-    
+
+    <LinearGradientBrush x:Key="primaryColorGradient" StartPoint="0,0" EndPoint="1,2">
+        <GradientStop Color="#22214a" Offset="0.0"/>
+        <GradientStop Color="#1f1e44" Offset="0.7"/>
+    </LinearGradientBrush>
+
+
 </ResourceDictionary>
