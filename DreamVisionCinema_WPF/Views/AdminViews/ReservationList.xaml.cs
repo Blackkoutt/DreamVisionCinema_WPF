@@ -18,7 +18,7 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
     /// <summary>
     /// Logika interakcji dla klasy ReservationList.xaml
     /// </summary>
-    public partial class ReservationList : Window
+    public partial class ReservationList : UserControl
     {
         public ReservationList()
         {

@@ -57,7 +57,7 @@ namespace DreamVisionCinema_WPF.Views.ClientViews {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DreamVisionCinema_WPF;V1.0.0.0;component/views/clientviews/mainclientpanel.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DreamVisionCinema_WPF;component/views/clientviews/mainclientpanel.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\ClientViews\MainClientPanel.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

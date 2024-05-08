@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace DreamVisionCinema_WPF.Views.ClientViews
 {
     /// <summary>
-    /// Interaction logic for MovieDetailsView.xaml
+    /// Logika interakcji dla klasy MovieDetailsView.xaml
     /// </summary>
     public partial class MovieDetailsView : UserControl
     {

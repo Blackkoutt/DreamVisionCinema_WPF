@@ -60,6 +60,14 @@
             "FontAwesome5": {
               "target": "Package",
               "version": "[2.1.11, )"
+            },
+            "NetCore5.0.Microsoft.Expression.Drawing": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "OxyPlot.Wpf": {
+              "target": "Package",
+              "version": "[2.1.2, )"
             }
           },
           "imports": [

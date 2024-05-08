@@ -18,3 +18,4 @@ namespace DreamVisionCinema_WPF.Observable
         }
     }
 }
+

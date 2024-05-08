@@ -21,7 +21,7 @@
                  HorizontalAlignment="Center"
                  Background="Transparent"
                  Foreground="White"/>
-        <Image Grid.Row="1" Source="pack://application:,,,/Assets/plakatDefault.png" Width="185" Height="283" />
+            <Image Grid.Row="1" Source="pack://application:,,,/Assets/plakatDefault.png" Width="185" Height="283" />
             <StackPanel Grid.Row="1"
                         Grid.Column="1">
                 <TextBlock Text="Rok 2001 Kategoria wiekowa: 18+" Foreground="Wheat" FontSize="14" Padding="5" Background="{StaticResource secondaryBackground}"/>
@@ -29,12 +29,12 @@
                 <Button Style="{StaticResource buyTicketButton }" VerticalAlignment="Bottom" Margin="20"
                         Click="OpenSeatChoice">
                     <Label Foreground="white">Zarezerwuj miejsce</Label>
-            </Button>
+                </Button>
             </StackPanel>
 
-            
+
         </Grid>
-        
+
     </StackPanel>
 
 </UserControl>

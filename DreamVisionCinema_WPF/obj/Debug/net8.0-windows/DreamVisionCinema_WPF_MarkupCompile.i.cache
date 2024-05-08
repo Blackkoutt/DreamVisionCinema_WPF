@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Mateusz\Desktop\admin\DreamVisionCinema_WPF\DreamVisionCinema_WPF\App.xaml
-131104190367
+231765507769
 
-2131644488
-211-1111471464
-MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\DataGrid.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\MainAdminPanel.xaml;Views\AdminViews\MoviesList.xaml;Views\AdminViews\ReservationList.xaml;Views\ClientViews\HomeView.xaml;Views\ClientViews\MainClientPanel.xaml;Views\ClientViews\MovieDetailsView.xaml;Views\ClientViews\MovieListView.xaml;Views\ClientViews\SeatReservationWindow.xaml;
+361490466680
+215-747675332
+Controls\CircularProgressBar.xaml;Controls\DefaultInput.xaml;Controls\InputTypeNumber.xaml;MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\DataGrid.xaml;Styles\Inputs.xaml;Views\AdminViews\AddMovie.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\DeleteMessage.xaml;Views\AdminViews\EditMovie.xaml;Views\AdminViews\MainAdminPanel.xaml;Views\AdminViews\MostPopularMovies.xaml;Views\AdminViews\MostProfitableMovies.xaml;Views\AdminViews\MoviesList.xaml;Views\AdminViews\ReservationList.xaml;Views\AdminViews\StatisticsPanel.xaml;Views\ClientViews\HomeView.xaml;Views\ClientViews\MainClientPanel.xaml;Views\ClientViews\MovieDetailsView.xaml;Views\ClientViews\MovieListView.xaml;Views\ClientViews\SeatReservationWindow.xaml;
 
-False
+True
 

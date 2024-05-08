@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace DreamVisionCinema_WPF.Views.ClientViews
 {
     /// <summary>
-    /// Interaction logic for HomeView.xaml
+    /// Logika interakcji dla klasy HomeView.xaml
     /// </summary>
     public partial class HomeView : UserControl
     {

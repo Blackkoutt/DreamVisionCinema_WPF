@@ -5,12 +5,16 @@
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.AdminViews"
+        xmlns:viewModel="clr-namespace:DreamVisionCinema_WPF.Views.AdminViews.ViewModel"
         mc:Ignorable="d"
         Title="Panel administratora"
-        Height="875" Width="1830"
+        Height="700" Width="1200"
         Background="{StaticResource ResourceKey=primaryBackground}"
         Icon="../../Assets/app_icon1.ico"
         >
+    <Window.DataContext>
+        <viewModel:MainAdminPanelViewModel/>
+    </Window.DataContext>
     <DockPanel>
         <Grid DockPanel.Dock="Left" Background="{StaticResource ResourceKey=secondaryBackground}">
             <Grid.RowDefinitions>
@@ -18,35 +22,37 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-                <Image Source="pack://application:,,,/Assets/logo.png" Width="230" Height="120" />
-                <Button Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
+                <Button Command="{Binding HomeViewCommand}" Background="Transparent" BorderThickness="0">
+                    <Image Source="pack://application:,,,/Assets/logo.png" Width="200" Height="100" />
+                </Button>
+                <Button Command="{Binding MovieListViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Solid_Film" Foreground="{StaticResource ResourceKey=white}" Width="25" Height="25"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="16">Pokaż listę filmów</Label>
+                        <fa5:ImageAwesome Icon="Solid_Film" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż listę filmów</Label>
                     </StackPanel>
                 </Button>
-                <Button Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
+                <Button x:Name="addMovieBtn" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0" Click="addMovieBtn_Click">
                     <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Solid_PlusCircle" Foreground="{StaticResource ResourceKey=white}" Width="25" Height="25"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="16">Dodaj nowy film</Label>
+                        <fa5:ImageAwesome Icon="Solid_PlusCircle" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Dodaj nowy film</Label>
                     </StackPanel>
                 </Button>
-                <Button Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
+                <Button Command="{Binding ReservationListViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Solid_BookOpen" Foreground="{StaticResource ResourceKey=white}" Width="25" Height="25"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="16">Pokaż listę rezerwacji</Label>
+                        <fa5:ImageAwesome Icon="Solid_BookOpen" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż listę rezerwacji</Label>
                     </StackPanel>
                 </Button>
-                <Button Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
+                <Button Command="{Binding StatisticsPanelViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Regular_ChartBar" Foreground="{StaticResource ResourceKey=white}" Width="25" Height="25"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="16">Pokaż statystyki</Label>
+                        <fa5:ImageAwesome Icon="Regular_ChartBar" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż statystyki</Label>
                     </StackPanel>
                 </Button>
-                <Button Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
+                <Button Command="{Binding HomeViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Regular_ArrowAltCircleLeft" Foreground="{StaticResource ResourceKey=white}" Width="25" Height="25"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="16">Wróć</Label>
+                        <fa5:ImageAwesome Icon="Regular_ArrowAltCircleLeft" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Wróć</Label>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -63,9 +69,10 @@
         </Border>
         <Border>
             <!--Tutaj zagnieżdzone okna-->
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="pack://application:,,,/Assets/logo.png" Width="450" Height="300" />
-            </StackPanel>
+            <ContentControl
+                      Margin="10"
+                      Content="{Binding CurentView}"/>
+           
         </Border>
     </DockPanel>
 </Window>

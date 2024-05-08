@@ -42,7 +42,7 @@
             <PasswordBox FontSize="17" Foreground="{StaticResource ResourceKey=white}" Grid.Row="1" Grid.Column="1" Margin="20,0,20,0" Background="Transparent" BorderThickness="0,0,0,2"/>
             <CheckBox Grid.Row="2" Grid.Column="1" Margin="20,10,0,0" FontSize="15" Foreground="{StaticResource ResourceKey=white}" VerticalContentAlignment="Center">Pokaż hasło</CheckBox>
         </Grid>
-        <Button Style="{StaticResource confirmButton}" Width="170" Margin="0,40,0,0" Padding="25,8,25,8" IsDefault="True">
+        <Button x:Name="signInBtn" Style="{StaticResource confirmButton}" Width="170" Margin="0,40,0,0" Padding="25,8,25,8" IsDefault="True" Click="signInBtn_Click">
             <StackPanel Orientation="Horizontal">
                 <fa5:ImageAwesome Icon="Solid_SignInAlt" Foreground="{StaticResource ResourceKey=white}" Width="30" Height="30"/>
                 <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="17" FontWeight="Bold">Zaloguj się</TextBlock>

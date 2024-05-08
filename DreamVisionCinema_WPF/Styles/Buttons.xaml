@@ -34,6 +34,7 @@
         <Setter Property="Background" Value="{StaticResource ResourceKey=red_1}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="Background" Value="{StaticResource ResourceKey=red_1_hover}"/>
             </Trigger>
         </Style.Triggers>
@@ -44,6 +45,7 @@
         <Setter Property="Background" Value="{StaticResource ResourceKey=purple_2}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="Background" Value="{StaticResource ResourceKey=purple_2_hover}"/>
             </Trigger>
         </Style.Triggers>
@@ -54,17 +56,11 @@
         <Setter Property="Background" Value="{StaticResource ResourceKey=green_confirm_1}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="Background" Value="{StaticResource ResourceKey=green_confirm_1_hover}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
-
-
-
-
-
-
-
 
     <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
            TargetType="{x:Type RadioButton}"
@@ -81,7 +77,7 @@
                                        Margin="20,0,0,0"
                                        FontSize="14"/>
                             <fa5:ImageAwesome>
-                                
+
                             </fa5:ImageAwesome>
                         </Grid>
                     </ControlTemplate>
@@ -110,7 +106,7 @@
                 </MultiTrigger.Setters>
             </MultiTrigger>
         </Style.Triggers>
-        
+
     </Style>
 
     <Style x:Key="detailsButton" TargetType="Button" BasedOn="{StaticResource gridEditButton}">
@@ -120,6 +116,41 @@
                 <Setter Property="Background" Value="{StaticResource primaryBackground}"/>
             </Trigger>
         </Style.Triggers>
+
+    </Style>
+
+
+    <Style x:Key="cancelButton" TargetType="Button" BasedOn="{StaticResource gridEditButton}">
+        <Setter Property="Background" Value="{StaticResource ResourceKey=blue_1}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="{StaticResource ResourceKey=blue_1_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="statisticsButtons" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource ResourceKey=statistics_containers_background}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="{StaticResource ResourceKey=statistics_containers_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="UpDownButton" TargetType="Button">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Width" Value="22"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="buyTicketButton" TargetType="Button" BasedOn="{StaticResource gridEditButton}">
@@ -127,6 +158,15 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource purple_1_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="backbutton" TargetType="Button" BasedOn="{StaticResource gridEditButton}">
+        <Setter Property="Background" Value="{StaticResource blue_1}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource blue_1_hover}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

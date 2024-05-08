@@ -23,5 +23,16 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
         {
             InitializeComponent();
         }
+
+        private void signInBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainAdminPanel adminPanel = new MainAdminPanel();
+
+            // Otwarcie nowego okna
+            adminPanel.Show();
+
+            // Zamknięcie bieżącego okna
+            this.Close();
+        }
     }
 }
