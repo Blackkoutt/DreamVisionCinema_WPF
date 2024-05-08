@@ -67,7 +67,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
         public void SaveTicketToFile(Movie movie, string seats)
         {
             string title = movie.Title.Replace(" ", "_");
-            string directoryPath = "Tickets";
+            string directoryPath = "../../../Database/Tickets";
             string fileName = id + "_" + title + ".txt";
             string filePath = Path.Combine(directoryPath, fileName);
 
@@ -99,7 +99,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
         public void DestroyTicket(string title)
         {
             title = title.Replace(" ", "_");
-            string directoryPath = "Tickets";
+            string directoryPath = "../../../Database/Tickets";
             string fileName = id + "_" + title + ".txt";
             string filePath = Path.Combine(directoryPath, fileName);
 

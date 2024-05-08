@@ -86,7 +86,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
 
 
             // Lista zmodyfikowanych filmów zapisywana jest w pliku tymczasowym
-            string directoryPath = "Temp"; 
+            string directoryPath = "../../../Database/Temp"; 
             string fileName = "modificated_movies.txt";
             string filePath = Path.Combine(directoryPath, fileName);
 
@@ -117,7 +117,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
         // Tworzy brakujący plik tymczasowy zmodyfikowanych filmów
         public void CreateTempModificationFile()
         {
-            string directoryPath = "Temp";
+            string directoryPath = "../../../Database/Temp";
             string fileName = "modificated_movies.txt";
             string filePath = Path.Combine(directoryPath, fileName);
             StreamWriter sw = new StreamWriter(filePath);
@@ -127,7 +127,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
         // Tworzy brakujący plik tymczasowy usuniętych filmów
         public void CreateTempDeleteFile()
         {
-            string directoryPath = "Temp";
+            string directoryPath = "../../../Database/Temp";
             string fileName = "deleted_movies.txt";
             string filePath = Path.Combine(directoryPath, fileName);
             StreamWriter sw = new StreamWriter(filePath);
@@ -141,7 +141,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
             List<string> info = new List<string>();
 
             // Lista usuniętych rezerwacji zapisywana jest w pliku tymczasowym
-            string directoryPath = "Temp";
+            string directoryPath = "../../../Database/Temp";
             string fileName = "deleted_movies.txt";
             string filePath = Path.Combine(directoryPath, fileName);
 
@@ -211,7 +211,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
                 throw new NoReservationWithGivenIdException("Brak rezerwacji o podanym ID");
             }
             //title = title.Replace(" ", "_");
-            string directoryPath = "TicketsJPG";
+            string directoryPath = "../../../Database/TicketsJPG";
             string fileName = res.Ticket.Id + "_" + res.Movie.Title + ".jpg";
             string filePath = Path.Combine(directoryPath, fileName);
 
@@ -292,7 +292,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
                 List<Reservation> reservation_list = GetReservationForMovie(movie);
 
                 // Zapis informacji o zmodyfikowanych dacie lub sali filmu do pliku tymczasowego
-                string directoryPath = "Temp";
+                string directoryPath = "../../../Database/Temp";
                 string fileName = "modificated_movies.txt";
                 string filePath = Path.Combine(directoryPath, fileName);
 
@@ -362,7 +362,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
 
 
                 // Zapisanie informacji o usuniętych rezerwacjach do pliku (usuwając film usuwamy też rezerwację)
-                string directoryPath = "Temp";
+                string directoryPath = "../../../Database/Temp";
                 string fileName = "deleted_movies.txt";
                 string filePath = Path.Combine(directoryPath, fileName);
 
@@ -486,7 +486,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
         // Metoda odczytująca rezerwacje z pliku
         public void ReadReservationsFromFile()
         {
-            string directoryPath = "Database";
+            string directoryPath = "../../../Database/Data";
             string fileName = "reservations.txt";
             string filePath = Path.Combine(directoryPath, fileName);
 
@@ -531,7 +531,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
         // Metoda zapisująca rezerwacje do pliku
         public void SaveReservationsToFile()
         {
-            string directoryPath = "Database";
+            string directoryPath = "../../../Database/Data";
             string fileName = "reservations.txt";
             string filePath = Path.Combine(directoryPath, fileName);
 

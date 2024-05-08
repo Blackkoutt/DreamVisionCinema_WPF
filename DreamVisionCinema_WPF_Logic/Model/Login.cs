@@ -24,7 +24,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
                 string enteredHashStringLogin = BitConverter.ToString(enteredHashBytesLogin).Replace("-", "").ToLower();
                 string enteredHashStringPassword = BitConverter.ToString(enteredHashBytesPassword).Replace("-", "").ToLower();
 
-                string directoryPath = "Passwd";
+                string directoryPath = "../../../Database/Passwd";
                 string fileName = "password.txt";
                 string filePath = Path.Combine(directoryPath, fileName);
 
@@ -73,7 +73,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
 
 
                 // Zapisywanie haszy do pliku
-                string directoryPath = "Passwd";
+                string directoryPath = "../../../Database/Passwd";
 
                 string fileName = "password.txt";
                 string filePath = Path.Combine(directoryPath, fileName);

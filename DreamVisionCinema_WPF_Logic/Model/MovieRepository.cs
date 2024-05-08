@@ -24,7 +24,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
             // Odczyt filmów z pliku tekstowego
             int b = movies.Count;
             int a = 1;
-            string directoryPath = "Database";
+            string directoryPath = "../../../Database/Data";
             string fileName = "movies.txt";
             string filePath = Path.Combine(directoryPath, fileName);
 
@@ -388,7 +388,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
         // Metoda zapisująca filmy do pliku
         public void SaveMoviesToFile()
         {
-            string directoryPath = "Database";
+            string directoryPath = "../../../Database/Data";
             string fileName = "movies.txt";
             string filePath = Path.Combine(directoryPath, fileName);
 
