@@ -3,11 +3,107 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa5="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:DreamVisionCinema_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="450" Width="700"
+Background="{StaticResource ResourceKey=primaryBackground}"
+WindowStyle="None"
+AllowsTransparency="True"
+ResizeMode="CanResizeWithGrip"
         Icon="/Assets/app_icon1.ico">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--Pasek na samej górze zastępujący ten windosowy-->
+        <Border Grid.ColumnSpan="2"
+            Background="{StaticResource ResourceKey=secondaryBackground}"
+            MouseDown="Border_MouseDown">
+
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="DreamVisionCinema"
+                   Foreground="Gray"
+                   FontWeight="SemiBold"/>
+
+                <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                    <Button Width="20" Height="20"
+                    Content="━"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="{StaticResource ResourceKey=purple_1}"
+                    FontWeight="Bold"
+                        Click="ButtonMinimize_Click"/>
+
+                    <Button Width="20" Height="20"
+                        Content="☐"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="{StaticResource ResourceKey=purple_1}"
+                        FontWeight="Bold"
+                        Click="ButtonMaximize_Click"/>
+
+                    <Button Width="20" Height="20"
+                    Content="✕"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="{StaticResource ResourceKey=purple_1}"
+                    FontWeight="Bold"
+                        Click="ButtonClose_Click"/>
+
+
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <StackPanel Grid.Row="1">
+            <Image Grid.Row="1" Source="pack://application:,,,/Assets/logo.png" Width="250" />
+            <TextBlock Text="Witaj w DreamVisionCinema" 
+                       TextAlignment="Center" 
+                       Foreground="White" 
+                       FontSize="24"/>
+            <TextBlock Text="Wybierz tryb działania aplikacji" 
+           TextAlignment="Center" 
+           Foreground="Cyan" 
+           FontSize="18"
+           Margin="0,20,0,0"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center" Margin="40">
+                <Button BorderThickness="0,0,0,0"
+            Height="120"
+        Width="250"
+        Background="#403c84"
+        HorizontalAlignment="Center"
+                        Click="OpenAdminView">
+                    <StackPanel>
+                        <fa5:ImageAwesome Icon="Solid_UserTie" Foreground="{StaticResource ResourceKey=white}" Width="25" Height="25"/>
+                        <Label Foreground="{StaticResource ResourceKey=white}" FontSize="16">Zaloguj się jako Administrator</Label>
+                    </StackPanel>
+                </Button>
+
+                <Button BorderThickness="0,0,0,0"
+                            Height="120"
+                        Width="250"
+                        Background="#403c84"
+                        Margin="50,0,0,0"
+                        HorizontalAlignment="Center"
+                        Click="OpenClientview">
+                    <StackPanel>
+                            <fa5:ImageAwesome Icon="Solid_User" Foreground="{StaticResource ResourceKey=white}" Width="25" Height="25"/>
+                            <Label Foreground="{StaticResource ResourceKey=white}" FontSize="16">Zaloguj się jako Użytkownik</Label>
+                        </StackPanel>
+                    </Button>
+
+
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
