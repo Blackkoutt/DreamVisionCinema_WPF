@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="DreamVisionCinema_WPF.Views.ClientViews.MovieDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Nazwa Filmu"
+                 FontSize="30"
+                 HorizontalAlignment="Center"
+                 Background="Transparent"
+                 Foreground="White"/>
+            <Image Grid.Row="1" Source="pack://application:,,,/Assets/plakatDefault.png" Width="185" Height="283" />
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1">
+                <TextBlock Text="Rok 2001 Kategoria wiekowa: 18+" Foreground="Wheat" FontSize="14" Padding="5" Background="{StaticResource secondaryBackground}"/>
+                <TextBlock Grid.Column="1" Grid.Row="1" Foreground="white" TextWrapping="Wrap" FontSize="16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus sem dolor. Nam accumsan sed nunc nec lobortis. Phasellus hendrerit vitae orci non congue. Etiam nec tellus et nulla euismod suscipit nec quis diam. Nullam dictum laoreet turpis id cursus. Curabitur a dui ac dui lacinia scelerisque. Nulla nec dictum ante, a pretium felis. Fusce lorem neque, convallis non odio ut, blandit euismod ante. In hac habitasse platea dictumst.</TextBlock>
+                <Button Style="{StaticResource buyTicketButton }" VerticalAlignment="Bottom" Margin="20"
+                        Click="OpenSeatChoice">
+                    <Label Foreground="white">Zarezerwuj miejsce</Label>
+                </Button>
+            </StackPanel>
+
+
+        </Grid>
+
+    </StackPanel>
+
+</UserControl>

@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using DreamVisionCinema_WPF.Views.AdminViews;
+using DreamVisionCinema_WPF.Views.ClientViews;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +21,55 @@ namespace DreamVisionCinema_WPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
+
+        private void ButtonMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow.WindowState != WindowState.Maximized)
+            {
+                Application.Current.MainWindow.WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                Application.Current.MainWindow.WindowState = WindowState.Normal;
+            }
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void OpenClientview(object sender, RoutedEventArgs e)
+        {
+            MainClientPanel clientWindow = new MainClientPanel();  
+
+            clientWindow.Show();
+
+            this.Close();
+        }
+
+        private void OpenAdminView(object sender, RoutedEventArgs e)
+        {
+            AdminAuthentication adminWindow = new AdminAuthentication();
+
+            // Otwarcie nowego okna
+            adminWindow.Show();
+
+            // Zamknięcie bieżącego okna
+            this.Close();
         }
     }
 }

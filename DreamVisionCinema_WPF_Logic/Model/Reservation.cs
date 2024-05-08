@@ -19,6 +19,10 @@
         public int Id { get { return id; } }
         public Movie Movie { get { return movie; } }
         public List<Seat> Seats { get { return seats; } }
+        public string SeatsAsString
+        {
+            get { return string.Join(", ", Seats.Select(seat => seat.Number)); }
+        }
         public Ticket Ticket { get { return ticket; } }
     }
 }

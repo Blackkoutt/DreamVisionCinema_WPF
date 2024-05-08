@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="primaryBackground">#22214a</SolidColorBrush>
+    <SolidColorBrush x:Key="secondaryBackground">#1f1e44</SolidColorBrush>
+    <SolidColorBrush x:Key="white">#fff</SolidColorBrush>
+    <SolidColorBrush x:Key="black">#000</SolidColorBrush>
+
+    <SolidColorBrush x:Key="purple_1">#9370db</SolidColorBrush>
+    <SolidColorBrush x:Key="purple_1_hover">#9e7edf</SolidColorBrush>
+
+    <SolidColorBrush x:Key="purple_2">#4e51d9</SolidColorBrush>
+    <SolidColorBrush x:Key="purple_2_hover">#5f62e9</SolidColorBrush>
+
+    <SolidColorBrush x:Key="purple_3">#c07dff</SolidColorBrush>
+    <SolidColorBrush x:Key="dark_blue">#1c1a2b</SolidColorBrush>
+    <SolidColorBrush x:Key="dark_blue_2">#2a283c</SolidColorBrush>
+    
+
+    <SolidColorBrush x:Key="red_1">#a83232</SolidColorBrush>
+    <SolidColorBrush x:Key="red_1_hover">#b94343</SolidColorBrush>
+    <SolidColorBrush x:Key="red_2">#e63232</SolidColorBrush>
+
+    <SolidColorBrush x:Key="orange_1">#db8f02</SolidColorBrush>
+    <SolidColorBrush x:Key="orange_1_hover">#ec9f13</SolidColorBrush>
+    <SolidColorBrush x:Key="orange_2">#ffa51f</SolidColorBrush>
+    
+
+    <SolidColorBrush x:Key="blue_1">#0792e8</SolidColorBrush>
+    <SolidColorBrush x:Key="blue_1_hover">#1893f9</SolidColorBrush>
+    <SolidColorBrush x:Key="blue_2">#7dd0ff</SolidColorBrush>
+    
+
+
+    <SolidColorBrush x:Key="green_confirm_1">#32a852</SolidColorBrush>
+    <SolidColorBrush x:Key="green_confirm_1_hover">#43b963</SolidColorBrush>
+
+    <SolidColorBrush x:Key="green_2">#8ff17e</SolidColorBrush>
+
+    <SolidColorBrush x:Key="cyan">#00ffff</SolidColorBrush>
+   
+
+
+    <SolidColorBrush x:Key="statistics_containers_background">#323466</SolidColorBrush>
+    <SolidColorBrush x:Key="statistics_containers_hover">#434577</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="grid_background">#2b2a63</SolidColorBrush>
+    <SolidColorBrush x:Key="grid_foreground">#222528</SolidColorBrush>
+    <SolidColorBrush x:Key="grid_row_background">#373680</SolidColorBrush>
+    <SolidColorBrush x:Key="grid_row_background_hover">#623ed0</SolidColorBrush>
+
+    <LinearGradientBrush x:Key="primaryColorGradient" StartPoint="0,0" EndPoint="1,2">
+        <GradientStop Color="#22214a" Offset="0.0"/>
+        <GradientStop Color="#1f1e44" Offset="0.7"/>
+    </LinearGradientBrush>
+
+
+</ResourceDictionary>

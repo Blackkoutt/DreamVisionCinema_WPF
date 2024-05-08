@@ -1,0 +1,148 @@
+﻿<Window x:Class="DreamVisionCinema_WPF.Views.ClientViews.SeatReservationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:effects="clr-namespace:System.Windows.Media.Effects;assembly=PresentationCore"
+        xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews" xmlns:fa5="http://schemas.fontawesome.com/icons/"
+        mc:Ignorable="d"
+        Title="SeatReservationWindow" Height="600" Width="850"
+        Background="{StaticResource ResourceKey=primaryBackground}"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        >
+    
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.Effect>
+            <effects:BlurEffect Radius="0" x:Name="blurEffect"/>
+        </Grid.Effect>
+        <Popup x:Name="purchasePopup" Placement="Center" PlacementTarget="{Binding ElementName=MainGrid}" IsOpen="False">
+            <Border BorderBrush="{StaticResource secondaryBackground}" BorderThickness="2" Background="{StaticResource primaryBackground}" Padding="30">
+                <StackPanel>
+                    <TextBlock Text="Proszę wprowadzić swoje dane:" FontWeight="Bold" Margin="0,0,0,10" Foreground="White"/>
+                    <TextBlock Text="Imię:" Foreground="White"/>
+                    <TextBox x:Name="firstNameTextBox" Margin="0,0,0,10" Background="Transparent" BorderThickness="0,0,0,2" Foreground="White"/>
+                    <TextBlock Text="Nazwisko:" Foreground="White"/>
+                    <TextBox x:Name="lastNameTextBox" Margin="0,0,0,10" Background="Transparent" BorderThickness="0,0,0,2" Foreground="White"/>
+                    <TextBlock Text="Email:" Foreground="White"/>
+                    <TextBox x:Name="emailTextBox" Margin="0,0,0,20" Background="Transparent" BorderThickness="0,0,0,2" Foreground="White"/>
+                    <Button Content="Kup Bilety" Click="SubmitTicketPurchase" Style="{StaticResource confirmButton}"/>
+                </StackPanel>
+            </Border>
+        </Popup>
+
+        <Grid Background="{StaticResource primaryBackground}" Grid.Row="1">
+            <Image x:Name="gifImage" Visibility="Collapsed" Source="pack://application:,,,/Assets/printer2.gif"/>
+        </Grid>
+        
+        <Image x:Name="finalImage" Visibility="Collapsed" Source="pack://application:,,,/Assets/ticket_template.jpg" Width="300" Height="300"/>
+
+        <!--Pasek na samej górze zastępujący ten windosowy-->
+        <Border Grid.ColumnSpan="2"
+            Background="{StaticResource ResourceKey=secondaryBackground}"
+            MouseDown="Border_MouseDown">
+
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="DreamVisionCinema"
+                   Foreground="Gray"
+                   FontWeight="SemiBold"/>
+
+                <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                    <Button Width="20" Height="20"
+                    Content="━"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="{StaticResource ResourceKey=purple_1}"
+                    FontWeight="Bold"
+                        Click="ButtonMinimize_Click"/>
+
+                    <Button Width="20" Height="20"
+                        Content="☐"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="{StaticResource ResourceKey=purple_1}"
+                        FontWeight="Bold"
+                        Click="ButtonMaximize_Click"/>
+
+                    <Button Width="20" Height="20"
+                    Content="✕"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="{StaticResource ResourceKey=purple_1}"
+                    FontWeight="Bold"
+                        Click="ButtonClose_Click"/>
+
+
+                </StackPanel>
+            </Grid>
+        </Border>
+        <StackPanel Grid.Row="1" Margin="20">
+            <TextBlock Text="Wybierz interesujące cię miejsca w sali - film Kosmici w mojej szkole"
+                       FontSize="20"
+                       Foreground="White"
+                       TextAlignment="Center"
+                       Padding="10"/>
+            <StackPanel Orientation="Horizontal" TextBlock.FontSize="14" HorizontalAlignment="Center">
+                <TextBlock Text="Kolorem " Foreground="White"/>
+                <TextBlock Text="czerwonym " Foreground="Red"/>
+                <TextBlock Text="zostały oznaczone miejsca zajęte. Kolorem " Foreground="White"/>
+                <TextBlock Text="zielonym " Foreground="Green"/>
+                <TextBlock Text="miejsca wolne." Foreground="White"/>
+            </StackPanel>
+            
+            <Border Background="DarkGray"
+                    Height="25"
+                    Margin="10"/>
+
+            <WrapPanel x:Name="seatsPanel" Grid.Row="1" ItemHeight="50" ItemWidth="50" Margin="10">
+                <!-- Miejsca zostaną dodane dynamicznie tutaj -->
+            </WrapPanel>
+        </StackPanel>
+        
+        <TextBlock x:Name="selectedSeatsText" 
+                   Text="Wybrane miejsca:"
+                   Grid.Row="2" 
+                   HorizontalAlignment="left" 
+                   Margin="10" 
+                   FontSize="14" 
+                   FontWeight="Bold"
+                   Foreground="white"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Style="{StaticResource gridEditButton}"
+                Grid.Row="2"
+                HorizontalAlignment="Right"
+                Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <fa5:ImageAwesome Icon="Solid_ArrowLeft" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                    <Label Margin="5,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14">Cofnij wybór</Label>
+            </StackPanel>
+        </Button>
+        <Button Style="{StaticResource buyTicketButton}"
+        Grid.Row="2"
+        HorizontalAlignment="Right"
+        Margin="10"
+                Click="BuyTicket_Click">
+            <StackPanel Orientation="Horizontal">
+                <fa5:ImageAwesome Icon="Solid_ShoppingCart" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                <Label Margin="5,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14">Kup bilet</Label>
+            </StackPanel>
+        </Button>
+        </StackPanel>
+        
+
+        
+    </Grid>
+</Window>

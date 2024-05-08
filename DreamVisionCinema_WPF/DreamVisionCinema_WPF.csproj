@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -9,7 +9,36 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
+    <None Remove="Assets\app_icon.ico" />
+    <None Remove="Assets\app_icon1.ico" />
+    <None Remove="Assets\logo.png" />
+    <None Remove="Assets\movie_delete.png" />
+    <None Remove="Assets\movie_png.png" />
+    <None Remove="Assets\plakatDefault.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
+    <PackageReference Include="FontAwesome5" Version="2.1.11" />
+    <PackageReference Include="NetCore5.0.Microsoft.Expression.Drawing" Version="1.0.0" />
+    <PackageReference Include="OxyPlot.Wpf" Version="2.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\app_icon.ico" />
+    <Resource Include="Assets\app_icon1.ico" />
+    <Resource Include="Assets\logo.png" />
+    <Resource Include="Assets\movie_delete.png" />
+    <Resource Include="Assets\movie_png.png" />
+    <Resource Include="Assets\plakatDefault.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DreamVisionCinema_WPF_Logic\DreamVisionCinema_WPF_Logic.csproj" />
   </ItemGroup>
 
 </Project>
