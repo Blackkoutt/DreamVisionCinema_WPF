@@ -21,7 +21,7 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
     /// <summary>
     /// Logika interakcji dla klasy MoviesList.xaml
     /// </summary>
-    public partial class MoviesList : Window
+    public partial class MoviesList : UserControl
     { 
         public MoviesList()
         {
@@ -34,6 +34,18 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
             moviesList.ItemsSource = movies;
 
           
+        }
+
+        private void editMovieBtn_Click(object sender, RoutedEventArgs e)
+        {
+            EditMovie dialog = new EditMovie();
+            dialog.Show();
+        }
+
+        private void deleteMovieBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteMessage dialog = new DeleteMessage();
+            dialog.Show();
         }
     }
 }

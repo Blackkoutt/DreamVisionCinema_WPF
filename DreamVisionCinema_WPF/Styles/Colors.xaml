@@ -7,6 +7,7 @@
     <SolidColorBrush x:Key="black">#000</SolidColorBrush>
 
     <SolidColorBrush x:Key="purple_1">#9370db</SolidColorBrush>
+    <SolidColorBrush x:Key="purple_1_hover">#9e7edf</SolidColorBrush>
 
     <SolidColorBrush x:Key="purple_2">#4e51d9</SolidColorBrush>
     <SolidColorBrush x:Key="purple_2_hover">#5f62e9</SolidColorBrush>
@@ -35,6 +36,9 @@
     <SolidColorBrush x:Key="green_confirm_1_hover">#43b963</SolidColorBrush>
 
     <SolidColorBrush x:Key="green_2">#8ff17e</SolidColorBrush>
+
+    <SolidColorBrush x:Key="cyan">#00ffff</SolidColorBrush>
+   
 
 
     <SolidColorBrush x:Key="statistics_containers_background">#323466</SolidColorBrush>

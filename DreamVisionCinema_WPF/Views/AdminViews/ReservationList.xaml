@@ -1,15 +1,15 @@
-﻿<Window x:Class="DreamVisionCinema_WPF.Views.AdminViews.ReservationList"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:fa5="http://schemas.fontawesome.com/icons/"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:logic="clr-namespace:DreamVisionCinema_WPF_Logic.Model;assembly=DreamVisionCinema_WPF_Logic"
-        mc:Ignorable="d"
-        Title="Lista rezerwacji" Height="801" Width="1178"
-        Background="{StaticResource ResourceKey=primaryBackground}"
-        Icon="../../Assets/app_icon1.ico">
-    <Window.Resources>
+﻿<UserControl x:Class="DreamVisionCinema_WPF.Views.AdminViews.ReservationList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:fa5="http://schemas.fontawesome.com/icons/"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews"
+             mc:Ignorable="d" 
+             xmlns:logic="clr-namespace:DreamVisionCinema_WPF_Logic.Model;assembly=DreamVisionCinema_WPF_Logic"
+             Background="{StaticResource ResourceKey=primaryBackground}"
+             d:DesignHeight="600" d:DesignWidth="958">
+    <UserControl.Resources>
         <DataTemplate x:Key="ListTemplate" DataType="{x:Type logic:Seat}">
             <ItemsControl ItemsSource="{Binding Seats}">
                 <ItemsControl.ItemTemplate>
@@ -19,7 +19,7 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </DataTemplate>
-    </Window.Resources>
+    </UserControl.Resources>
 
     <StackPanel Margin="50, 40">
         <Grid>
@@ -30,10 +30,10 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Foreground="White" FontSize="20" VerticalAlignment="Center"> Lista przedstawia wszytskie rezerwacje dokonnane przez klientów</TextBlock>
+            <TextBlock Grid.Column="0" Foreground="White" FontSize="20" VerticalAlignment="Center"> Lista rezerwacji dokonanych przez klientów:</TextBlock>
             <Label Grid.Column="2"  Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="18" VerticalAlignment="Center">Szukaj:</Label>
-            <TextBox Grid.Column="3" Margin="10,0,20,0" Width="250" Padding="0,1,0,1" FontSize="15" VerticalContentAlignment="Center"/>
-            <Button Grid.Column="4" Padding="5,2,5,2" Background="#4e51d9" IsDefault="True">
+            <TextBox Grid.Column="3" Margin="10,0,20,0" Style="{StaticResource searchInput}"/>
+            <Button Grid.Column="4" Height="42" Padding="5,0,5,0" IsDefault="True" Style="{StaticResource searchButton}">
                 <StackPanel Orientation="Horizontal">
                     <fa5:ImageAwesome Icon="Solid_Search" Foreground="{StaticResource ResourceKey=white}" Width="15" Height="15"/>
                     <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15" >Szukaj</Label>
@@ -91,4 +91,4 @@
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
-</Window>
+</UserControl>

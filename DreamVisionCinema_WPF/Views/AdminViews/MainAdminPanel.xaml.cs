@@ -23,5 +23,11 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
         {
             InitializeComponent();
         }
+
+        private void addMovieBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddMovie dialog = new AddMovie();
+            dialog.Show();
+        }
     }
 }

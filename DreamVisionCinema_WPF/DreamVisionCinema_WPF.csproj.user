@@ -31,6 +31,12 @@
     <Compile Update="Views\AdminViews\MainAdminPanel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AdminViews\MostPopularMovies.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AdminViews\MostProfitableMovies.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AdminViews\MoviesList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -38,6 +44,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\AdminViews\StatisticsPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ClientViews\HomeView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ClientViews\MovieDetailsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -63,6 +75,9 @@
     <Page Update="Styles\DataGrid.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\Inputs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\AdminViews\AddMovie.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -78,6 +93,12 @@
     <Page Update="Views\AdminViews\MainAdminPanel.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\AdminViews\MostPopularMovies.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AdminViews\MostProfitableMovies.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\AdminViews\MoviesList.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -85,6 +106,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AdminViews\StatisticsPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ClientViews\HomeView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ClientViews\MovieDetailsView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

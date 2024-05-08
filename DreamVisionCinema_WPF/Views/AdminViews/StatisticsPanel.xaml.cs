@@ -17,7 +17,7 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
     /// <summary>
     /// Logika interakcji dla klasy StatisticsPanel.xaml
     /// </summary>
-    public partial class StatisticsPanel : Window
+    public partial class StatisticsPanel : UserControl
     {
         public StatisticsPanel()
         {

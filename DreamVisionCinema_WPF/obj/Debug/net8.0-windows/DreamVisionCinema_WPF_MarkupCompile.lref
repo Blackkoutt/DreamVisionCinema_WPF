@@ -9,6 +9,11 @@ FC:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Vi
 FC:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Views\AdminViews\DeleteMessage.xaml;;
 FC:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Views\AdminViews\EditMovie.xaml;;
 FC:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Views\AdminViews\MainAdminPanel.xaml;;
+FC:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Views\AdminViews\MostPopularMovies.xaml;;
+FC:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Views\AdminViews\MostProfitableMovies.xaml;;
 FC:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Views\AdminViews\MoviesList.xaml;;
+FC:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Views\AdminViews\ReservationList.xaml;;
 FC:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Views\AdminViews\StatisticsPanel.xaml;;
+FC:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Views\ClientViews\HomeView.xaml;;
+FC:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Views\ClientViews\MovieDetailsView.xaml;;
 

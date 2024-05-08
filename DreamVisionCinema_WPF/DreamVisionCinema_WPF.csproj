@@ -14,12 +14,14 @@
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\movie_delete.png" />
     <None Remove="Assets\movie_png.png" />
+    <None Remove="Assets\plakatDefault.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
     <PackageReference Include="FontAwesome5" Version="2.1.11" />
     <PackageReference Include="NetCore5.0.Microsoft.Expression.Drawing" Version="1.0.0" />
+    <PackageReference Include="OxyPlot.Wpf" Version="2.1.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +30,7 @@
     <Resource Include="Assets\logo.png" />
     <Resource Include="Assets\movie_delete.png" />
     <Resource Include="Assets\movie_png.png" />
+    <Resource Include="Assets\plakatDefault.png" />
   </ItemGroup>
 
   <ItemGroup>
