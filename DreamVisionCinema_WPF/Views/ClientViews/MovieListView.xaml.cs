@@ -1,4 +1,5 @@
 ﻿using DreamVisionCinema_WPF_Logic.Model;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -23,6 +24,13 @@ namespace DreamVisionCinema_WPF.Views.ClientViews
             movies = repository.GetAllMovies();
 
             moviesList.ItemsSource = movies;
+        }
+
+        public void OpenModal(object sender, RoutedEventArgs e)
+        {
+            Movie row = (Movie)moviesList.SelectedItems[0];
+            Console.WriteLine(row.Title);
+            //MessageBox.Show("Próbujesz kupić bilet ale chuj ci w dupe", "Kup bilet", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }

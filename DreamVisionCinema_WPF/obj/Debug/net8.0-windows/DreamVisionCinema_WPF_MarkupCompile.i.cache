@@ -1,7 +1,7 @@
 ﻿DreamVisionCinema_WPF
 1.0.0.0
 
-winexe
+exe
 C#
 .cs
 C:\Users\kubap\OneDrive\Pulpit\6_SEMESTR_MATERIAŁY\WPF\ProjektWPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\
@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\kubap\OneDrive\Pulpit\6_SEMESTR_MATERIAŁY\WPF\ProjektWPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\App.xaml
-11-762775662
+131104190367
 
-18-719445340
+2131644488
 2111328251786
-MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\DataGrid.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\MainAdminPanel.xaml;Views\AdminViews\MoviesList.xaml;Views\AdminViews\ReservationList.xaml;Views\ClientViews\HomeView.xaml;Views\ClientViews\MainClientPanel.xaml;Views\ClientViews\MovieListView.xaml;
+MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\DataGrid.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\MainAdminPanel.xaml;Views\AdminViews\MoviesList.xaml;Views\AdminViews\ReservationList.xaml;Views\ClientViews\HomeView.xaml;Views\ClientViews\MainClientPanel.xaml;Views\ClientViews\MovieDetailsView.xaml;Views\ClientViews\MovieListView.xaml;Views\ClientViews\SeatReservationWindow.xaml;
 
 True
 

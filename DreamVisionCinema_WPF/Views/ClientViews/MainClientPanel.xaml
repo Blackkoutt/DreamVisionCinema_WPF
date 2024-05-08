@@ -90,7 +90,8 @@
                 <RadioButton Content="Pokaż listę rezerwacji"
                 Height="50"
                 Foreground="White"
-                Style="{StaticResource MenuButton}"/>
+                Style="{StaticResource MenuButton}"
+                             Command="{Binding MovieDetailsViewCommand}"/>
 
             <RadioButton Content="Wróć"
                 Height="50"

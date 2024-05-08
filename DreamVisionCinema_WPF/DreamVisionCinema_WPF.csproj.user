@@ -25,7 +25,13 @@
     <Compile Update="Views\ClientViews\MainClientPanel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ClientViews\MovieDetailsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ClientViews\MovieListView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ClientViews\SeatReservationWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -60,7 +66,13 @@
     <Page Update="Views\ClientViews\MainClientPanel.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\ClientViews\MovieDetailsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\ClientViews\MovieListView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ClientViews\SeatReservationWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -6,6 +6,7 @@
     <SolidColorBrush x:Key="white">#fff</SolidColorBrush>
 
     <SolidColorBrush x:Key="purple_1">#9370db</SolidColorBrush>
+    <SolidColorBrush x:Key="purple_1_hover">#9e7edf</SolidColorBrush>
 
     <SolidColorBrush x:Key="purple_2">#4e51d9</SolidColorBrush>
     <SolidColorBrush x:Key="purple_2_hover">#5f62e9</SolidColorBrush>
