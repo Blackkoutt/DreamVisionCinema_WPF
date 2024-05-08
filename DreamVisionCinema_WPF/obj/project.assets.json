@@ -127,23 +127,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kubap\\.nuget\\packages\\": {},
+    "C:\\Users\\Mateusz\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF.csproj",
+      "projectUniqueName": "C:\\Users\\Mateusz\\Desktop\\admin\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF.csproj",
       "projectName": "DreamVisionCinema_WPF",
-      "projectPath": "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF.csproj",
-      "packagesPath": "C:\\Users\\kubap\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\obj\\",
+      "projectPath": "C:\\Users\\Mateusz\\Desktop\\admin\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF.csproj",
+      "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mateusz\\Desktop\\admin\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\kubap\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mateusz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -158,8 +158,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj": {
-              "projectPath": "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj"
+            "C:\\Users\\Mateusz\\Desktop\\admin\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj": {
+              "projectPath": "C:\\Users\\Mateusz\\Desktop\\admin\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF_Logic\\DreamVisionCinema_WPF_Logic.csproj"
             }
           }
         }
@@ -207,7 +207,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
