@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\
+C:\Users\Mateusz\Desktop\admin\DreamVisionCinema_WPF\DreamVisionCinema_WPF\obj\Debug\net8.0-windows\
 DreamVisionCinema_WPF
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\Mateusz\Desktop\DVC_WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\App.xaml
+C:\Users\Mateusz\Desktop\admin\DreamVisionCinema_WPF\DreamVisionCinema_WPF\App.xaml
 202120436294
 
 31189296244
-215-1868388058
+215-747675332
 Controls\CircularProgressBar.xaml;Controls\DefaultInput.xaml;Controls\InputTypeNumber.xaml;MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\DataGrid.xaml;Styles\Inputs.xaml;Views\AdminViews\AddMovie.xaml;Views\AdminViews\AdminAuthentication.xaml;Views\AdminViews\DeleteMessage.xaml;Views\AdminViews\EditMovie.xaml;Views\AdminViews\MainAdminPanel.xaml;Views\AdminViews\MostPopularMovies.xaml;Views\AdminViews\MostProfitableMovies.xaml;Views\AdminViews\MoviesList.xaml;Views\AdminViews\ReservationList.xaml;Views\AdminViews\StatisticsPanel.xaml;Views\ClientViews\HomeView.xaml;Views\ClientViews\MovieDetailsView.xaml;
 
-False
+True
 
