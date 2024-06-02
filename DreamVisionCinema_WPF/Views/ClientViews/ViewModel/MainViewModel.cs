@@ -1,4 +1,5 @@
 ﻿using DreamVisionCinema_WPF.Observable;
+using DreamVisionCinema_WPF_Logic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -6,21 +7,39 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
 {
-    class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
+        BaseViewModel _baseViewModel = new BaseViewModel();
+
+        public ICommand MinimizeCommand => _baseViewModel.MinimizeCommand;
+        public ICommand MaximizeCommand => _baseViewModel.MaximizeCommand;
+        public ICommand CloseCommand => _baseViewModel.CloseCommand;
+        public ICommand DragMoveCommand => _baseViewModel.DragCommand;
 
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand MovieListViewCommand { get; set; }
-        public RelayCommand MovieDetailsViewCommand { get; set; }
 
-        public MovieDetailsViewModel MovieDetailsVM { get; set; }
         public HomeViewModel HomeVM { get; set; }
         public MovieListViewModel MovieListVM { get; set; }
         private object _currentView;
 
+        private static MainViewModel _instance = null;
+
+        public static MainViewModel Instance
+        {
+            get { 
+                if(_instance == null)
+                {
+                    _instance = new MainViewModel();
+                    return _instance;
+                }else    
+                return _instance; 
+            }
+        }
         public object CurentView
         {
             get { return _currentView; }
@@ -33,8 +52,7 @@ namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
 
         public MainViewModel() {
             HomeVM = new HomeViewModel();
-            MovieListVM = new MovieListViewModel();
-            MovieDetailsVM = new MovieDetailsViewModel();
+            MovieListVM = new MovieListViewModel(this);
             _currentView = HomeVM;
 
             HomeViewCommand = new RelayCommand(o =>
@@ -47,10 +65,6 @@ namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
                 CurentView = MovieListVM;
             });
 
-            MovieDetailsViewCommand = new RelayCommand(o =>
-            {
-                CurentView = MovieDetailsVM;
-            });
         }
 
     }

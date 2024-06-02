@@ -1,12 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+using DreamVisionCinema_WPF.Observable;
+using DreamVisionCinema_WPF_Logic.Model;
 
 namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
 {
-    class MovieDetailsViewModel
+    public class MovieDetailsViewModel
     {
+        public Movie Movie { get; private set; }
+        public MovieDetailsViewModel()
+        { }
+
+        public MovieDetailsViewModel(Movie movie)
+        {
+            Movie = movie;
+            OpenSeatChoiceCommand = new RelayCommand(OpenSeatChoice);
+        }
+
+        public ICommand OpenSeatChoiceCommand { get; private set; }
+
+        private void OpenSeatChoice(object parameter)
+        {
+            SeatReservationWindow dialog = new SeatReservationWindow();
+            dialog.Show();
+        }
     }
 }

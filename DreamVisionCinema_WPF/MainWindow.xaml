@@ -11,7 +11,8 @@ Background="{StaticResource ResourceKey=primaryBackground}"
 WindowStyle="None"
 AllowsTransparency="True"
 ResizeMode="CanResizeWithGrip"
-        Icon="/Assets/app_icon1.ico">
+        Icon="/Assets/app_icon1.ico"
+        MinWidth="500" MinHeight="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>

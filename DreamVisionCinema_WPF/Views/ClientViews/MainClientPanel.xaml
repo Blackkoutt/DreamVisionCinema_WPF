@@ -6,16 +6,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews.ViewModel"
         xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="MainClientPanel" Height="800" Width="1200"
+        Title="Menu Główne" Height="800" Width="1300"
         Background="{StaticResource ResourceKey=primaryBackground}"
         WindowStyle="None"
         AllowsTransparency="True"
-        ResizeMode="CanResizeWithGrip">
+        ResizeMode="CanResizeWithGrip"
+        Icon="/Assets/app_icon1.ico"
+        MinWidth="1200" MinHeight="500">
 
-    <Window.DataContext>
-        <viewModel:MainViewModel/>
-    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -30,8 +30,12 @@
 
         <!--Pasek na samej górze zastępujący ten windosowy-->
         <Border Grid.ColumnSpan="2"
-                Background="{StaticResource ResourceKey=secondaryBackground}"
-                MouseDown="Border_MouseDown">
+                Background="{StaticResource ResourceKey=secondaryBackground}">
+            <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseDown">
+                <i:InvokeCommandAction Command="{Binding DragMoveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+            </i:EventTrigger>
+            </i:Interaction.Triggers>
 
             <Grid HorizontalAlignment="Stretch">
                 <Label Content="DreamVisionCinema"
@@ -47,7 +51,7 @@
                         BorderThickness="0"
                         Foreground="{StaticResource ResourceKey=purple_1}"
                         FontWeight="Bold"
-                            Click="ButtonMinimize_Click"/>
+                        Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
                     
                     <Button Width="20" Height="20"
                             Content="☐"
@@ -55,7 +59,7 @@
                             BorderThickness="0"
                             Foreground="{StaticResource ResourceKey=purple_1}"
                             FontWeight="Bold"
-                            Click="ButtonMaximize_Click"/>
+                            Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                     <Button Width="20" Height="20"
                         Content="✕"
@@ -63,7 +67,7 @@
                         BorderThickness="0"
                         Foreground="{StaticResource ResourceKey=purple_1}"
                         FontWeight="Bold"
-                            Click="ButtonClose_Click"/>
+                        Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
 
                 </StackPanel>
@@ -91,7 +95,7 @@
                 Height="50"
                 Foreground="White"
                 Style="{StaticResource MenuButton}"
-                             Command="{Binding MovieDetailsViewCommand}"/>
+                             Command="{Binding MovieListViewCommand}"/>
 
             <RadioButton Content="Wróć"
                 Height="50"

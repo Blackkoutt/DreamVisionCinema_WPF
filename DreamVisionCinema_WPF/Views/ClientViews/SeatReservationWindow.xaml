@@ -4,16 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:effects="clr-namespace:System.Windows.Media.Effects;assembly=PresentationCore"
-        xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews" xmlns:fa5="http://schemas.fontawesome.com/icons/"
+        xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:fa5="http://schemas.fontawesome.com/icons/"
         mc:Ignorable="d"
         Title="SeatReservationWindow" Height="600" Width="850"
         Background="{StaticResource ResourceKey=primaryBackground}"
         WindowStyle="None"
         AllowsTransparency="True"
+        Icon="/Assets/app_icon1.ico"
         >
-    
+
     <Grid>
-        
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
@@ -37,7 +39,7 @@
                     <TextBox x:Name="lastNameTextBox" Margin="0,0,0,10" Background="Transparent" BorderThickness="0,0,0,2" Foreground="White"/>
                     <TextBlock Text="Email:" Foreground="White"/>
                     <TextBox x:Name="emailTextBox" Margin="0,0,0,20" Background="Transparent" BorderThickness="0,0,0,2" Foreground="White"/>
-                    <Button Content="Kup Bilety" Click="SubmitTicketPurchase" Style="{StaticResource confirmButton}"/>
+                    <Button Content="Kup Bilety" Command="{Binding SubmitTicketPurchaseCommand}" Style="{StaticResource confirmButton}"/>
                 </StackPanel>
             </Border>
         </Popup>
@@ -45,50 +47,53 @@
         <Grid Background="{StaticResource primaryBackground}" Grid.Row="1">
             <Image x:Name="gifImage" Visibility="Collapsed" Source="pack://application:,,,/Assets/printer2.gif"/>
         </Grid>
-        
+
         <Image x:Name="finalImage" Visibility="Collapsed" Source="pack://application:,,,/Assets/ticket_template.jpg" Width="300" Height="300"/>
 
         <!--Pasek na samej górze zastępujący ten windosowy-->
         <Border Grid.ColumnSpan="2"
-            Background="{StaticResource ResourceKey=secondaryBackground}"
-            MouseDown="Border_MouseDown">
-
+                Background="{StaticResource ResourceKey=secondaryBackground}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding DragMoveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <Grid HorizontalAlignment="Stretch">
                 <Label Content="DreamVisionCinema"
-                   Foreground="Gray"
-                   FontWeight="SemiBold"/>
+                       Foreground="Gray"
+                       FontWeight="SemiBold"/>
 
                 <StackPanel HorizontalAlignment="Right"
-                        Orientation="Horizontal">
+                            Orientation="Horizontal">
 
                     <Button Width="20" Height="20"
-                    Content="━"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    Foreground="{StaticResource ResourceKey=purple_1}"
-                    FontWeight="Bold"
-                        Click="ButtonMinimize_Click"/>
-
-                    <Button Width="20" Height="20"
-                        Content="☐"
+                        Content="━"
                         Background="Transparent"
                         BorderThickness="0"
                         Foreground="{StaticResource ResourceKey=purple_1}"
                         FontWeight="Bold"
-                        Click="ButtonMaximize_Click"/>
+                        Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                     <Button Width="20" Height="20"
-                    Content="✕"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    Foreground="{StaticResource ResourceKey=purple_1}"
-                    FontWeight="Bold"
-                        Click="ButtonClose_Click"/>
+                            Content="☐"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="{StaticResource ResourceKey=purple_1}"
+                            FontWeight="Bold"
+                            Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
+                    <Button Width="20" Height="20"
+                        Content="✕"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="{StaticResource ResourceKey=purple_1}"
+                        FontWeight="Bold"
+                        Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                 </StackPanel>
             </Grid>
         </Border>
+
         <StackPanel Grid.Row="1" Margin="20">
             <TextBlock Text="Wybierz interesujące cię miejsca w sali - film Kosmici w mojej szkole"
                        FontSize="20"
@@ -102,7 +107,7 @@
                 <TextBlock Text="zielonym " Foreground="Green"/>
                 <TextBlock Text="miejsca wolne." Foreground="White"/>
             </StackPanel>
-            
+
             <Border Background="DarkGray"
                     Height="25"
                     Margin="10"/>
@@ -111,7 +116,7 @@
                 <!-- Miejsca zostaną dodane dynamicznie tutaj -->
             </WrapPanel>
         </StackPanel>
-        
+
         <TextBlock x:Name="selectedSeatsText" 
                    Text="Wybrane miejsca:"
                    Grid.Row="2" 
@@ -125,24 +130,21 @@
                 Grid.Row="2"
                 HorizontalAlignment="Right"
                 Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <fa5:ImageAwesome Icon="Solid_ArrowLeft" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                <StackPanel Orientation="Horizontal">
+                    <fa5:ImageAwesome Icon="Solid_ArrowLeft" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
                     <Label Margin="5,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14">Cofnij wybór</Label>
-            </StackPanel>
-        </Button>
-        <Button Style="{StaticResource buyTicketButton}"
-        Grid.Row="2"
-        HorizontalAlignment="Right"
-        Margin="10"
-                Click="BuyTicket_Click">
-            <StackPanel Orientation="Horizontal">
-                <fa5:ImageAwesome Icon="Solid_ShoppingCart" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
-                <Label Margin="5,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14">Kup bilet</Label>
-            </StackPanel>
-        </Button>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource buyTicketButton}"
+                Grid.Row="2"
+                HorizontalAlignment="Right"
+                Margin="10"
+                Command="{Binding BuyTicketCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <fa5:ImageAwesome Icon="Solid_ShoppingCart" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                    <Label Margin="5,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14">Kup bilet</Label>
+                </StackPanel>
+            </Button>
         </StackPanel>
-        
-
-        
     </Grid>
 </Window>

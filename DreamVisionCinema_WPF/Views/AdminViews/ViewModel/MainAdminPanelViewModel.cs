@@ -1,5 +1,6 @@
 ﻿using DreamVisionCinema_WPF.Observable;
 using DreamVisionCinema_WPF.Views.ClientViews.ViewModel;
+using DreamVisionCinema_WPF_Logic.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,10 @@ namespace DreamVisionCinema_WPF.Views.AdminViews.ViewModel
         {
             HomeVM = new HomeViewModel();
             MovieListVM = new MoviesListViewModel();
-            MovieDetailsVM = new MovieDetailsViewModel();
+            DateTime time = DateTime.Now;
+            Room room = new Room(69, 69);
+            Movie movie = new Movie(69, "allah", time, 69, "69", room);
+            MovieDetailsVM = new MovieDetailsViewModel(movie);
             StatisticsPanelVM = new StatisticsPanelViewModel();
             ReservationListViewVM = new ReservationListViewModel();
             MostProfitableMoviesVM = new MostProfitableMovies();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
 {
-    class HomeViewModel
+    public class HomeViewModel
     {
     }
 }

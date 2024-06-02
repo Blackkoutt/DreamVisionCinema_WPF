@@ -1,23 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
+using DreamVisionCinema_WPF_Logic.Model;
+using DreamVisionCinema_WPF.Views.ClientViews.ViewModel;
 
 namespace DreamVisionCinema_WPF.Views.ClientViews
 {
-    /// <summary>
-    /// Logika interakcji dla klasy MovieDetailsView.xaml
-    /// </summary>
     public partial class MovieDetailsView : UserControl
     {
         public MovieDetailsView()
@@ -25,10 +11,9 @@ namespace DreamVisionCinema_WPF.Views.ClientViews
             InitializeComponent();
         }
 
-        private void OpenSeatChoice(object sender, RoutedEventArgs e)
+        public MovieDetailsView(Movie movie) : this() // Wywołanie domyślnego konstruktora
         {
-            SeatReservationWindow dialog = new SeatReservationWindow();
-            dialog.Show();
+            DataContext = new MovieDetailsViewModel(movie);
         }
     }
 }
