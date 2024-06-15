@@ -9,6 +9,12 @@
             isAvailable = true;
         }
 
+        public Seat(Seat seat)
+        {
+            this.number = seat.number;
+            isAvailable = true;
+        }
+
 
         // Gettery & Settery
         public bool IsAvailable

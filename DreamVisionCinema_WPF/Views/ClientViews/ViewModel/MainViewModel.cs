@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
@@ -29,12 +30,14 @@ namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
 
         private static MainViewModel _instance = null;
 
+        private string _tabText;
+
         public static MainViewModel Instance
         {
             get { 
                 if(_instance == null)
                 {
-                    _instance = new MainViewModel();
+                    _instance = new MainViewModel();                   
                     return _instance;
                 }else    
                 return _instance; 
@@ -49,23 +52,39 @@ namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
                 OnPropertyChanged();
             }
         }
+        public string tabText
+        {
+            get { return _tabText; }
+            set
+            {
+                _tabText = value;
+                OnPropertyChanged();
+            }
+        }
 
         public MainViewModel() {
             HomeVM = new HomeViewModel();
-            MovieListVM = new MovieListViewModel(this);
+            MovieListVM = new MovieListViewModel();
             _currentView = HomeVM;
+            tabText = "Strona Główna";
 
             HomeViewCommand = new RelayCommand(o =>
             {
                 CurentView = HomeVM;
+                tabText = "Strona Główna";
             });
 
             MovieListViewCommand = new RelayCommand(o =>
             {
                 CurentView = MovieListVM;
+                tabText = "Lista Filmów";
             });
-
+            GlobalEventAggregator.ViewChanged += OnViewChanged;
         }
-
+         private void OnViewChanged(object sender, ViewChangedEventArgs e)
+        {
+            tabText = e.TabText;
+            CurentView = e.NewView;
+        }
     }
 }

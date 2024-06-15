@@ -16,7 +16,7 @@
                 <RowDefinition/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="{Binding Movie.Title}"
+            <TextBlock Text="{Binding movie.Title}"
                        FontSize="30"
                        HorizontalAlignment="Center"
                        Background="Transparent"

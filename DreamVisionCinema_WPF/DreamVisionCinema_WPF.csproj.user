@@ -114,7 +114,6 @@
     <Page Update="Views\AdminViews\StatisticsPanel.xaml">
       <SubType>Designer</SubType>
     </Page>
-
     <Page Update="Views\ClientViews\HomeView.xaml">
       <SubType>Designer</SubType>
     </Page>

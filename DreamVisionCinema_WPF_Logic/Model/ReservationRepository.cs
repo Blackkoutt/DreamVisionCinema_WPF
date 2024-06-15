@@ -541,6 +541,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
             {
                 string seats = string.Join(",", res.Seats); // Złącz listę miejsc przecinkami
                 sw.WriteLine($"{res.Id} {res.Movie.Id} {seats}");
+                Console.WriteLine($"{res.Id} {res.Movie.Id} {seats}");
             }
             sw.Close();
         }

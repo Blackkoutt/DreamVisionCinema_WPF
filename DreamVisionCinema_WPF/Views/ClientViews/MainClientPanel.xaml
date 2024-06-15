@@ -113,8 +113,8 @@
                 Background="{StaticResource primaryBackground}"
                 Padding="10">
             <StackPanel Orientation="Horizontal">
-                <fa5:ImageAwesome Icon="Solid_Home" Foreground="{StaticResource ResourceKey=purple_1}" Width="30" Height="30"/>
-                <TextBlock Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14" VerticalAlignment="Center">Strona główna</TextBlock>
+                <Button Command="{Binding HomeViewCommand}" Background="{StaticResource ResourceKey=primaryBackground}" BorderThickness="0"><fa5:ImageAwesome Icon="Solid_Home"  Foreground="{StaticResource ResourceKey=purple_1}" Width="30" Height="30"/></Button>
+                <TextBlock x:Name="TabText" Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14" VerticalAlignment="Center" Text="{Binding tabText}"/>
             </StackPanel>
         </Border>
 
