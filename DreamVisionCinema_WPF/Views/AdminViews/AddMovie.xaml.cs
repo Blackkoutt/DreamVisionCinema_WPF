@@ -1,7 +1,11 @@
-﻿using DreamVisionCinema_WPF.ViewModels.AdminViewModels;
+﻿using DreamVisionCinema_WPF.Controls;
+using DreamVisionCinema_WPF.ViewModels.AdminViewModels;
+using DreamVisionCinema_WPF_Logic.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
