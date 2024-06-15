@@ -27,19 +27,17 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
         {
             this.movieRepository = movieRepository;
             AddMovieCommand = new RelayCommand(AddMovie);
-            Date = DateTime.Now;
+            Date = DateTime.Now.AddDays(1);
         }
 
         private void AddMovie(object parameter)
         {
-            // logic for adding new movie
             string dateString = Date.ToString("dd/MM/yyyy HH:mm");
             string priceString = Price.ToString();
-            string durationString = Duration.ToString();    
+            string durationString = $"{Duration / 60}:{(Duration % 60).ToString("D2")}";
             string roomNumberString = RoomNumber.ToString();    
             try
             {
-                // if parameters are null ?
                 movieRepository.AddMovie(null, Title, dateString, priceString, durationString, roomNumberString);   // Wywołanie metody dodającej film
             }
             catch (CannotConvertException CCE)
@@ -68,33 +66,12 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
                 return;
             }
 
-            /*if (moviesList == null)
-            {
-                try
-                {
-                    moviesList = movieRepository.GetAllMovies();    // Jeśli lista była wcześniej pusta to pobierz całą listę
-                }
-                catch (MovieListIsEmptyException MLIEE)
-                {
-                    MakeAlert(MLIEE.Message, CustomAlertBox.enmType.Info);
-                }
-                catch (Exception ex)
-                {
-                    MakeAlert(ex.Message, CustomAlertBox.enmType.Info);
-                }
-            }*/
-
-            // Po poprawnym dodaniu filmu wyświetl komunikat, zamknij widok dodawania i odśwież dataGridView
             MakeAlert("Poprawnie dodano film do listy", AlertTypeEnum.Success, true);
 
             if (parameter is Window window)
             {
                 window.Close();
             }
-            //  addMovieView.Close();
-            //  addMovieView = null;
-            //  RefreshMovieList();
-            // int a = 1;
         }
 
         public static AddMovieViewModel Instance
