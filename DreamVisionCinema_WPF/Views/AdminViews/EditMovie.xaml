@@ -5,27 +5,75 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         xmlns:controls="clr-namespace:DreamVisionCinema_WPF.Controls"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.AdminViews"
         mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
         Title="Edycja filmu"
+        WindowStartupLocation="CenterScreen"
         MinHeight="560" MinWidth="530" MaxHeight="560" MaxWidth="530"
         Background="{StaticResource ResourceKey=primaryBackground}"
         Icon="../../Assets/app_icon1.ico">
-    <StackPanel Margin="90 5 90 10">
-        <Image Source="pack://application:,,,/Assets/movie_png.png" Width="180" Height="100" />
-        <TextBlock Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="25" Margin="0,10,0,5" FontWeight="Bold">Edycja filmu:</TextBlock>
-        <TextBlock Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="20" Margin="0,5,0,10" FontWeight="Bold">"Tytuł filmu"</TextBlock>
-        <Label Foreground="{StaticResource ResourceKey=white}" Margin="20,10,0,0" FontSize="17">Data:</Label>
-        <DatePicker FontSize="17" Foreground="{StaticResource ResourceKey=black}" Margin="20,0,20,0" Background="Transparent" BorderThickness="0"/>
-        <Label Foreground="{StaticResource ResourceKey=white}" Margin="20,15,0,0" FontSize="17">Cena (zł):</Label>
-        <controls:InputTypeNumber FontSize="17" Foreground="{StaticResource ResourceKey=white}" Margin="20,0,20,0" Background="Transparent" BorderThickness="0,0,0,2"/>
-        <Label Foreground="{StaticResource ResourceKey=white}" Margin="20,15,0,0" FontSize="17">Numer sali:</Label>
-        <controls:InputTypeNumber IsRoomNumber="True" FontSize="17" Foreground="{StaticResource ResourceKey=white}" Margin="20,0,20,0" Background="Transparent" BorderThickness="0,0,0,2"/>
-        <Button Style="{StaticResource confirmButton}" Width="120" Margin="0,35,0,0" Height="35" IsDefault="True">
-            <StackPanel Orientation="Horizontal">
-                <fa5:ImageAwesome Icon="Solid_Save" Foreground="{StaticResource ResourceKey=white}" Width="20" Height="20"/>
-                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="16" FontWeight="Bold">Zapisz</TextBlock>
-            </StackPanel>
-        </Button>
+    <StackPanel>
+        <Border 
+            Background="{StaticResource ResourceKey=secondaryBackground}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding DragMoveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="DreamVisionCinema"
+                Foreground="Gray"
+                FontWeight="SemiBold"/>
+
+                <StackPanel HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+
+                    <Button Width="20" Height="20"
+                Content="━"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="{StaticResource ResourceKey=purple_1}"
+                FontWeight="Bold"
+                Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+
+                    <Button Width="20" Height="20"
+                Content="☐"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="{StaticResource ResourceKey=purple_1}"
+                FontWeight="Bold"
+                Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+
+                    <Button Width="20" Height="20"
+                Content="✕"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="{StaticResource ResourceKey=purple_1}"
+                FontWeight="Bold"
+                Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <StackPanel Margin="90 5 90 10">
+            <Image Source="pack://application:,,,/Assets/movie_png.png" Width="180" Height="100" />
+            <TextBlock Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="25" Margin="0,10,0,5" FontWeight="Bold">Edycja filmu:</TextBlock>
+            <TextBlock Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="20" Margin="0,5,0,10" FontWeight="Bold">"Tytuł filmu"</TextBlock>
+            <Label Foreground="{StaticResource ResourceKey=white}" Margin="20,10,0,0" FontSize="17">Data:</Label>
+            <DatePicker FontSize="17" Foreground="{StaticResource ResourceKey=black}" Margin="20,0,20,0" Background="Transparent" BorderThickness="0"/>
+            <Label Foreground="{StaticResource ResourceKey=white}" Margin="20,15,0,0" FontSize="17">Cena (zł):</Label>
+            <controls:InputTypeNumber FontSize="17" Foreground="{StaticResource ResourceKey=white}" Margin="20,0,20,0" Background="Transparent" BorderThickness="0,0,0,2"/>
+            <Label Foreground="{StaticResource ResourceKey=white}" Margin="20,15,0,0" FontSize="17">Numer sali:</Label>
+            <controls:InputTypeNumber IsRoomNumber="True" FontSize="17" Foreground="{StaticResource ResourceKey=white}" Margin="20,0,20,0" Background="Transparent" BorderThickness="0,0,0,2"/>
+            <Button Style="{StaticResource confirmButton}" Width="120" Margin="0,35,0,0" Height="35" IsDefault="True">
+                <StackPanel Orientation="Horizontal">
+                    <fa5:ImageAwesome Icon="Solid_Save" Foreground="{StaticResource ResourceKey=white}" Width="20" Height="20"/>
+                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="16" FontWeight="Bold">Zapisz</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </StackPanel>
 </Window>

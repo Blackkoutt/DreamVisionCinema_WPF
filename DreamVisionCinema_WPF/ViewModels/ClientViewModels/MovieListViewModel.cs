@@ -3,7 +3,7 @@ using DreamVisionCinema_WPF_Logic.Model;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
+namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 {
     public class MovieListViewModel : BaseViewModel
     {

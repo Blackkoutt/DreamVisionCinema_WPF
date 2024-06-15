@@ -3,76 +3,121 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.AdminViews"
-        xmlns:viewModel="clr-namespace:DreamVisionCinema_WPF.Views.AdminViews.ViewModel"
         mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
         Title="Panel administratora"
         Height="700" Width="1200"
         Background="{StaticResource ResourceKey=primaryBackground}"
         Icon="../../Assets/app_icon1.ico"
         >
-    <Window.DataContext>
-        <viewModel:MainAdminPanelViewModel/>
-    </Window.DataContext>
-    <DockPanel>
-        <Grid DockPanel.Dock="Left" Background="{StaticResource ResourceKey=secondaryBackground}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0">
-                <Button Command="{Binding HomeViewCommand}" Background="Transparent" BorderThickness="0">
-                    <Image Source="pack://application:,,,/Assets/logo.png" Width="200" Height="100" />
-                </Button>
-                <Button Command="{Binding MovieListViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Solid_Film" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż listę filmów</Label>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="addMovieBtn" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0" Click="addMovieBtn_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Solid_PlusCircle" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Dodaj nowy film</Label>
-                    </StackPanel>
-                </Button>
-                <Button Command="{Binding ReservationListViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Solid_BookOpen" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż listę rezerwacji</Label>
-                    </StackPanel>
-                </Button>
-                <Button Command="{Binding StatisticsPanelViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Regular_ChartBar" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż statystyki</Label>
-                    </StackPanel>
-                </Button>
-                <Button Command="{Binding HomeViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Regular_ArrowAltCircleLeft" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Wróć</Label>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-            <StackPanel Grid.Row="1">
-                <TextBlock Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="11" Padding="0,0,0,0">v 1.0.0</TextBlock>
-                <TextBlock Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="11" Padding="0,0,0,8">DreamVision Cinema©</TextBlock>
-            </StackPanel>
-        </Grid>
-        <Border  DockPanel.Dock="Top" Background="{StaticResource ResourceKey=secondaryBackground}" Padding="20,20,20,20">
-            <StackPanel Orientation="Horizontal">
-                <fa5:ImageAwesome Icon="Solid_Home" Foreground="{StaticResource ResourceKey=purple_1}" Width="35" Height="35"/>
-                <TextBlock Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="17" VerticalAlignment="Center">Strona główna</TextBlock>
-            </StackPanel>
+    <StackPanel>
+        <Border Grid.ColumnSpan="2"
+        Background="{StaticResource ResourceKey=secondaryBackground}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding DragMoveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="DreamVisionCinema"
+               Foreground="Gray"
+               FontWeight="SemiBold"/>
+
+                <StackPanel HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+
+                    <Button Width="20" Height="20"
+                Content="━"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="{StaticResource ResourceKey=purple_1}"
+                FontWeight="Bold"
+                Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+
+                    <Button Width="20" Height="20"
+                    Content="☐"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="{StaticResource ResourceKey=purple_1}"
+                    FontWeight="Bold"
+                    Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+
+                    <Button Width="20" Height="20"
+                Content="✕"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="{StaticResource ResourceKey=purple_1}"
+                FontWeight="Bold"
+                Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+
+
+                </StackPanel>
+            </Grid>
         </Border>
-        <Border>
-            <!--Tutaj zagnieżdzone okna-->
-            <ContentControl
-                      Margin="10"
-                      Content="{Binding CurentView}"/>
-           
-        </Border>
-    </DockPanel>
+        <DockPanel>
+            <Grid DockPanel.Dock="Left" Background="{StaticResource ResourceKey=secondaryBackground}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <Button Command="{Binding HomeViewCommand}" Background="Transparent" BorderThickness="0">
+                        <Image Source="pack://application:,,,/Assets/logo.png" Width="200" Height="100" />
+                    </Button>
+                    <Button Command="{Binding MovieListViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <fa5:ImageAwesome Icon="Solid_Film" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
+                            <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż listę filmów</Label>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="addMovieBtn" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0" Click="addMovieBtn_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa5:ImageAwesome Icon="Solid_PlusCircle" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
+                            <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Dodaj nowy film</Label>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding ReservationListViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <fa5:ImageAwesome Icon="Solid_BookOpen" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
+                            <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż listę rezerwacji</Label>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding StatisticsPanelViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <fa5:ImageAwesome Icon="Regular_ChartBar" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
+                            <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż statystyki</Label>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding HomeViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <fa5:ImageAwesome Icon="Regular_ArrowAltCircleLeft" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
+                            <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Wróć</Label>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <TextBlock Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="11" Padding="0,0,0,0">v 1.0.0</TextBlock>
+                    <TextBlock Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="11" Padding="0,0,0,8">DreamVision Cinema©</TextBlock>
+                </StackPanel>
+            </Grid>
+            <Border  DockPanel.Dock="Top" Background="{StaticResource ResourceKey=secondaryBackground}" Padding="20,20,20,20">
+                <StackPanel Orientation="Horizontal">
+                    <fa5:ImageAwesome Icon="Solid_Home" Foreground="{StaticResource ResourceKey=purple_1}" Width="35" Height="35"/>
+                    <TextBlock Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="17" VerticalAlignment="Center">Strona główna</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border>
+                <!--Tutaj zagnieżdzone okna-->
+                <ContentControl
+                   Margin="10"
+                   Content="{Binding CurentView}"/>
+
+            </Border>
+        </DockPanel>
+    </StackPanel>
 </Window>

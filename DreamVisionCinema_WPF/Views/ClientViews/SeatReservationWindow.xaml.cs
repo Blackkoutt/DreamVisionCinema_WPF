@@ -1,7 +1,5 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Effects;
-using DreamVisionCinema_WPF.Views.ClientViews.ViewModel;
+﻿using DreamVisionCinema_WPF.ViewModels.ClientViewModels;
+using System.Windows;
 
 namespace DreamVisionCinema_WPF.Views.ClientViews
 {

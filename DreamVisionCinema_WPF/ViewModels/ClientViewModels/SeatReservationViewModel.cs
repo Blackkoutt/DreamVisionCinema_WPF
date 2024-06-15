@@ -10,7 +10,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
-namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
+namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 {
     public class SeatReservationViewModel : BaseViewModel
     {
@@ -20,10 +20,7 @@ namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
         public ICommand SeatButtonCommand { get; private set; }
         public ICommand BuyTicketCommand { get; private set; }
         public ICommand SubmitTicketPurchaseCommand { get; private set; }
-        public ICommand DragMoveCommand { get; private set; }
-        public ICommand MinimizeCommand { get; private set; }
-        public ICommand MaximizeCommand { get; private set; }
-        public ICommand CloseCommand { get; private set; }
+        public ICommand DragMoveCommand => base.DragCommand;
 
         public Image GifImage { get; set; }
         public Image FinalImage { get; set; }
@@ -38,10 +35,6 @@ namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
             SeatButtonCommand = new RelayCommand(SeatButton_Click);
             BuyTicketCommand = new RelayCommand(BuyTicket_Click);
             SubmitTicketPurchaseCommand = new RelayCommand(SubmitTicketPurchase);
-            DragMoveCommand = new RelayCommand(DragMove);
-            MinimizeCommand = new RelayCommand(MinimizeWindow);
-            MaximizeCommand = new RelayCommand(MaximizeWindow);
-            CloseCommand = new RelayCommand(CloseWindow);
 
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(3);
@@ -137,38 +130,6 @@ namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
             GifImage.Visibility = Visibility.Visible;
             FinalImage.Visibility = Visibility.Collapsed;
             timer.Start();
-        }
-
-        private void DragMove(object parameter)
-        {
-            if (parameter is Window window)
-            {
-                window.DragMove();
-            }
-        }
-
-        private void MinimizeWindow(object parameter)
-        {
-            if (parameter is Window window)
-            {
-                window.WindowState = WindowState.Minimized;
-            }
-        }
-
-        private void MaximizeWindow(object parameter)
-        {
-            if (parameter is Window window)
-            {
-                window.WindowState = window.WindowState != WindowState.Maximized ? WindowState.Maximized : WindowState.Normal;
-            }
-        }
-
-        private void CloseWindow(object parameter)
-        {
-            if (parameter is Window window)
-            {
-                window.Close();
-            }
         }
     }
 }

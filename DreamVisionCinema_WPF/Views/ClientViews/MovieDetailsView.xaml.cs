@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 using DreamVisionCinema_WPF_Logic.Model;
-using DreamVisionCinema_WPF.Views.ClientViews.ViewModel;
+using DreamVisionCinema_WPF.ViewModels.ClientViewModels;
 
 namespace DreamVisionCinema_WPF.Views.ClientViews
 {

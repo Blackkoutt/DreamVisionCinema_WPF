@@ -6,11 +6,12 @@
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:DreamVisionCinema_WPF"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="700"
-Background="{StaticResource ResourceKey=primaryBackground}"
-WindowStyle="None"
-AllowsTransparency="True"
-ResizeMode="CanResizeWithGrip"
+        Background="{StaticResource ResourceKey=primaryBackground}"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
         Icon="/Assets/app_icon1.ico"
         MinWidth="500" MinHeight="400">
     <Grid>

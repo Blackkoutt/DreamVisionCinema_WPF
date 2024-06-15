@@ -58,6 +58,9 @@
     <Compile Update="Views\ClientViews\MainClientPanel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Others\CustomAlertBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\CircularProgressBar.xaml">
@@ -114,7 +117,6 @@
     <Page Update="Views\AdminViews\StatisticsPanel.xaml">
       <SubType>Designer</SubType>
     </Page>
-
     <Page Update="Views\ClientViews\HomeView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -128,6 +130,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ClientViews\SeatReservationWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Others\CustomAlertBox.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -24,12 +24,13 @@
     <SolidColorBrush x:Key="orange_1">#db8f02</SolidColorBrush>
     <SolidColorBrush x:Key="orange_1_hover">#ec9f13</SolidColorBrush>
     <SolidColorBrush x:Key="orange_2">#ffa51f</SolidColorBrush>
-    
+
 
     <SolidColorBrush x:Key="blue_1">#0792e8</SolidColorBrush>
     <SolidColorBrush x:Key="blue_1_hover">#1893f9</SolidColorBrush>
     <SolidColorBrush x:Key="blue_2">#7dd0ff</SolidColorBrush>
-    
+    <SolidColorBrush x:Key="blue_3">#0076d7</SolidColorBrush>
+
 
 
     <SolidColorBrush x:Key="green_confirm_1">#32a852</SolidColorBrush>
