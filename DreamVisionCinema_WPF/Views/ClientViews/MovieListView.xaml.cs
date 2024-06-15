@@ -1,6 +1,4 @@
-﻿using DreamVisionCinema_WPF.Views.AdminViews.ViewModel;
-using DreamVisionCinema_WPF.Views.ClientViews.ViewModel;
-using System.Security.Principal;
+﻿using DreamVisionCinema_WPF.ViewModels.ClientViewModels;
 using System.Windows.Controls;
 
 namespace DreamVisionCinema_WPF.Views.ClientViews

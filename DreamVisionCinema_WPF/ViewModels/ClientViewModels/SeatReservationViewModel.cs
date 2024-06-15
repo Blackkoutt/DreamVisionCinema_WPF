@@ -14,7 +14,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
-namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
+namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 {
     public class SeatReservationViewModel : BaseViewModel
     {

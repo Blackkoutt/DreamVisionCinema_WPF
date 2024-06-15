@@ -1,11 +1,12 @@
-﻿using DreamVisionCinema_WPF.Observable;
-using System;
+﻿using DreamVisionCinema_WPF.Enums;
+using DreamVisionCinema_WPF.Observable;
+using DreamVisionCinema_WPF.Views.Others;
 using System.Windows;
 using System.Windows.Input;
 
-namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
+namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 {
-    public class BaseViewModel
+    public class BaseViewModel : ObservableObject
     {
         public ICommand MinimizeCommand { get; private set; }
         public ICommand MaximizeCommand { get; private set; }
@@ -42,7 +43,10 @@ namespace DreamVisionCinema_WPF.Views.ClientViews.ViewModel
                 }
             }
         }
-
+        protected void MakeAlert(string message, AlertTypeEnum type, bool isTimerEnabled)
+        {
+            new CustomAlertBox(message, type, isTimerEnabled);
+        }
         private void CloseWindow(object parameter)
         {
             if (parameter is Window window)

@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DreamVisionCinema_WPF.Views.AdminViews.ViewModel
+namespace DreamVisionCinema_WPF.Enums
 {
-    class StatisticsPanelViewModel
+    public enum AlertActionEnum
     {
+        Wait,
+        Start,
+        Close
     }
 }

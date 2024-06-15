@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModel="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews.ViewModel"
         xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"

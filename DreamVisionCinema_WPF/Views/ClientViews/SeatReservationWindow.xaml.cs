@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using DreamVisionCinema_WPF.ViewModels.ClientViewModels;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Effects;
 using DreamVisionCinema_WPF.Views.ClientViews.ViewModel;

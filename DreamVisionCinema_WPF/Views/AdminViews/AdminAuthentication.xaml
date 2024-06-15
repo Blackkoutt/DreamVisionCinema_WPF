@@ -5,48 +5,100 @@
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.AdminViews"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="Logowanie"
         MinHeight="564" MinWidth="600" MaxHeight="564" MaxWidth="600"
         Background="{StaticResource ResourceKey=primaryBackground}"
         Icon="../../Assets/app_icon1.ico"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
         >
+    <StackPanel>
+        <Border 
+        Background="{StaticResource ResourceKey=secondaryBackground}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding DragMoveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
 
-    <StackPanel Margin="100 0 100 10" >
-        <Image Source="pack://application:,,,/Assets/logo.png" Width="320" Height="200" />
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="17">Login:</Label>
-            <fa5:ImageAwesome Grid.Row="1" Grid.Column="0" Icon="Solid_User" Foreground="{StaticResource ResourceKey=white}" Width="30" Height="30"/>
-            <TextBox FontSize="17" Foreground="{StaticResource ResourceKey=white}" Grid.Row="1" Grid.Column="1" Margin="20,0,20,0" Background="Transparent" BorderThickness="0,0,0,2"/>
-        </Grid>
-        <Grid Margin="0,30,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="17">Hasło:</Label>
-            <fa5:ImageAwesome Grid.Row="1" Grid.Column="0" Icon="Solid_Lock" Foreground="{StaticResource ResourceKey=white}" Width="30" Height="30"/>
-            <PasswordBox FontSize="17" Foreground="{StaticResource ResourceKey=white}" Grid.Row="1" Grid.Column="1" Margin="20,0,20,0" Background="Transparent" BorderThickness="0,0,0,2"/>
-            <CheckBox Grid.Row="2" Grid.Column="1" Margin="20,10,0,0" FontSize="15" Foreground="{StaticResource ResourceKey=white}" VerticalContentAlignment="Center">Pokaż hasło</CheckBox>
-        </Grid>
-        <Button x:Name="signInBtn" Style="{StaticResource confirmButton}" Width="170" Margin="0,40,0,0" Padding="25,8,25,8" IsDefault="True" Click="signInBtn_Click">
-            <StackPanel Orientation="Horizontal">
-                <fa5:ImageAwesome Icon="Solid_SignInAlt" Foreground="{StaticResource ResourceKey=white}" Width="30" Height="30"/>
-                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="17" FontWeight="Bold">Zaloguj się</TextBlock>
-            </StackPanel>
-        </Button>
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="DreamVisionCinema"
+               Foreground="Gray"
+               FontWeight="SemiBold"/>
+
+                <StackPanel HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+
+                    <Button Width="20" Height="20"
+                Content="━"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="{StaticResource ResourceKey=purple_1}"
+                FontWeight="Bold"
+                Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+
+                    <Button Width="20" Height="20"
+                    Content="☐"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="{StaticResource ResourceKey=purple_1}"
+                    FontWeight="Bold"
+                    Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+
+                    <Button Width="20" Height="20"
+                Content="✕"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="{StaticResource ResourceKey=purple_1}"
+                FontWeight="Bold"
+                Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+
+
+                </StackPanel>
+            </Grid>
+        </Border>
+        <StackPanel Margin="100 0 100 10" >
+            <Image Source="pack://application:,,,/Assets/logo.png" Width="320" Height="200" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="17">Login:</Label>
+                <fa5:ImageAwesome Grid.Row="1" Grid.Column="0" Icon="Solid_User" Foreground="{StaticResource ResourceKey=white}" Width="30" Height="30"/>
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" FontSize="17" Foreground="{StaticResource ResourceKey=white}" Grid.Row="1" Grid.Column="1" Margin="20,0,20,0" Background="Transparent" BorderThickness="0,0,0,2"/>
+            </Grid>
+            <Grid Margin="0,30,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="17">Hasło:</Label>
+                <fa5:ImageAwesome Grid.Row="1" Grid.Column="0" Icon="Solid_Lock" Foreground="{StaticResource ResourceKey=white}" Width="30" Height="30"/>
+                <Grid Grid.Row="1" Grid.Column="1" Margin="20,0,20,0">
+                    <PasswordBox Name="passwordBox" PasswordChanged="PasswordBox_PasswordChanged" FontSize="17" Foreground="{StaticResource ResourceKey=white}" Background="Transparent" BorderThickness="0,0,0,2"/>
+                    <TextBox Name="passwordTxtBox" FontSize="17" Visibility="Collapsed" Foreground="{StaticResource ResourceKey=white}" Background="Transparent" BorderThickness="0,0,0,2" />
+                </Grid>
+                <CheckBox  Name="showPassword" Unchecked="ShowPassword_Unchecked"  Checked="ShowPassword_Checked" Grid.Row="2" Grid.Column="1" Margin="20,10,0,0" FontSize="15" Foreground="{StaticResource ResourceKey=white}" VerticalContentAlignment="Center">Pokaż hasło</CheckBox>
+            </Grid>
+            <Button Style="{StaticResource confirmButton}" Width="170" Margin="0,40,0,0" Padding="25,8,25,8" IsDefault="True" Command="{Binding LogInCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                <StackPanel Orientation="Horizontal">
+                    <fa5:ImageAwesome Icon="Solid_SignInAlt" Foreground="{StaticResource ResourceKey=white}" Width="30" Height="30"/>
+                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="17" FontWeight="Bold">Zaloguj się</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </StackPanel>
 </Window>

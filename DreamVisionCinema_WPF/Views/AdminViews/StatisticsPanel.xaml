@@ -6,7 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.AdminViews"
              xmlns:controls="clr-namespace:DreamVisionCinema_WPF.Controls"
-             xmlns:viewModel="clr-namespace:DreamVisionCinema_WPF.Views.AdminViews.ViewModel"
+             xmlns:viewModel="clr-namespace:DreamVisionCinema_WPF.ViewModels.AdminViewModels"
              mc:Ignorable="d" 
              Background="{StaticResource ResourceKey=primaryBackground}"
              d:DesignHeight="600" d:DesignWidth="958">
