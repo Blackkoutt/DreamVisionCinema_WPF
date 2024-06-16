@@ -21,7 +21,7 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <StackPanel Margin="50, 40">
+    <StackPanel Margin="30, 30">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -30,21 +30,21 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Foreground="White" FontSize="20" VerticalAlignment="Center"> Lista rezerwacji dokonanych przez klientów:</TextBlock>
-            <Label Grid.Column="2"  Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="18" VerticalAlignment="Center">Szukaj:</Label>
-            <TextBox Grid.Column="3" Margin="10,0,20,0" Style="{StaticResource searchInput}"/>
-            <Button Grid.Column="4" Height="42" Padding="5,0,5,0" IsDefault="True" Style="{StaticResource searchButton}">
+            <TextBlock Grid.Column="0" Foreground="White" FontSize="18" VerticalAlignment="Center"> Lista rezerwacji dokonanych przez klientów:</TextBlock>
+            <Label Grid.Column="2"  Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="16" VerticalAlignment="Center">Szukaj:</Label>
+            <TextBox Text="{Binding SearchValue}" Grid.Column="3" Margin="10,0,20,0" Style="{StaticResource searchInput}"/>
+            <Button Command="{Binding SearchReservationListCommand}" Grid.Column="4" Height="42" Padding="5,0,5,0" IsDefault="True" Style="{StaticResource searchButton}">
                 <StackPanel Orientation="Horizontal">
                     <fa5:ImageAwesome Icon="Solid_Search" Foreground="{StaticResource ResourceKey=white}" Width="15" Height="15"/>
                     <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15" >Szukaj</Label>
                 </StackPanel>
             </Button>
         </Grid>
-        <DataGrid ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  RowStyle="{DynamicResource DataGridRowStyle2}" CellStyle="{DynamicResource DataGridCellStyle2}" Style="{DynamicResource DataGridStyle2}" x:Name="reservationsList" Padding="10, 12"
-                Margin="0,50,0,0">
+        <DataGrid ItemsSource="{Binding ReservationList}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"  RowStyle="{DynamicResource DataGridRowStyle2}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle2}" Padding="10, 12"
+                Margin="0,50,0,0" Height="450">
             <DataGrid.Columns>
 
-                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="20" Binding="{Binding Id}">
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="10" Binding="{Binding Id}">
 
                     <DataGridTextColumn.Header>
                         <StackPanel Orientation="Horizontal">
@@ -53,19 +53,19 @@
                         </StackPanel>
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding Movie.Title}">
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Movie.Title}">
                     <DataGridTextColumn.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="0,0,5,0">Tytuł</TextBlock>
-                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="12" Height="12"/>
                         </StackPanel>
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="150" Binding="{Binding Movie.Date}">
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="150" Binding="{Binding Movie.Date, StringFormat=\{0:dd.MM.yyyy HH:mm\}}">
                     <DataGridTextColumn.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="0,0,5,0">Data</TextBlock>
-                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="12" Height="12"/>
                         </StackPanel>
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
@@ -73,18 +73,23 @@
                     <DataGridTextColumn.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="0,0,5,0">Sala</TextBlock>
-                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="12" Height="12"/>
                         </StackPanel>
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" Binding="{Binding Ticket.Price}">
-                    <DataGridTextColumn.Header>
+                <DataGridTemplateColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100">
+                    <DataGridTemplateColumn.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="0,0,5,0">Cena</TextBlock>
-                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="12" Height="12"/>
                         </StackPanel>
-                    </DataGridTextColumn.Header>
-                </DataGridTextColumn>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Ticket.Price, StringFormat={}{0} zł}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn  Header="Miejsca" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding SeatsAsString}"/>
 
 

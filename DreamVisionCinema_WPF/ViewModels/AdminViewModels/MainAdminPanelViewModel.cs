@@ -1,7 +1,9 @@
-﻿using DreamVisionCinema_WPF.Observable;
+﻿using DreamVisionCinema_WPF.DI;
+using DreamVisionCinema_WPF.Observable;
 using DreamVisionCinema_WPF.ViewModels.ClientViewModels;
 using DreamVisionCinema_WPF_Logic.Model;
 using System.Windows.Input;
+using Unity;
 
 namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
 {
@@ -30,13 +32,14 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
         public MainAdminPanelViewModel()
         {
             HomeVM = new HomeViewModel();
-            MovieListVM = new MoviesListViewModel();
+            MovieListVM = DIContainer.GetContainer().Resolve<MoviesListViewModel>(); 
+            //new MoviesListViewModel();
             DateTime time = DateTime.Now;
             Room room = new Room(69, 69);
             Movie movie = new Movie(69, "allah", time, 69, "69", room);
             MovieDetailsVM = new MovieDetailsViewModel(movie);
             StatisticsPanelVM = new StatisticsPanelViewModel();
-            ReservationListViewVM = new ReservationListViewModel();
+            ReservationListViewVM = DIContainer.GetContainer().Resolve<ReservationListViewModel>();
             MostProfitableMoviesVM = new MostProfitableMoviesViewModel();
             MostPopularMoviesVM = new MostPopularMoviesViewModel();
 

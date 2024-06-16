@@ -2,11 +2,13 @@
 using DreamVisionCinema_WPF_Logic.Interfaces;
 using DreamVisionCinema_WPF_Logic.Interfaces.IRepositories;
 using DreamVisionCinema_WPF_Logic.Model;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Windows;
 using System.Windows.Forms.Design;
 using Unity;
+using Unity.Lifetime;
 
 namespace DreamVisionCinema_WPF
 {
@@ -20,9 +22,9 @@ namespace DreamVisionCinema_WPF
             base.OnStartup(e);
 
             IUnityContainer _container = DIContainer.GetContainer();
-
-            _container.RegisterType<IMovieRepository, MovieRepository>();
-            _container.RegisterType<IReservationRepository, ReservationRepository>();
+            _container.RegisterType<IMovieRepository, MovieRepository>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<IReservationRepository, ReservationRepository>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<ILogin, Login>(new ContainerControlledLifetimeManager());
         }
     }
 

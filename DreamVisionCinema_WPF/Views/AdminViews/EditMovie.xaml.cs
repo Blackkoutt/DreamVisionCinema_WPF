@@ -1,4 +1,5 @@
 ﻿using DreamVisionCinema_WPF.ViewModels.AdminViewModels;
+using DreamVisionCinema_WPF_Logic.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,16 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
     /// </summary>
     public partial class EditMovie : Window
     {
-        public EditMovie()
+        public EditMovie(Movie movie)
         {
-            DataContext = EditMovieViewModel.Instance;
+            EditMovieViewModel EditMovieVM = EditMovieViewModel.Instance;
+            EditMovieVM.MovieId = movie.Id;
+            EditMovieVM.Title = $"\"{movie.Title}\"";
+            EditMovieVM.Date = movie.Date;
+            EditMovieVM.Price = (int)movie.Price;
+            EditMovieVM.RoomNumber = movie.Room.Number;
+
+            DataContext = EditMovieVM;
             InitializeComponent();
         }
     }

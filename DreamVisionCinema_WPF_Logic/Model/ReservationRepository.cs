@@ -2,6 +2,7 @@
 using DreamVisionCinema_WPF_Logic.Extensions;
 using DreamVisionCinema_WPF_Logic.Interfaces;
 using DreamVisionCinema_WPF_Logic.Interfaces.IRepositories;
+using System.Reflection;
 
 namespace DreamVisionCinema_WPF_Logic.Model
 {
@@ -39,6 +40,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
 
             // Sprawdzenie poprawności podanych parametrów
             Movie movie = movies.GetOneMovie(Movie_Id);
+            var movie1 = movies.GetAllMovies(); 
             if(movie == null)
             {
                 throw new NoMovieWithGivenIdException("Brak filmu o podanym Id.");
@@ -113,7 +115,55 @@ namespace DreamVisionCinema_WPF_Logic.Model
 
             return info;    // Zwróć odczytane dane
         }
-        
+
+        public List<Reservation> FilterList(string userInput)
+        {
+            // Lista właściwości do przeszukiwania
+            PropertyInfo[] properties = typeof(Reservation).GetProperties();
+
+            List<Reservation> filteredRes = reservations.Where(res =>
+            {
+                // Sprawdzamy tylko te właściwości, które są typu string, int, itp.
+                return properties.Any(property =>
+                {
+                    object? propertyValue = property.GetValue(res);
+
+                    // Jeśli właściwość jest typu string, int lub może być skonwertowana na string, porównujemy jej wartość
+                    if (propertyValue != null)
+                    {
+                        string stringValue = propertyValue.ToString();
+
+                        if (!string.IsNullOrEmpty(stringValue) && stringValue.IndexOf(userInput, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            return true;
+                        }
+                    }
+
+                    // Dodatkowe sprawdzenie właściwości zagnieżdżonych, np. Movie.Title i SeatsAsString
+                    if (property.PropertyType == typeof(Movie) && res.Movie.Title.IndexOf(userInput, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        return true;
+                    }
+
+                    if (property.PropertyType == typeof(List<Seat>) && res.SeatsAsString.IndexOf(userInput, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        return true;
+                    }
+
+                    return false;
+                });
+            }).ToList();
+
+            if (!filteredRes.Any())
+            {
+                throw new CannotFindMatchingReservationException("Brak wyników wyszukiwania.");
+            }
+
+            return filteredRes;
+        }
+
+
+
         // Tworzy brakujący plik tymczasowy zmodyfikowanych filmów
         public void CreateTempModificationFile()
         {

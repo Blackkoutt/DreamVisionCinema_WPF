@@ -1,7 +1,6 @@
 ﻿using DreamVisionCinema_WPF.DI;
 using DreamVisionCinema_WPF.Enums;
 using DreamVisionCinema_WPF.Observable;
-using DreamVisionCinema_WPF.ViewModels.ClientViewModels;
 using DreamVisionCinema_WPF_Logic.Exceptions;
 using DreamVisionCinema_WPF_Logic.Interfaces.IRepositories;
 using System.Windows;
@@ -11,9 +10,7 @@ using Unity;
 namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
 {
     public class AddMovieViewModel : BaseViewModel
-    {
-        private static AddMovieViewModel _instance = null;
-        
+    {   
         private string? title;
         private DateTime date;
         private int price;
@@ -67,6 +64,7 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             }
 
             MakeAlert("Poprawnie dodano film do listy", AlertTypeEnum.Success, true);
+            MoviesListViewModel.Instance.LoadOrRefreshMovieList();
 
             if (parameter is Window window)
             {
@@ -78,13 +76,7 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
         {
             get
             {
-                if (_instance == null)
-                {
-                    _instance = DIContainer.GetContainer().Resolve<AddMovieViewModel>();
-                    return _instance;
-                }
-                else
-                    return _instance;
+                return DIContainer.GetContainer().Resolve<AddMovieViewModel>();
             }
         }
 

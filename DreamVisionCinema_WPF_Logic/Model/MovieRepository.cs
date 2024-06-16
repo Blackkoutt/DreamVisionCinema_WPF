@@ -17,7 +17,6 @@ namespace DreamVisionCinema_WPF_Logic.Model
             movies = new List<Movie>();
         }
 
-
         // Metoda odczytująca filmy z pliku
         public void ReadMoviesFromFile()
         {

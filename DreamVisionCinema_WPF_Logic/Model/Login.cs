@@ -1,13 +1,18 @@
 ﻿using DreamVisionCinema_WPF_Logic.Exceptions;
+using DreamVisionCinema_WPF_Logic.Interfaces.IRepositories;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace DreamVisionCinema_WPF_Logic.Model
 {
-    public class Login
+    public class Login : ILogin
     {
+        public Login()
+        {
+
+        }
         // Metoda statyczna do logowania na konto Admina
-        public static bool SignIn(string login, string password) 
+        public bool SignIn(string login, string password) 
         {
             // Algorytm haszujący SHA256
             using (SHA256 sha256 = SHA256.Create())
@@ -54,7 +59,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
                 }
             }
         }
-        public static void HashPassword(string login, string password) 
+        public void HashPassword(string login, string password) 
         {
             // Algorytm haszujący SHA256
             using (SHA256 sha256 = SHA256.Create())

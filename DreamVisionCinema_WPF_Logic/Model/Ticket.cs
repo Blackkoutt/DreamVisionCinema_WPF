@@ -5,7 +5,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
     public class Ticket
     {
         private int id; // Id biletu
-        private int price;  // Cena biletu
+        private double price;  // Cena biletu
         // Szablon biletu
         private string[] ticketTemplate =
         {
@@ -49,7 +49,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
             get { return id; }
             set { id = value; }
         }
-        public int Price
+        public double Price
         {
             get { return price; }
             set { price = value; }
@@ -59,7 +59,8 @@ namespace DreamVisionCinema_WPF_Logic.Model
         // Metoda obliczająca cenę biletu
         public double CalculatePrice(double price, int seatsCount)
         {
-            return price * seatsCount;
+            Price = price * seatsCount;
+            return Price;
         }
 
 

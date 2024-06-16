@@ -22,6 +22,10 @@
     {
         public CannotFindMatchingMovieException(string message) : base(message) { }
     }
+    public class CannotFindMatchingReservationException : Exception
+    {
+        public CannotFindMatchingReservationException(string message) : base(message) { }
+    }
 
 
     public class CannotReadFileException : Exception
