@@ -24,8 +24,8 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
         {
             InitializeComponent();
 
-            Movie m1 = new Movie(1, "Najnowszy film bardzo dobry", DateTime.Now, 20.99, "1:30h", new Room(1, 100));
-            Movie m2 = new Movie(2, "Film 2", DateTime.Now, 20.99, "1:30h", new Room(1, 100));
+            Movie m1 = new Movie(1, "Najnowszy film bardzo dobry", DateTime.Now, 20.99, "1:30h", new Room(1, 100),"a", "a", "a");
+            Movie m2 = new Movie(2, "Film 2", DateTime.Now, 20.99, "1:30h", new Room(1, 100), "a", "a", "a");
             List <Seat> seats1 = new List<Seat>();
             seats1.Add(new Seat(1));
             seats1.Add(new Seat(2));

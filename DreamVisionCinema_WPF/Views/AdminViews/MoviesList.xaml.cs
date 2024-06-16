@@ -28,8 +28,8 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
             InitializeComponent();
 
             List<Movie> movies = new List<Movie>();
-            movies.Add(new Movie(1, "Najnowszy film bardzo dobry", DateTime.Now, 20.99, "1:30h", new Room(1, 100)));
-            movies.Add(new Movie(2, "Film 2", DateTime.Now, 20.99, "1:30h", new Room(1, 100)));
+            movies.Add(new Movie(1, "Najnowszy film bardzo dobry", DateTime.Now, 20.99, "1:30h", new Room(1, 100), "a", "a","a"));
+            movies.Add(new Movie(2, "Film 2", DateTime.Now, 20.99, "1:30h", new Room(1, 100), "a", "a", "a"));
 
             moviesList.ItemsSource = movies;
 

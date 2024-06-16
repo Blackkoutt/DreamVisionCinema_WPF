@@ -33,7 +33,7 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             MovieListVM = new MoviesListViewModel();
             DateTime time = DateTime.Now;
             Room room = new Room(69, 69);
-            Movie movie = new Movie(69, "allah", time, 69, "69", room);
+            Movie movie = new Movie(69, "allah", time, 69, "69", room, "a", "a", "a");
             MovieDetailsVM = new MovieDetailsViewModel(movie);
             StatisticsPanelVM = new StatisticsPanelViewModel();
             ReservationListViewVM = new ReservationListViewModel();

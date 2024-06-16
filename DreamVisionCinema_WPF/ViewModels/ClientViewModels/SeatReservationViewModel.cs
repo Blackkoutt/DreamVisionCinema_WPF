@@ -122,9 +122,9 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                     }
 
                     var stackPanel = new StackPanel { Orientation = Orientation.Vertical };
-                    var image = new Image
+                    Image image = new Image
                     {
-                        Source = new BitmapImage(new Uri("C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\Assets\\couch-solid.png")),
+                        Source = new BitmapImage(new Uri("pack://application:,,,/Assets/couch-solid.png")),
                         Height = 15,
                         Width = 15
                     };

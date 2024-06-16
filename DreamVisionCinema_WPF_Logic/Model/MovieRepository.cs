@@ -27,6 +27,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
             string directoryPath = "../../../Database/Data";
             string fileName = "movies.txt";
             string filePath = Path.Combine(directoryPath, fileName);
+            string indirectPosterPath = "pack://application:,,,/Assets/Posters/";
 
             StreamReader sr;
             try
@@ -39,7 +40,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
             }
             sr.ReadLine(); // Pomiń pierwszą linię - nagłówek pliku
 
-            string id, title, date, price, duration, roomNumber, line;
+            string id, title, date, price, duration, roomNumber, line, description, ageCategory, pathToPoster;
             string[] strings_tab;
 
             // Czytaj linie do końca pliku
@@ -48,7 +49,7 @@ namespace DreamVisionCinema_WPF_Logic.Model
                 line = sr.ReadLine();
                 strings_tab = line.Split(" "); // Rozdziel linię względem spacji
 
-                if (strings_tab.Length != 7)
+                if (strings_tab.Length != 10)
                 {
                     throw new FileSyntaxException("Bład w składni pliku movies.txt. Sprawdź czy plik jest sformułowany według wzoru podanego w pierwszej linii.");
                 }
@@ -59,14 +60,18 @@ namespace DreamVisionCinema_WPF_Logic.Model
                 price = strings_tab[4];
                 duration = strings_tab[5];
                 roomNumber = strings_tab[6];
-                AddMovie(id, title, date, price, duration, roomNumber); // Dodaj film do listy
+                description = strings_tab[7].Replace("_", " ");
+                ageCategory = strings_tab[8];
+                pathToPoster = indirectPosterPath + strings_tab[9];
+                Console.WriteLine(pathToPoster);
+                AddMovie(id, title, date, price, duration, roomNumber, description, ageCategory, pathToPoster); // Dodaj film do listy
             }
             sr.Close();
         }
 
 
         // Metoda dodająca film do listy
-        public void AddMovie(string? id, string title, string date, string price, string duration, string roomNumber)
+        public void AddMovie(string? id, string title, string date, string price, string duration, string roomNumber, string description, string ageCategory, string pathToPoster)
         {
             DateTime Date;
             double Price;
@@ -104,6 +109,19 @@ namespace DreamVisionCinema_WPF_Logic.Model
                 throw new NoRoomWithGivenNumberException("Brak sali o podanym numerze. Wybierz salę od 1 do 4");
             }
 
+            if(string.IsNullOrWhiteSpace(description))
+            {
+                throw new IncorrectParametrException("Należy podać opis filmu");
+            }
+            if (string.IsNullOrWhiteSpace(ageCategory))
+            {
+                throw new IncorrectParametrException("Należy podać kategorię wiekową");
+            }
+            if (string.IsNullOrWhiteSpace(pathToPoster))
+            {
+                throw new IncorrectParametrException("Należy podać ścieżkę do plakatu");
+            }
+
             // Sprawdzenie czy podana data i sala filmu nie koliduje z inną już obecną na liście
             CheckTimeCollisionsBetweenMovies(Date, duration, RoomNumber);
 
@@ -111,13 +129,13 @@ namespace DreamVisionCinema_WPF_Logic.Model
             if (id == null && movies.Any()) 
             {
                 // Id jest pobierane jako ostatnie id z listy + 1
-                movies.Add(new Movie((getLastMovie().Id) + 1, title, Date, Price, duration, new Room(RoomNumber, (int)Rooms.NUMBER_OF_SEATS)));              
+                movies.Add(new Movie((getLastMovie().Id) + 1, title, Date, Price, duration, new Room(RoomNumber, (int)Rooms.NUMBER_OF_SEATS), description, ageCategory, pathToPoster));              
             }
             // Jeśli metoda AddMovie została wywołana podczas odczytu filmów z pliku
             else
             {
                 // Id jest odczytaną wartością z pliku
-                movies.Add(new Movie(Id, title, Date, Price, duration, new Room(RoomNumber, (int)Rooms.NUMBER_OF_SEATS)));
+                movies.Add(new Movie(Id, title, Date, Price, duration, new Room(RoomNumber, (int)Rooms.NUMBER_OF_SEATS), description, ageCategory, pathToPoster));
             }
         }
 
