@@ -13,6 +13,7 @@
             this.movie = movie;
             this.seats = seats;
             ticket = new Ticket(id);
+            ticket.CalculatePrice(movie.Price, seats.Count);
         }
 
         // Gettery

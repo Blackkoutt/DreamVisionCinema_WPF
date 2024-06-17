@@ -24,5 +24,6 @@ namespace DreamVisionCinema_WPF_Logic.Interfaces
         void RemoveTicketForReservatedMovies(string id);
         bool IsMovieHaveReservation(Movie movie);
         List<Reservation> GetReservationForMovie(Movie movie);
+        List<Reservation> FilterList(string userInput);
     }
 }

@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -21,14 +22,16 @@ namespace DreamVisionCinema_WPF.Controls
     /// <summary>
     /// Logika interakcji dla klasy InputTypeNumber.xaml
     /// </summary>
-    public partial class InputTypeNumber : UserControl, INotifyPropertyChanged
+    public partial class InputTypeNumber : System.Windows.Controls.UserControl, INotifyPropertyChanged
     {
         public InputTypeNumber()
         {
-            DataContext = this;
             InitializeComponent();
+            DataContext = this;
             InputValue = 0;
+            InputTypeNumberTextBox.LostFocus += InputTypeNumberTextBox_LostFocus;
         }
+
         private bool isRoomNumber;
         public bool IsRoomNumber
         {
@@ -40,20 +43,23 @@ namespace DreamVisionCinema_WPF.Controls
             }
         }
 
-        private int inputValue;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public static readonly DependencyProperty InputValueProperty =
+            DependencyProperty.Register(nameof(InputValue), typeof(int), typeof(InputTypeNumber),
+            new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         public int InputValue
         {
-            get { return inputValue; }   
+            get { return (int)GetValue(InputValueProperty); }
             set 
             {
-                inputValue = value;
-                OnPropertyChanged();
+                SetValue(InputValueProperty, value);
+                int a = 1;
             }
         }
-        private void OnPropertyChanged( [CallerMemberName] string propertyName = null)
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -62,12 +68,12 @@ namespace DreamVisionCinema_WPF.Controls
         {
             if (isRoomNumber)
             {
-                e.Handled = new Regex("[^0-4]+").IsMatch(e.Text);
+                e.Handled = !int.TryParse(e.Text, out _) || !Regex.IsMatch(e.Text, "[0-4]");
             }
             else
             {
-                e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
-            }       
+                e.Handled = !int.TryParse(e.Text, out _);
+            }
         }
 
         private void Button_Down_Click(object sender, RoutedEventArgs e)
@@ -82,7 +88,7 @@ namespace DreamVisionCinema_WPF.Controls
         {
             if (IsRoomNumber)
             {
-                if(InputValue < 4)
+                if (InputValue < 4)
                 {
                     InputValue += 1;
                 }
@@ -90,7 +96,19 @@ namespace DreamVisionCinema_WPF.Controls
             else
             {
                 InputValue += 1;
-            }          
+            }
+        }
+        private void InputTypeNumberTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(InputTypeNumberTextBox.Text, out int value))
+            {
+                InputValue = value; 
+            }
+            else
+            {
+                InputTypeNumberTextBox.Text = InputValue.ToString();
+            }
         }
     }
 }
+

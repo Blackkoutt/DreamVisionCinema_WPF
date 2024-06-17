@@ -1,4 +1,5 @@
 ﻿using DreamVisionCinema_WPF.ViewModels.AdminViewModels;
+using DreamVisionCinema_WPF_Logic.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,13 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
     /// </summary>
     public partial class DeleteMessage : Window
     {
-        public DeleteMessage()
+        public DeleteMessage(Movie movie)
         {
-            DataContext = DeleteMessageViewModel.Instance;
+            DeleteMessageViewModel DeleteMovieVM = DeleteMessageViewModel.Instance;
+            DeleteMovieVM.MovieId = movie.Id;
+            DeleteMovieVM.Title = $"\"{movie.Title}\"";
+
+            DataContext = DeleteMovieVM;
             InitializeComponent();
         }
     }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:DreamVisionCinema_WPF"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="700"
@@ -24,44 +25,45 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <!--Pasek na samej górze zastępujący ten windosowy-->
         <Border Grid.ColumnSpan="2"
-            Background="{StaticResource ResourceKey=secondaryBackground}"
-            MouseDown="Border_MouseDown">
+    Background="{StaticResource ResourceKey=secondaryBackground}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding DragMoveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
 
             <Grid HorizontalAlignment="Stretch">
                 <Label Content="DreamVisionCinema"
-                   Foreground="Gray"
-                   FontWeight="SemiBold"/>
+               Foreground="Gray"
+               FontWeight="SemiBold"/>
 
                 <StackPanel HorizontalAlignment="Right"
-                        Orientation="Horizontal">
+                    Orientation="Horizontal">
 
                     <Button Width="20" Height="20"
-                    Content="━"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    Foreground="{StaticResource ResourceKey=purple_1}"
-                    FontWeight="Bold"
-                        Click="ButtonMinimize_Click"/>
+            Content="━"
+            Background="Transparent"
+            BorderThickness="0"
+            Foreground="{StaticResource ResourceKey=purple_1}"
+            FontWeight="Bold"
+            Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                     <Button Width="20" Height="20"
-                        Content="☐"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Foreground="{StaticResource ResourceKey=purple_1}"
-                        FontWeight="Bold"
-                        Click="ButtonMaximize_Click"/>
+            Content="☐"
+            Background="Transparent"
+            BorderThickness="0"
+            Foreground="{StaticResource ResourceKey=purple_1}"
+            FontWeight="Bold"
+            Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                     <Button Width="20" Height="20"
-                    Content="✕"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    Foreground="{StaticResource ResourceKey=purple_1}"
-                    FontWeight="Bold"
-                        Click="ButtonClose_Click"/>
-
-
+            Content="✕"
+            Background="Transparent"
+            BorderThickness="0"
+            Foreground="{StaticResource ResourceKey=purple_1}"
+            FontWeight="Bold"
+            Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -79,25 +81,27 @@
            Margin="0,20,0,0"/>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center" Margin="40">
-                <Button BorderThickness="0,0,0,0"
-            Height="120"
-        Width="250"
-        Background="#403c84"
-        HorizontalAlignment="Center"
-                        Click="OpenAdminView">
+                <Button 
+                        Command="{Binding OpenAdminAuthenticationViewCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        BorderThickness="0,0,0,0"
+                        Height="120"
+                        Width="250"
+                        Background="#403c84"
+                        HorizontalAlignment="Center">
                     <StackPanel>
                         <fa5:ImageAwesome Icon="Solid_UserTie" Foreground="{StaticResource ResourceKey=white}" Width="25" Height="25"/>
                         <Label Foreground="{StaticResource ResourceKey=white}" FontSize="16">Zaloguj się jako Administrator</Label>
                     </StackPanel>
                 </Button>
 
-                <Button BorderThickness="0,0,0,0"
-                            Height="120"
+                <Button 
+                        Command="{Binding OpenClientViewCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        BorderThickness="0,0,0,0"
+                        Height="120"
                         Width="250"
                         Background="#403c84"
                         Margin="50,0,0,0"
-                        HorizontalAlignment="Center"
-                        Click="OpenClientview">
+                        HorizontalAlignment="Center">
                     <StackPanel>
                             <fa5:ImageAwesome Icon="Solid_User" Foreground="{StaticResource ResourceKey=white}" Width="25" Height="25"/>
                             <Label Foreground="{StaticResource ResourceKey=white}" FontSize="16">Zaloguj się jako Użytkownik</Label>

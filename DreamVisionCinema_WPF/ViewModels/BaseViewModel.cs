@@ -4,7 +4,7 @@ using DreamVisionCinema_WPF.Views.Others;
 using System.Windows;
 using System.Windows.Input;
 
-namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
+namespace DreamVisionCinema_WPF.ViewModels
 {
     public class BaseViewModel : ObservableObject
     {
