@@ -29,7 +29,7 @@
         <Grid.Effect>
             <effects:BlurEffect Radius="0" x:Name="blurEffect"/>
         </Grid.Effect>
-        <Popup x:Name="purchasePopup" Placement="Center" PlacementTarget="{Binding ElementName=MainGrid}" IsOpen="False">
+        <Popup x:Name="purchasePopup" Placement="Center" IsOpen="False">
             <Border BorderBrush="{StaticResource secondaryBackground}" BorderThickness="2" Background="{StaticResource primaryBackground}" Padding="50">
                 <StackPanel>
                     <TextBlock Text="Proszę wprowadzić swoje dane:" FontWeight="Bold" Margin="0,0,0,10" Foreground="White" FontSize="20"/>

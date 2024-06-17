@@ -189,9 +189,17 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 
         private void BuyTicket_Click(object parameter)
         {
-            BlurEffect.Radius = 5;
-            PurchasePopup.IsOpen = true;
-            SetIsHitTestVisibleForElements(false);
+            if(selectedSeats.Count > 0)
+            {
+                BlurEffect.Radius = 5;
+                PurchasePopup.IsOpen = true;
+                SetIsHitTestVisibleForElements(false);
+            }
+            else
+            {
+                MessageBox.Show("Musisz wybrać co najmniej jedno miejsce!", "Wybierz miejsce",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private async void SubmitTicketPurchase(object parameter)
@@ -204,16 +212,12 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             GifImage.Visibility = Visibility.Visible;
             GifPanel.Background = (Brush)resourceDictionary["primaryBackground"];
 
-            // Wykonaj operację na wątku innym niż wątek interfejsu użytkownika
-            await Task.Delay(3000); // lub dowolny czas oczekiwania
-                                   // Tutaj możesz wykonać operacje na wątku w tle, na przykład zapis danych, pobieranie itp.
-
+            await Task.Delay(3000); 
+                                   
             // Ukryj GIF
             GifImage.Visibility = Visibility.Collapsed;
-
-            // Pozostała część Twojej metody
             FinalImage.Visibility = Visibility.Visible;
-            await Task.Delay(3000);
+
             Reservation reservation = reservationRepository.GetLastReservation();
             reservationRepository.MakeReservation((reservation.Id + 1).ToString(), movie.Id.ToString(), selectedSeats);
             reservationRepository.SaveReservationsToFile();

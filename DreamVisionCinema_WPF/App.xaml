@@ -39,6 +39,9 @@
             <DataTemplate DataType="{x:Type viewModel_client:MovieListViewModel}">
                 <view_client:MovieListView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel_client:ClientReservationListViewModel}">
+                <view_client:ClientReservationListView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

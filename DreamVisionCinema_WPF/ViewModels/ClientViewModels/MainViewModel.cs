@@ -15,12 +15,13 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
     public class MainViewModel : BaseViewModel
     {
         public ICommand DragMoveCommand => base.DragCommand;
-
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand MovieListViewCommand { get; set; }
+        public RelayCommand ClientReservationListViewCommand {  get; set; }
 
         public HomeViewModel HomeVM { get; set; }
         public MovieListViewModel MovieListVM { get; set; }
+        public ClientReservationListViewModel ClientReservationListVM { get; set; }
         private object _currentView;
 
         private static MainViewModel _instance = null;
@@ -63,6 +64,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
         {
             HomeVM = new HomeViewModel();
             MovieListVM = new MovieListViewModel();
+            ClientReservationListVM = new ClientReservationListViewModel();
             _currentView = HomeVM;
             tabText = "Strona Główna";
 
@@ -76,6 +78,11 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             {
                 CurentView = MovieListVM;
                 tabText = "Lista Filmów";
+            });
+            ClientReservationListViewCommand = new RelayCommand(o =>
+            {
+                CurentView = ClientReservationListVM;
+                tabText = "Rezerwacje klienta";
             });
             GlobalEventAggregator.ViewChanged += OnViewChanged;
         }

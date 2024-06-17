@@ -46,6 +46,9 @@
     <Compile Update="Views\AdminViews\StatisticsPanel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ClientViews\ClientReservationListView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ClientViews\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -115,6 +118,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AdminViews\StatisticsPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ClientViews\ClientReservationListView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ClientViews\HomeView.xaml">
