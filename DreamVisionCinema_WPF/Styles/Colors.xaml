@@ -3,6 +3,7 @@
 
     <SolidColorBrush x:Key="primaryBackground">#22214a</SolidColorBrush>
     <SolidColorBrush x:Key="secondaryBackground">#1f1e44</SolidColorBrush>
+    <SolidColorBrush x:Key="secondaryBackground_hover">#2f2f55</SolidColorBrush>
     <SolidColorBrush x:Key="white">#fff</SolidColorBrush>
     <SolidColorBrush x:Key="black">#000</SolidColorBrush>
 
@@ -27,11 +28,9 @@
 
 
     <SolidColorBrush x:Key="blue_1">#0792e8</SolidColorBrush>
-    <SolidColorBrush x:Key="blue_1_hover">#1893f9</SolidColorBrush>
+    <SolidColorBrush x:Key="blue_1_hover">#0681d7</SolidColorBrush>
     <SolidColorBrush x:Key="blue_2">#7dd0ff</SolidColorBrush>
     <SolidColorBrush x:Key="blue_3">#0076d7</SolidColorBrush>
-
-
 
     <SolidColorBrush x:Key="green_confirm_1">#32a852</SolidColorBrush>
     <SolidColorBrush x:Key="green_confirm_1_hover">#43b963</SolidColorBrush>
@@ -40,15 +39,20 @@
 
     <SolidColorBrush x:Key="cyan">#00ffff</SolidColorBrush>
    
-
-
     <SolidColorBrush x:Key="statistics_containers_background">#323466</SolidColorBrush>
     <SolidColorBrush x:Key="statistics_containers_hover">#434577</SolidColorBrush>
-    
+
+    <SolidColorBrush x:Key="selection_container">#403c84</SolidColorBrush>
+    <SolidColorBrush x:Key="selection_container_hover">#514d95</SolidColorBrush>
+
     <SolidColorBrush x:Key="grid_background">#2b2a63</SolidColorBrush>
     <SolidColorBrush x:Key="grid_foreground">#222528</SolidColorBrush>
     <SolidColorBrush x:Key="grid_row_background">#373680</SolidColorBrush>
     <SolidColorBrush x:Key="grid_row_background_hover">#623ed0</SolidColorBrush>
+
+    <SolidColorBrush x:Key="reservation_color">#f976b1</SolidColorBrush>
+    <SolidColorBrush x:Key="statistics_color">#8ff17e</SolidColorBrush>
+    <SolidColorBrush x:Key="add_movie_color">#fd8a72</SolidColorBrush>
 
     <LinearGradientBrush x:Key="primaryColorGradient" StartPoint="0,0" EndPoint="1,2">
         <GradientStop Color="#22214a" Offset="0.0"/>

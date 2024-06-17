@@ -55,7 +55,6 @@ namespace DreamVisionCinema_WPF.Controls
             set 
             {
                 SetValue(InputValueProperty, value);
-                int a = 1;
             }
         }
 

@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DreamVisionCinema_WPF.ViewModels.AdminViewModels;
 
 namespace DreamVisionCinema_WPF.Views.AdminViews
 {
@@ -25,73 +26,8 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
     {
         public MostProfitableMovies()
         {
+            DataContext = MostProfitableMoviesViewModel.Instance;
             InitializeComponent();
-            Dictionary<string, double> data = new Dictionary<string, double>();
-            data.Add("Film1", 100);
-            data.Add("Film2", 200);
-            data.Add("Film3", 300);
-            data.Add("Film4", 400);
-            data.Add("Film5", 500);
-            data.Add("Film6", 600);
-            data.Add("Film7", 700);
-            data.Add("Film8", 800);
-            data.Add("Film9", 900);
-            data.Add("Film10", 1000);
-
-            PrepareChart(data);
-        }
-        public void PrepareChart(Dictionary<string, double> data)
-        {
-            // Utwórz model i osie
-            var model = new PlotModel
-            {
-                Title = "Najbardziej dochodowe filmy",
-                TextColor = OxyColors.White,
-                PlotAreaBorderColor = OxyColors.White
-            };
-            var categoryAxis = new CategoryAxis
-            {
-                Position = AxisPosition.Left,
-                Minimum = 0,
-                Title = "Tytuł filmu",
-                TitleFontWeight = OxyPlot.FontWeights.Bold,
-                TitleFontSize = 16,
-                FontSize = 14,
-                TicklineColor = OxyColors.White,
-                TextColor = OxyColors.White,
-
-            };
-            var valueAxis = new LinearAxis
-            {
-                Position = AxisPosition.Bottom,
-                TicklineColor = OxyColors.White,
-                FontSize = 14,
-                TextColor = OxyColors.White,
-                Title = "Dochód (zł)",
-                TitleFontWeight = OxyPlot.FontWeights.Bold,
-                TitleFontSize = 16,
-                MajorGridlineStyle = LineStyle.Dash,
-                MajorGridlineColor = OxyColors.White
-            };
-            var barSeries = new BarSeries
-            {
-                FillColor = OxyColor.FromRgb(7, 146, 232)
-            };
-
-            // Dodaj dane do serii słupków
-            foreach (var item in data)
-            {
-                categoryAxis.Labels.Add(item.Key);
-                barSeries.Items.Add(new BarItem(item.Value));
-            }
-
-            // Dodaj osie i serię do modelu
-            model.Axes.Add(categoryAxis);
-            model.Axes.Add(valueAxis);
-            model.Series.Add(barSeries);
-
-            // Dodaj model do kontrolki OxyPlot.WindowsForms.PlotView
-            profitableChart.Model = model;
         }
     }
 }

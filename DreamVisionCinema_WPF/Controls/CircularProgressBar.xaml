@@ -7,15 +7,15 @@
              mc:Ignorable="d" 
              xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid >
+    <Grid>
         <ed:Arc Stretch="None" 
             EndAngle="360" ArcThickness="{Binding ArcThickness, UpdateSourceTrigger=PropertyChanged}" Fill="{Binding InnerFill, UpdateSourceTrigger=PropertyChanged}" Height="{Binding BarHeight, UpdateSourceTrigger=PropertyChanged}" Width="{Binding BarWidth, UpdateSourceTrigger=PropertyChanged}" ArcThicknessUnit="Percent"/>
         <ed:Arc Stretch="None" 
             EndAngle="360" ArcThickness="{Binding ArcThickness, UpdateSourceTrigger=PropertyChanged}" Fill="{Binding BackgroundFill, UpdateSourceTrigger=PropertyChanged}" Height="{Binding BarHeight, UpdateSourceTrigger=PropertyChanged}" Width="{Binding BarWidth, UpdateSourceTrigger=PropertyChanged}" ArcThicknessUnit="Pixel"/>
-        <Label x:Name="percentValue" HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <Label x:Name="percentValue" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label.Content>
                 <TextBlock Foreground="{Binding ForegorundFill, UpdateSourceTrigger=PropertyChanged}" FontSize="20" FontWeight="Bold">
-                    <Run Text="{Binding BarValue, UpdateSourceTrigger=PropertyChanged}" />
+                    <Run x:Name="PercentTextBlock" Text="{Binding BarValue}" />
                     <Run Text="%" />
                 </TextBlock>
             </Label.Content>

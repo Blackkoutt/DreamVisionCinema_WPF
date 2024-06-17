@@ -26,7 +26,7 @@
         </Grid.ColumnDefinitions>
 
         <Border Grid.ColumnSpan="2"
-    Background="{StaticResource ResourceKey=secondaryBackground}">
+            Background="{StaticResource ResourceKey=secondaryBackground}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDown">
                     <i:InvokeCommandAction Command="{Binding DragMoveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
@@ -41,29 +41,14 @@
                 <StackPanel HorizontalAlignment="Right"
                     Orientation="Horizontal">
 
-                    <Button Width="20" Height="20"
-            Content="━"
-            Background="Transparent"
-            BorderThickness="0"
-            Foreground="{StaticResource ResourceKey=purple_1}"
-            FontWeight="Bold"
-            Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    <Button Style="{StaticResource ResourceKey=minimisebutton}"
+                    Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                    <Button Width="20" Height="20"
-            Content="☐"
-            Background="Transparent"
-            BorderThickness="0"
-            Foreground="{StaticResource ResourceKey=purple_1}"
-            FontWeight="Bold"
-            Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    <Button Style="{StaticResource ResourceKey=maximisebutton}"
+                    Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                    <Button Width="20" Height="20"
-            Content="✕"
-            Background="Transparent"
-            BorderThickness="0"
-            Foreground="{StaticResource ResourceKey=purple_1}"
-            FontWeight="Bold"
-            Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    <Button Style="{StaticResource ResourceKey=exitbutton}"
+                    Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -83,11 +68,7 @@
                         HorizontalAlignment="Center" Margin="40">
                 <Button 
                         Command="{Binding OpenAdminAuthenticationViewCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-                        BorderThickness="0,0,0,0"
-                        Height="120"
-                        Width="250"
-                        Background="#403c84"
-                        HorizontalAlignment="Center">
+                        Style="{StaticResource ResourceKey=selectionButton}">
                     <StackPanel>
                         <fa5:ImageAwesome Icon="Solid_UserTie" Foreground="{StaticResource ResourceKey=white}" Width="25" Height="25"/>
                         <Label Foreground="{StaticResource ResourceKey=white}" FontSize="16">Zaloguj się jako Administrator</Label>
@@ -96,12 +77,8 @@
 
                 <Button 
                         Command="{Binding OpenClientViewCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-                        BorderThickness="0,0,0,0"
-                        Height="120"
-                        Width="250"
-                        Background="#403c84"
-                        Margin="50,0,0,0"
-                        HorizontalAlignment="Center">
+                        Style="{StaticResource ResourceKey=selectionButton}"
+                        Margin="50,0,0,0">
                     <StackPanel>
                             <fa5:ImageAwesome Icon="Solid_User" Foreground="{StaticResource ResourceKey=white}" Width="25" Height="25"/>
                             <Label Foreground="{StaticResource ResourceKey=white}" FontSize="16">Zaloguj się jako Użytkownik</Label>

@@ -1,80 +1,65 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OxyPlot.Series;
 using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DreamVisionCinema_WPF.Controls
 {
-    /// <summary>
-    /// Logika interakcji dla klasy CircularProgressBar.xaml
-    /// </summary>
     public partial class CircularProgressBar : UserControl, INotifyPropertyChanged
     {
+        private double barValue;
         public CircularProgressBar()
         {
-            DataContext = this;
             InitializeComponent();
+            DataContext = this;
         }
-        private int barValue;
 
-        public int BarValue
+        public double BarValue
         {
             get { return barValue; }
             set 
             {
                 barValue = value;
-                ConvertValueToAngle();
                 OnPropertyChanged();
+                ConvertValueToAngle();
             }
         }
 
         private void ConvertValueToAngle()
         {
-            EndAngle = ((double)BarValue / 100) * 360;
+            var angle = (BarValue / 100) * 360;
+            EndAngle = angle > 360 ? 360 : angle; 
         }
-        private double endAngle;
 
+        private double endAngle;
         public double EndAngle
         {
             get { return endAngle; }
-            set 
+            set
             {
                 endAngle = value;
                 OnPropertyChanged();
             }
         }
 
-
         private int arcThickness;
-
         public int ArcThickness
         {
             get { return arcThickness; }
-            set 
+            set
             {
                 arcThickness = value;
                 OnPropertyChanged();
             }
         }
-        private Brush backgroundFill;
 
+        private Brush backgroundFill;
         public Brush BackgroundFill
         {
             get { return backgroundFill; }
-            set 
+            set
             {
                 backgroundFill = value;
                 OnPropertyChanged();
@@ -82,7 +67,6 @@ namespace DreamVisionCinema_WPF.Controls
         }
 
         private Brush innerFill;
-
         public Brush InnerFill
         {
             get { return innerFill; }
@@ -94,11 +78,10 @@ namespace DreamVisionCinema_WPF.Controls
         }
 
         private Brush foregorundFill;
-
         public Brush ForegorundFill
         {
             get { return foregorundFill; }
-            set 
+            set
             {
                 foregorundFill = value;
                 OnPropertyChanged();
@@ -106,11 +89,10 @@ namespace DreamVisionCinema_WPF.Controls
         }
 
         private int height;
-
         public int BarHeight
         {
             get { return height; }
-            set 
+            set
             {
                 height = value;
                 OnPropertyChanged();
@@ -118,23 +100,20 @@ namespace DreamVisionCinema_WPF.Controls
         }
 
         private int width;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
         public int BarWidth
         {
             get { return width; }
-            set 
+            set
             {
                 width = value;
                 OnPropertyChanged();
             }
         }
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
-
 }

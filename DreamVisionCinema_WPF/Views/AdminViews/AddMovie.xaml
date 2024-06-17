@@ -35,29 +35,14 @@
                     <StackPanel HorizontalAlignment="Right"
             Orientation="Horizontal">
 
-                        <Button Width="20" Height="20"
-                Content="━"
-                Background="Transparent"
-                BorderThickness="0"
-                Foreground="{StaticResource ResourceKey=purple_1}"
-                FontWeight="Bold"
-                Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                        <Button Style="{StaticResource ResourceKey=minimisebutton}"
+                        Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                        <Button Width="20" Height="20"
-                Content="☐"
-                Background="Transparent"
-                BorderThickness="0"
-                Foreground="{StaticResource ResourceKey=purple_1}"
-                FontWeight="Bold"
-                Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                        <Button Style="{StaticResource ResourceKey=maximisebutton}"
+                        Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                        <Button Width="20" Height="20"
-                Content="✕"
-                Background="Transparent"
-                BorderThickness="0"
-                Foreground="{StaticResource ResourceKey=purple_1}"
-                FontWeight="Bold"
-                Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                        <Button Style="{StaticResource ResourceKey=exitbutton}"
+                        Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
                     </StackPanel>
                 </Grid>
             </Border>

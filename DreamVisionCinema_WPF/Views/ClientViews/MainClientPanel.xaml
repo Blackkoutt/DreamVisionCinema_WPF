@@ -44,28 +44,13 @@
                 <StackPanel HorizontalAlignment="Right"
                             Orientation="Horizontal">
 
-                    <Button Width="20" Height="20"
-                        Content="━"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Foreground="{StaticResource ResourceKey=purple_1}"
-                        FontWeight="Bold"
+                    <Button Style="{StaticResource ResourceKey=minimisebutton}"
                         Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
-                    
-                    <Button Width="20" Height="20"
-                            Content="☐"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Foreground="{StaticResource ResourceKey=purple_1}"
-                            FontWeight="Bold"
+
+                    <Button Style="{StaticResource ResourceKey=maximisebutton}"
                             Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                    <Button Width="20" Height="20"
-                        Content="✕"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Foreground="{StaticResource ResourceKey=purple_1}"
-                        FontWeight="Bold"
+                    <Button Style="{StaticResource ResourceKey=exitbutton}"
                         Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
 
@@ -112,8 +97,8 @@
                 Background="{StaticResource primaryBackground}"
                 Padding="10">
             <StackPanel Orientation="Horizontal">
-                <fa5:ImageAwesome Icon="Solid_Home" Foreground="{StaticResource ResourceKey=purple_1}" Width="30" Height="30"/>
-                <TextBlock Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14" VerticalAlignment="Center">Strona główna</TextBlock>
+                <fa5:ImageAwesome Icon="{Binding TopBarIcon}" Foreground="{Binding IconColor}" Width="30" Height="30"/>
+                <TextBlock Text="{Binding TopBarText}" Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14" VerticalAlignment="Center"></TextBlock>
             </StackPanel>
         </Border>
 

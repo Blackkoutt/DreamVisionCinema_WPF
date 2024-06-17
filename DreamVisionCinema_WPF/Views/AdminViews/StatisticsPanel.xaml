@@ -10,9 +10,6 @@
              mc:Ignorable="d" 
              Background="{StaticResource ResourceKey=primaryBackground}"
              d:DesignHeight="600" d:DesignWidth="958">
-    <UserControl.DataContext>
-        <viewModel:MainAdminPanelViewModel/>
-    </UserControl.DataContext>
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -32,7 +29,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock Margin="25,40,0,0" Grid.Row="0" Grid.Column="0" Foreground="{StaticResource ResourceKey=white}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" FontWeight="Bold">Całkowity dochód kina:</TextBlock>
-            <TextBlock Margin="25,17,0,0" Grid.Row="1" Grid.Column="0"  Foreground="{StaticResource ResourceKey=green_2}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold">1223 zł</TextBlock>
+            <TextBlock Text="{Binding TotalIncome, StringFormat={}{0} zł}" Margin="25,17,0,0" Grid.Row="1" Grid.Column="0"  Foreground="{StaticResource ResourceKey=green_2}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold"></TextBlock>
             <fa5:ImageAwesome Margin="0,30,0,0" Grid.RowSpan="2" Grid.Column="1" Icon="Solid_DollarSign" Foreground="{StaticResource ResourceKey=green_2}" Width="75" Height="75"/>
         </Grid>
         <Grid Margin="30,45,35,45" Grid.Row="0" Height="160" Grid.Column="1" Background="{StaticResource ResourceKey=statistics_containers_background}" >
@@ -45,16 +42,21 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock Margin="0,30,20,0" Grid.Row="0" Grid.Column="1" Foreground="{StaticResource ResourceKey=white}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" FontWeight="Bold">Wytyczna zarobków:</TextBlock>
-            <TextBlock Margin="0,0,20,0" Grid.Row="1" Grid.Column="1"  Foreground="{StaticResource ResourceKey=purple_3}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold" Height="43">1223/2400 zł</TextBlock>
-            <controls:CircularProgressBar InnerFill="{StaticResource dark_blue_2}" Margin="0,25,0,0"  Grid.RowSpan="2" Grid.Column="0" ArcThickness="10" BackgroundFill="{StaticResource dark_blue}" BarValue="60" BarWidth="110" BarHeight="110" ForegorundFill="{StaticResource purple_3}"/>
+            <TextBlock Margin="0,0,20,0" Grid.Row="1" Grid.Column="1"  Foreground="{StaticResource ResourceKey=purple_3}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold" Height="43">
+                <Run Text="{Binding TotalIncome}"></Run>
+                <Run>/</Run>
+                <Run Text="{Binding IncomeGuideline}"></Run>
+                <Run>zł</Run>
+            </TextBlock>
+            <controls:CircularProgressBar x:Name="progressBar" InnerFill="{StaticResource dark_blue_2}" Margin="0,25,0,0" Grid.RowSpan="2" Grid.Column="0" ArcThickness="10" BackgroundFill="{StaticResource dark_blue}" BarWidth="110" BarHeight="110" ForegorundFill="{StaticResource purple_3}"/>
         </Grid>
-        <Button Command="{Binding DataContext.MostPopularMoviesViewCommand , RelativeSource={RelativeSource AncestorType={x:Type local:MainAdminPanel}}}" Height="250" Margin="35,0,30,10" Grid.Row="1" Grid.Column="0" Style="{StaticResource statisticsButtons}">
+        <Button Command="{Binding MostPopularMoviesViewCommand}" Height="250" Margin="35,0,30,10" Grid.Row="1" Grid.Column="0" Style="{StaticResource statisticsButtons}">
             <StackPanel>
                 <fa5:ImageAwesome Icon="Solid_Star" Foreground="{StaticResource ResourceKey=orange_2}" Width="70" Height="70"/>
                 <TextBlock Margin="20,20,20,0" VerticalAlignment="Center" Foreground="{StaticResource ResourceKey=white}" FontSize="22" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center">Wykres najpopularniejszych filmów</TextBlock>
             </StackPanel>
         </Button>
-        <Button Command="{Binding DataContext.MostProfitableMoviesViewCommand , RelativeSource={RelativeSource AncestorType={x:Type local:MainAdminPanel}}}" Height="250" Margin="35,0,30,10" Grid.Row="1" Grid.Column="1" Style="{StaticResource statisticsButtons}">
+        <Button Command="{Binding MostProfitableMoviesViewCommand}" Height="250" Margin="35,0,30,10" Grid.Row="1" Grid.Column="1" Style="{StaticResource statisticsButtons}">
             <StackPanel>
                 <fa5:ImageAwesome Icon="Solid_ChartLine" Foreground="{StaticResource ResourceKey=blue_2}" Width="70" Height="70"/>
                 <TextBlock Margin="20,20,20,0" VerticalAlignment="Center" Foreground="{StaticResource ResourceKey=white}" FontSize="22" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center">Wykres najbardziej dochodowych filmów</TextBlock>

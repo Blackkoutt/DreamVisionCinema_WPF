@@ -13,11 +13,5 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
             DataContext = MainAdminPanelViewModel.Instance;
             InitializeComponent();
         }
-
-        private void addMovieBtn_Click(object sender, RoutedEventArgs e)
-        {
-            AddMovie dialog = new AddMovie();
-            dialog.Show();
-        }
     }
 }
