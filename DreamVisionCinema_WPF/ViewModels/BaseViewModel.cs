@@ -47,7 +47,7 @@ namespace DreamVisionCinema_WPF.ViewModels
         {
             new CustomAlertBox(message, type, isTimerEnabled);
         }
-        private void CloseWindow(object parameter)
+        protected virtual void CloseWindow(object parameter)
         {
             if (parameter is Window window)
             {

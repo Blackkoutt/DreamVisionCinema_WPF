@@ -9,13 +9,13 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 {
     public class MovieDetailsViewModel
     {
-        public Movie Movie { get; private set; }
+        public Movie movie { get; private set; }
         public MovieDetailsViewModel()
         { }
 
         public MovieDetailsViewModel(Movie movie)
         {
-            Movie = movie;
+            this.movie = movie;
             OpenSeatChoiceCommand = new RelayCommand(OpenSeatChoice);
         }
 
@@ -23,7 +23,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 
         private void OpenSeatChoice(object parameter)
         {
-            SeatReservationWindow dialog = new SeatReservationWindow();
+            SeatReservationWindow dialog = new SeatReservationWindow(movie);
             dialog.Show();
         }
     }

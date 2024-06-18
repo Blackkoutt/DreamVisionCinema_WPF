@@ -16,16 +16,31 @@
                 <RowDefinition/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="{Binding Movie.Title}"
+            <Border Grid.RowSpan="2" Grid.ColumnSpan="2" Background="{StaticResource brigherPrimaryBackground}" Margin="90 0 90 0" Padding=" 10" CornerRadius="10"/>
+            <TextBlock Text="{Binding movie.Title}"
                        FontSize="30"
                        HorizontalAlignment="Center"
                        Background="Transparent"
                        Foreground="White"/>
-            <Image Grid.Row="1" Source="pack://application:,,,/Assets/plakatDefault.png" Width="185" Height="283" />
+            <Image Grid.Row="1" Source="{Binding movie.PathToPoster}" Width="250" Margin="0 20 0 0 "/>
             <StackPanel Grid.Row="1"
-                        Grid.Column="1">
-                <TextBlock Text="Rok 2001 Kategoria wiekowa: 18+" Foreground="Wheat" FontSize="14" Padding="5" Background="{StaticResource secondaryBackground}"/>
-                <TextBlock Grid.Column="1" Grid.Row="1" Foreground="white" TextWrapping="Wrap" FontSize="16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus sem dolor. Nam accumsan sed nunc nec lobortis. Phasellus hendrerit vitae orci non congue. Etiam nec tellus et nulla euismod suscipit nec quis diam. Nullam dictum laoreet turpis id cursus. Curabitur a dui ac dui lacinia scelerisque. Nulla nec dictum ante, a pretium felis. Fusce lorem neque, convallis non odio ut, blandit euismod ante. In hac habitasse platea dictumst.</TextBlock>
+                        Grid.Column="1"
+                        Margin="-10 20 110 0">
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Kategoria wiekowa: " Foreground="Wheat" FontSize="14" Padding="5" Background="{StaticResource secondaryBackground}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding movie.AgeCategory}" Foreground="Wheat" FontSize="14" Padding="5" Background="{StaticResource secondaryBackground}"/>
+                        <Border Grid.Column="2" Background="{StaticResource secondaryBackground}" HorizontalAlignment="Stretch"/>
+                    </Grid>
+                </StackPanel>
+
+                <TextBlock Grid.Column="1" Grid.Row="1" Foreground="white" TextWrapping="Wrap" FontSize="16" Text="{Binding movie.Description}" Margin="0 20 0 0"/>
                 <Button Style="{StaticResource buyTicketButton }" VerticalAlignment="Bottom" Margin="20"
                         Command="{Binding OpenSeatChoiceCommand}">
                     <Label Foreground="white">Zarezerwuj miejsce</Label>

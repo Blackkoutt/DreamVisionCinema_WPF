@@ -16,6 +16,10 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
         private int price;
         private int duration;
         private int roomNumber;
+        private string? description;
+        private string? pathToPoster;
+        private int ageCategory;
+
         private IMovieRepository movieRepository;
         public ICommand DragMoveCommand => base.DragCommand;
         public ICommand AddMovieCommand { get; set; }
@@ -32,10 +36,11 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             string dateString = Date.ToString("dd/MM/yyyy HH:mm");
             string priceString = Price.ToString();
             string durationString = $"{Duration / 60}:{(Duration % 60).ToString("D2")}";
-            string roomNumberString = RoomNumber.ToString();    
+            string roomNumberString = RoomNumber.ToString();  
+            string ageCategoryString = AgeCategory.ToString();
             try
             {
-                movieRepository.AddMovie(null, Title, dateString, priceString, durationString, roomNumberString);   // Wywołanie metody dodającej film
+                movieRepository.AddMovie(null, Title, dateString, priceString, durationString, roomNumberString, Description, ageCategoryString, PathToPoster);
             }
             catch (CannotConvertException CCE)
             {
@@ -130,6 +135,35 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             set
             {
                 title = value;
+                OnPropertyChanged();
+            }
+        }
+        public int AgeCategory
+        {
+            get { return ageCategory; }
+            set
+            {
+                ageCategory = value;
+                OnPropertyChanged();
+            }
+        }
+        public string? Description
+        {
+            get { return description; }
+            set
+            {
+                description = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public string? PathToPoster
+        {
+            get { return pathToPoster; }
+            set
+            {
+                pathToPoster = value;
                 OnPropertyChanged();
             }
         }

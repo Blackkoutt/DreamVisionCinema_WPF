@@ -11,10 +11,18 @@
   <ItemGroup>
     <None Remove="Assets\app_icon.ico" />
     <None Remove="Assets\app_icon1.ico" />
+    <None Remove="Assets\couch-solid.png" />
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\movie_delete.png" />
     <None Remove="Assets\movie_png.png" />
     <None Remove="Assets\plakatDefault.png" />
+    <None Remove="Assets\Posters\gladiator.png" />
+    <None Remove="Assets\Posters\incepcja.png" />
+    <None Remove="Assets\Posters\kosmici.png" />
+    <None Remove="Assets\Posters\matrix.png" />
+    <None Remove="Assets\Posters\pamiec.png" />
+    <None Remove="Assets\Posters\pulp.png" />
+    <None Remove="Assets\Posters\skazani.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,15 +34,24 @@
     <PackageReference Include="NetCore5.0.Microsoft.Expression.Drawing" Version="1.0.0" />
     <PackageReference Include="OxyPlot.Wpf" Version="2.1.2" />
     <PackageReference Include="Unity" Version="5.11.10" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\app_icon.ico" />
     <Resource Include="Assets\app_icon1.ico" />
+    <Resource Include="Assets\couch-solid.png" />
     <Resource Include="Assets\logo.png" />
     <Resource Include="Assets\movie_delete.png" />
     <Resource Include="Assets\movie_png.png" />
-    <Resource Include="Assets\plakatDefault.png" />
+    <Resource Include="Assets\Posters\gladiator.png" />
+    <Resource Include="Assets\Posters\incepcja.png" />
+    <Resource Include="Assets\Posters\kosmici.png" />
+    <Resource Include="Assets\Posters\matrix.png" />
+    <Resource Include="Assets\Posters\pamiec.png" />
+    <Resource Include="Assets\Posters\plakatDefault.png" />
+    <Resource Include="Assets\Posters\pulp.png" />
+    <Resource Include="Assets\Posters\skazani.png" />
   </ItemGroup>
 
   <ItemGroup>

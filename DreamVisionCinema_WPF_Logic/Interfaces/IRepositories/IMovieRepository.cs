@@ -5,11 +5,11 @@ namespace DreamVisionCinema_WPF_Logic.Interfaces.IRepositories
     public interface IMovieRepository
     {
         void ReadMoviesFromFile();
-        void AddMovie(string? id, string title, string date, string price, string duration, string roomNumber);
+        void AddMovie(string? id, string title, string date, string price, string duration, string roomNumber, string description, string ageCategory, string pathToPoster);
         void CheckTimeCollisionsBetweenMovies(DateTime date, string duration, int roomNumber);
         void RemoveMovie(int id);
         void ModifyMovieDateOrRoom(Movie movie, DateTime newDate, int newRoomNumber);
-        void ModifyMoviePrice(string id, string new_price);
+        void ModifyMoviePriceDescriptionAgeCategoryPathToPoster(string id, string new_price, string new_description, string new_age_category, string new_path_to_poster);
         List<Movie> GetAllMovies();
         Movie GetOneMovie(string id);
         Movie GetOneMovie(int id);

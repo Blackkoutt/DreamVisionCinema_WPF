@@ -50,7 +50,16 @@ namespace DreamVisionCinema_WPF.ViewModels
                 MakeAlert(ex.Message, AlertTypeEnum.Error, false);
             }
         }
+        protected override void CloseWindow(object parameter)
+        {
+            movieRepository.SaveMoviesToFile();
+            reservationRepository.SaveReservationsToFile();
 
+            if (parameter is Window window)
+            {
+                window.Close();
+            }
+        }
         private void OpenAdminAuthenticationView(object parameter)
         {
             AdminAuthentication adminWindow = new AdminAuthentication();

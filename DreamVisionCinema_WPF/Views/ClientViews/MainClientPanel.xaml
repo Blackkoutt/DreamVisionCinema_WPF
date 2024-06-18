@@ -79,7 +79,7 @@
                 Height="50"
                 Foreground="White"
                 Style="{StaticResource MenuButton}"
-                             Command="{Binding MovieListViewCommand}"/>
+                             Command="{Binding ClientReservationListViewCommand}"/>
 
             <RadioButton Content="Wróć"
                 Height="50"

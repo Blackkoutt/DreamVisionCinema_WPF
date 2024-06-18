@@ -1,6 +1,10 @@
 ﻿using DreamVisionCinema_WPF.Observable;
+using DreamVisionCinema_WPF_Logic.Interfaces;
+using DreamVisionCinema_WPF_Logic.Interfaces.IRepositories;
+using DreamVisionCinema_WPF_Logic.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -15,12 +19,12 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
     public class SeatReservationViewModel : BaseViewModel
     {
         private DispatcherTimer timer;
-
+        private ResourceDictionary resourceDictionary;
         public ICommand GenerateSeatsCommand { get; private set; }
         public ICommand SeatButtonCommand { get; private set; }
         public ICommand BuyTicketCommand { get; private set; }
         public ICommand SubmitTicketPurchaseCommand { get; private set; }
-        public ICommand DragMoveCommand => base.DragCommand;
+
 
         public Image GifImage { get; set; }
         public Image FinalImage { get; set; }
@@ -28,17 +32,55 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
         public WrapPanel SeatsPanel { get; set; }
         public TextBlock SelectedSeatsText { get; set; }
         public BlurEffect BlurEffect { get; set; }
+        public Grid GifPanel { get; set; }
 
-        public SeatReservationViewModel()
+        public Movie movie { get; set; }
+        ReservationRepository reservationRepository { get; set; }
+        MovieRepository movieRepository { get; set; }
+        List<string> selectedSeats;
+        List<string> unavailableSeats; 
+        List<Reservation> movieReservations { get; set; }
+
+        public SeatReservationViewModel(Movie movie)
         {
             GenerateSeatsCommand = new RelayCommand(o => GenerateSeats(10, 10));
             SeatButtonCommand = new RelayCommand(SeatButton_Click);
             BuyTicketCommand = new RelayCommand(BuyTicket_Click);
             SubmitTicketPurchaseCommand = new RelayCommand(SubmitTicketPurchase);
 
+            this.movie = movie;
+
+            resourceDictionary = new ResourceDictionary
+            {
+                Source = new Uri("pack://application:,,,/Styles/Colors.xaml")
+            };
+
+
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(3);
             timer.Tick += Timer_Tick;
+            movieRepository = new MovieRepository();
+            movieRepository.ReadMoviesFromFile();
+            reservationRepository = new ReservationRepository(movieRepository);
+            reservationRepository.ReadReservationsFromFile();
+            movieReservations = reservationRepository.GetReservationForMovie(movie);
+            unavailableSeats = new List<string>();
+            selectedSeats = new List<string>();
+            SeeUnavailableSeatsForMovie();
+        }
+
+        private void SeeUnavailableSeatsForMovie()
+        {
+            foreach (var reservation in movieReservations)
+            {
+                foreach(var seat in reservation.Seats)
+                {
+                    if (!seat.IsAvailable)
+                    {
+                        unavailableSeats.Add(seat.ToString());
+                    }
+                }
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -61,12 +103,28 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                         Background = Brushes.Green,
                         Command = SeatButtonCommand,
                         CommandParameter = row * cols + col + 1
+
                     };
+                    if (unavailableSeats.Contains((row * cols + col + 1).ToString()))
+                    {
+                        seatButton.Background = Brushes.Gray;
+                        ToolTip toolTip = new ToolTip
+                        {
+                            Content = "To miejsce jest już zajęte",
+                            Background = (Brush)resourceDictionary["secondaryBackground"],
+                            Margin = new Thickness(5),
+                            Padding = new Thickness(5),
+                            Foreground= Brushes.White,
+
+                    };
+                        ToolTipService.SetInitialShowDelay(seatButton, 200);
+                        seatButton.ToolTip = toolTip;
+                    }
 
                     var stackPanel = new StackPanel { Orientation = Orientation.Vertical };
-                    var image = new Image
+                    Image image = new Image
                     {
-                        Source = new BitmapImage(new Uri("C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\ProjektWPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\Assets\\couch-solid.png")),
+                        Source = new BitmapImage(new Uri("pack://application:,,,/Assets/couch-solid.png")),
                         Height = 15,
                         Width = 15
                     };
@@ -92,9 +150,19 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             {
                 foreach (Button seat in SeatsPanel.Children)
                 {
-                    if (seat.Content is StackPanel stack && stack.Children[1] is Label label && int.Parse(label.Content.ToString()) == seatNumber)
+                    if (seat.Content is StackPanel stack &&
+                        stack.Children[1] is Label label &&
+                        int.Parse(label.Content.ToString()) == seatNumber &&
+                        !(unavailableSeats.Contains(label.Content.ToString())))
                     {
+                        if(selectedSeats.Count < 5 || seat.Background == Brushes.Red)
                         seat.Background = seat.Background == Brushes.Green ? Brushes.Red : Brushes.Green;
+                        else
+                        {
+                            MessageBox.Show("Możesz wybrać maksymalnie 5 miejsc!","Osiągnięto limit miejsc",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                            
+                        }
                         break;
                     }
                 }
@@ -104,32 +172,70 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 
         private void UpdateSelectedSeatsDisplay()
         {
-            var selectedSeats = new List<string>();
+            var tempSelectedSeats = new List<string>();
             foreach (Button seat in SeatsPanel.Children)
             {
                 if (seat.Background == Brushes.Red)
                 {
-                    if (seat.Content is StackPanel stack && stack.Children.Count > 1 && stack.Children[1] is Label label)
+                    if (seat.Content is StackPanel stack && stack.Children.Count > 1 && stack.Children[1] is Label label && !(unavailableSeats.Contains(label.Content.ToString())))
                     {
-                        selectedSeats.Add(label.Content.ToString());
+                        tempSelectedSeats.Add(label.Content.ToString());
                     }
                 }
             }
-            SelectedSeatsText.Text = "Wybrane miejsca: " + string.Join(", ", selectedSeats);
+            SelectedSeatsText.Text = "Wybrane miejsca: " + string.Join(", ", tempSelectedSeats);
+            selectedSeats = tempSelectedSeats;
         }
 
         private void BuyTicket_Click(object parameter)
         {
-            BlurEffect.Radius = 5;
-            PurchasePopup.IsOpen = true;
+            if(selectedSeats.Count > 0)
+            {
+                BlurEffect.Radius = 5;
+                PurchasePopup.IsOpen = true;
+                SetIsHitTestVisibleForElements(false);
+            }
+            else
+            {
+                MessageBox.Show("Musisz wybrać co najmniej jedno miejsce!", "Wybierz miejsce",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
-        private void SubmitTicketPurchase(object parameter)
+        private async void SubmitTicketPurchase(object parameter)
         {
             PurchasePopup.IsOpen = false;
+            SetIsHitTestVisibleForElements(true);
+
+            // Pokaż GIF
+            BlurEffect.Radius = 0;
             GifImage.Visibility = Visibility.Visible;
-            FinalImage.Visibility = Visibility.Collapsed;
-            timer.Start();
+            GifPanel.Background = (Brush)resourceDictionary["primaryBackground"];
+
+            await Task.Delay(3000); 
+                                   
+            // Ukryj GIF
+            GifImage.Visibility = Visibility.Collapsed;
+            FinalImage.Visibility = Visibility.Visible;
+
+            Reservation reservation = reservationRepository.GetLastReservation();
+            reservationRepository.MakeReservation((reservation.Id + 1).ToString(), movie.Id.ToString(), selectedSeats);
+            reservationRepository.SaveReservationsToFile();
         }
+
+
+        private void SetIsHitTestVisibleForElements(bool isVisible)
+        {
+            // Przechodzenie przez dzieci kontenera, np. Grid, StackPanel, itp.
+            foreach (var child in ((Panel)PurchasePopup.Parent).Children)
+            {
+                if (child != PurchasePopup)
+                {
+                    // Ustawienie właściwości IsHitTestVisible na isVisible dla każdego elementu
+                    ((UIElement)child).IsHitTestVisible = isVisible;
+                }
+            }
+        }
+
     }
 }

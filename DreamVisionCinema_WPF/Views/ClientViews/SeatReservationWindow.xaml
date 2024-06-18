@@ -7,8 +7,9 @@
         xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="SeatReservationWindow" Height="600" Width="850"
+        Title="SeatReservationWindow" Height="650" Width="850"
         Background="{StaticResource ResourceKey=primaryBackground}"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -25,14 +26,13 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
         <Grid.Effect>
             <effects:BlurEffect Radius="0" x:Name="blurEffect"/>
         </Grid.Effect>
-        <Popup x:Name="purchasePopup" Placement="Center" PlacementTarget="{Binding ElementName=MainGrid}" IsOpen="False">
-            <Border BorderBrush="{StaticResource secondaryBackground}" BorderThickness="2" Background="{StaticResource primaryBackground}" Padding="30">
+        <Popup x:Name="purchasePopup" Placement="Center" IsOpen="False">
+            <Border BorderBrush="{StaticResource secondaryBackground}" BorderThickness="2" Background="{StaticResource primaryBackground}" Padding="50">
                 <StackPanel>
-                    <TextBlock Text="Proszę wprowadzić swoje dane:" FontWeight="Bold" Margin="0,0,0,10" Foreground="White"/>
+                    <TextBlock Text="Proszę wprowadzić swoje dane:" FontWeight="Bold" Margin="0,0,0,10" Foreground="White" FontSize="20"/>
                     <TextBlock Text="Imię:" Foreground="White"/>
                     <TextBox x:Name="firstNameTextBox" Margin="0,0,0,10" Background="Transparent" BorderThickness="0,0,0,2" Foreground="White"/>
                     <TextBlock Text="Nazwisko:" Foreground="White"/>
@@ -44,18 +44,19 @@
             </Border>
         </Popup>
 
-        <Grid Background="{StaticResource primaryBackground}" Grid.Row="1">
-            <Image x:Name="gifImage" Visibility="Collapsed" Source="pack://application:,,,/Assets/printer2.gif"/>
+        <Grid x:Name="gifPanel" Grid.Row="1" Panel.ZIndex="1">
+            <Image x:Name="gifImage"  Visibility="Collapsed" gif:ImageBehavior.AnimatedSource="C:\Users\kubap\OneDrive\Pulpit\6_SEMESTR_MATERIAŁY\WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Assets\printer2.gif"/>
+            <Image Grid.Row="1" x:Name="finalImage" Visibility="Collapsed" Source="C:\Users\kubap\OneDrive\Pulpit\6_SEMESTR_MATERIAŁY\WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Assets\ticket_template.jpg" Width="500" Panel.ZIndex="2"/>
         </Grid>
 
-        <Image x:Name="finalImage" Visibility="Collapsed" Source="pack://application:,,,/Assets/ticket_template.jpg" Width="300" Height="300"/>
+        
 
         <!--Pasek na samej górze zastępujący ten windosowy-->
         <Border Grid.ColumnSpan="2"
                 Background="{StaticResource ResourceKey=secondaryBackground}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDown">
-                    <i:InvokeCommandAction Command="{Binding DragMoveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    <i:InvokeCommandAction Command="{Binding DragCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <Grid HorizontalAlignment="Stretch">
@@ -80,11 +81,16 @@
         </Border>
 
         <StackPanel Grid.Row="1" Margin="20">
-            <TextBlock Text="Wybierz interesujące cię miejsca w sali - film Kosmici w mojej szkole"
+            <TextBlock Text="Wybierz interesujące cię miejsca w sali - film:"
                        FontSize="20"
                        Foreground="White"
                        TextAlignment="Center"
                        Padding="10"/>
+            <TextBlock Text="{Binding movie.Title}"
+           FontSize="25"
+           Foreground="White"
+           TextAlignment="Center"
+           Padding="5"/>
             <StackPanel Orientation="Horizontal" TextBlock.FontSize="14" HorizontalAlignment="Center">
                 <TextBlock Text="Kolorem " Foreground="White"/>
                 <TextBlock Text="czerwonym " Foreground="Red"/>

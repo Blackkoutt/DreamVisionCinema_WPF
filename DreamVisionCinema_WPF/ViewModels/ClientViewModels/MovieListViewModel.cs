@@ -10,11 +10,9 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
         private MovieRepository repository;
         public ObservableCollection<Movie> Movies { get; set; }
         public ICommand MovieDetailsViewCommand { get; private set; }
-        private MainViewModel _mainViewModel;
 
-        public MovieListViewModel(MainViewModel mainViewModel)
+        public MovieListViewModel()
         {
-            _mainViewModel = mainViewModel; // Przechowywanie referencji do klasy nadrzędnej
             repository = new MovieRepository();
             repository.ReadMoviesFromFile();
             Movies = new ObservableCollection<Movie>(repository.GetAllMovies());
@@ -27,7 +25,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             if (parameter is Movie movie)
             {
                 Console.WriteLine(movie.Title);
-                _mainViewModel.CurentView = new MovieDetailsViewModel(movie); // Używanie referencji do klasy nadrzędnej
+                GlobalEventAggregator.RaiseViewChanged(new MovieDetailsViewModel(movie), "Detale Filmu");
             }
         }
     }

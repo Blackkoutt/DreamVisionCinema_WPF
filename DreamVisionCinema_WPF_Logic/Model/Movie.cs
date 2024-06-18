@@ -8,8 +8,11 @@
         private DateTime date;
         private double price;
         private string duration;
+        private string description;
+        private string ageCategory;
+        private string pathToPoster;
         private Room room;
-        public Movie(int id, string title, DateTime date, double price, string duration, Room room)
+        public Movie(int id, string title, DateTime date, double price, string duration, Room room, string description, string ageCategory, string pathToPoster)
         {
             this.id = id;
             this.title = title;
@@ -17,6 +20,9 @@
             this.price = price;
             this.duration = duration;
             this.room = room;
+            this.description = description;
+            this.ageCategory = ageCategory;
+            this.pathToPoster = pathToPoster;
         }
 
         // Gettery & Settery
@@ -46,5 +52,22 @@
             get { return this.room; }
             set {   this.room = value; }
         }  
+
+        public string Description
+        {
+            get { return this.description; }
+            set { this.description = value; }
+        }
+
+        public string AgeCategory
+        {
+            get { return this.ageCategory; }
+            set { this.ageCategory = value; }
+        }
+        public string PathToPoster
+        {
+            get { return this.pathToPoster; }
+            set { this.pathToPoster = value; }
+        }
     }
 }

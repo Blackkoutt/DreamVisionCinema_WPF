@@ -24,11 +24,16 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
         public EditMovie(Movie movie)
         {
             EditMovieViewModel EditMovieVM = EditMovieViewModel.Instance;
+            EditMovieVM.Movie = movie;
             EditMovieVM.MovieId = movie.Id;
             EditMovieVM.Title = $"\"{movie.Title}\"";
             EditMovieVM.Date = movie.Date;
             EditMovieVM.Price = (int)movie.Price;
             EditMovieVM.RoomNumber = movie.Room.Number;
+            EditMovieVM.Description = movie.Description;
+            EditMovieVM.AgeCategory = int.Parse(movie.AgeCategory);
+            string indirectPosterPath = "pack://application:,,,/Assets/Posters/";
+            EditMovieVM.PathToPoster = movie.PathToPoster.Split(indirectPosterPath)[1];
 
             DataContext = EditMovieVM;
             InitializeComponent();

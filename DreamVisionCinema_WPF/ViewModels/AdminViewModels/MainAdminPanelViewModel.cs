@@ -2,6 +2,9 @@
 using DreamVisionCinema_WPF.Observable;
 using DreamVisionCinema_WPF.ViewModels.ClientViewModels;
 using DreamVisionCinema_WPF.Views.AdminViews;
+using DreamVisionCinema_WPF_Logic.Interfaces;
+using DreamVisionCinema_WPF_Logic.Interfaces.IRepositories;
+using DreamVisionCinema_WPF_Logic.Model;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -39,11 +42,16 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
         private Brush? addMovieBrush;
         private Brush? reservationBrush;
         private Brush? statisticsBrush;
+        private IMovieRepository movieRepository;
+        private IReservationRepository reservationRepository;
 
         private static MainAdminPanelViewModel _instance = null;
 
-        public MainAdminPanelViewModel()
+        public MainAdminPanelViewModel(IMovieRepository movieRepository, IReservationRepository reservationRepository)
         {
+            this.movieRepository = movieRepository;
+            this.reservationRepository = reservationRepository;
+
             HomeVM = new HomeViewModel();
             MovieListVM = DIContainer.GetContainer().Resolve<MoviesListViewModel>(); 
             StatisticsPanelVM = DIContainer.GetContainer().Resolve<StatisticsPanelViewModel>();//new StatisticsPanelViewModel();
@@ -111,7 +119,7 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             });
             BackFromAdminViewCommand = new RelayCommand(OpenSelectionView);
         }
-
+        
         private void OpenSelectionView(object parameter)
         {
             MainWindow mainWindow = new MainWindow();
@@ -139,6 +147,17 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             AddMovieBrush = Brushes.White;
             ReservationBrush = Brushes.White;
             StatisticsBrush = Brushes.White;
+        }
+
+        protected override void CloseWindow(object parameter)
+        {
+            movieRepository.SaveMoviesToFile();
+            reservationRepository.SaveReservationsToFile();
+
+            if (parameter is Window window)
+            {
+                window.Close();
+            }
         }
 
         public object CurentView
@@ -294,7 +313,7 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             {
                 if (_instance == null)
                 {
-                    _instance = new MainAdminPanelViewModel();
+                    _instance = DIContainer.GetContainer().Resolve<MainAdminPanelViewModel>();
                     return _instance;
                 }
                 else

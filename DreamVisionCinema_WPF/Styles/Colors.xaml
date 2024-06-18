@@ -3,6 +3,7 @@
 
     <SolidColorBrush x:Key="primaryBackground">#22214a</SolidColorBrush>
     <SolidColorBrush x:Key="secondaryBackground">#1f1e44</SolidColorBrush>
+    <SolidColorBrush x:Key="brigherPrimaryBackground">#403c84</SolidColorBrush>
     <SolidColorBrush x:Key="secondaryBackground_hover">#2f2f55</SolidColorBrush>
     <SolidColorBrush x:Key="white">#fff</SolidColorBrush>
     <SolidColorBrush x:Key="black">#000</SolidColorBrush>
