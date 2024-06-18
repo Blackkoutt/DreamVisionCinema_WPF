@@ -34,7 +34,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
         private IReservationRepository reservationRepository;
         private IMovieRepository movieRepository;
 
-        private MainViewModel(IReservationRepository reservationRepository, IMovieRepository movieRepository)
+        public MainViewModel(IReservationRepository reservationRepository, IMovieRepository movieRepository)
         {
             this.movieRepository = movieRepository;
             this.reservationRepository = reservationRepository;
