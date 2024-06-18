@@ -44,9 +44,23 @@
             </Border>
         </Popup>
 
+        <Button Grid.Row="1" 
+                Panel.ZIndex="2"
+                Width="50"
+                Height="50"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0 50 100 0"
+                Visibility="Collapsed"
+                BorderThickness="0"
+                Style="{StaticResource SaveTicketToFileButton}"
+                x:Name="saveButton"
+                Command="{Binding SaveTicketImageToFileCommand}">
+            <fa5:ImageAwesome Icon="Solid_Download" Foreground="{StaticResource ResourceKey=white}" Width="35" Height="35"/>
+        </Button>
         <Grid x:Name="gifPanel" Grid.Row="1" Panel.ZIndex="1">
-            <Image x:Name="gifImage"  Visibility="Collapsed" gif:ImageBehavior.AnimatedSource="C:\Users\kubap\OneDrive\Pulpit\6_SEMESTR_MATERIAŁY\WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Assets\printer2.gif"/>
-            <Image Grid.Row="1" x:Name="finalImage" Visibility="Collapsed" Source="C:\Users\kubap\OneDrive\Pulpit\6_SEMESTR_MATERIAŁY\WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Assets\ticket_template.jpg" Width="500" Panel.ZIndex="2"/>
+            <Image x:Name="gifImage"  Visibility="Collapsed" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Assets/printer2.gif"/>
+            <Image Grid.Row="1" x:Name="finalImage" Visibility="Collapsed" Source="pack://application:,,,/Assets/ticket_template_2.jpg" Width="500" Panel.ZIndex="2"/>
         </Grid>
 
         
@@ -135,7 +149,8 @@
             <Button Style="{StaticResource gridEditButton}"
                 Grid.Row="2"
                 HorizontalAlignment="Right"
-                Margin="10">
+                Margin="10"
+                    Command="{Binding SaveTicketImageToFileCommand}">
                 <StackPanel Orientation="Horizontal">
                     <fa5:ImageAwesome Icon="Solid_ArrowLeft" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
                     <Label Margin="5,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14">Cofnij wybór</Label>

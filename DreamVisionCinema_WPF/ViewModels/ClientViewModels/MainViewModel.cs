@@ -63,8 +63,8 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
         public MainViewModel()
         {
             HomeVM = new HomeViewModel();
-            MovieListVM = new MovieListViewModel();
-            ClientReservationListVM = new ClientReservationListViewModel();
+            MovieListVM = MovieListViewModel.Instance;
+            ClientReservationListVM = ClientReservationListViewModel.Instance;
             _currentView = HomeVM;
             tabText = "Strona Główna";
 

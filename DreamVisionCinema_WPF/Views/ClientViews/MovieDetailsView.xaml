@@ -22,7 +22,7 @@
                        HorizontalAlignment="Center"
                        Background="Transparent"
                        Foreground="White"/>
-            <Image Grid.Row="1" Source="{Binding movie.PathToPoster}" Width="250" Margin="0 20 0 0 "/>
+            <Image Grid.Row="1" Source="{Binding movie.PathToPoster}" Width="250" Margin="0 20 0 20 "/>
             <StackPanel Grid.Row="1"
                         Grid.Column="1"
                         Margin="-10 20 110 0">

@@ -64,6 +64,9 @@
     <Compile Update="Views\Others\CustomAlertBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Others\TicketTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\CircularProgressBar.xaml">
@@ -139,6 +142,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Others\CustomAlertBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Others\TicketTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

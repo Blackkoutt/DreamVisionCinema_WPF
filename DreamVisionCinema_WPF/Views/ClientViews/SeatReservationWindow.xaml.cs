@@ -20,6 +20,7 @@ namespace DreamVisionCinema_WPF.Views.ClientViews
                 SelectedSeatsText = selectedSeatsText,
                 BlurEffect = blurEffect,
                 GifPanel = gifPanel,
+                SaveButton = saveButton,
             };
             DataContext = viewModel;
             viewModel.GenerateSeatsCommand.Execute(null); // Generate seats on initialization

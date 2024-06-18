@@ -1,10 +1,10 @@
 ﻿using DreamVisionCinema_WPF.Observable;
-using DreamVisionCinema_WPF_Logic.Interfaces;
-using DreamVisionCinema_WPF_Logic.Interfaces.IRepositories;
 using DreamVisionCinema_WPF_Logic.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using QRCoder;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Globalization;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+
 
 namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 {
@@ -24,22 +25,25 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
         public ICommand SeatButtonCommand { get; private set; }
         public ICommand BuyTicketCommand { get; private set; }
         public ICommand SubmitTicketPurchaseCommand { get; private set; }
+        public ICommand SaveTicketImageToFileCommand { get; private set;}
 
-
-        public Image GifImage { get; set; }
-        public Image FinalImage { get; set; }
+        public System.Windows.Controls.Image GifImage { get; set; }
+        public System.Windows.Controls.Image FinalImage { get; set; }
         public Popup PurchasePopup { get; set; }
         public WrapPanel SeatsPanel { get; set; }
         public TextBlock SelectedSeatsText { get; set; }
         public BlurEffect BlurEffect { get; set; }
         public Grid GifPanel { get; set; }
+        public Button SaveButton { get; set; }
 
         public Movie movie { get; set; }
         ReservationRepository reservationRepository { get; set; }
         MovieRepository movieRepository { get; set; }
         List<string> selectedSeats;
-        List<string> unavailableSeats; 
+        List<string> unavailableSeats;
         List<Reservation> movieReservations { get; set; }
+
+        private RenderTargetBitmap ticketImage;
 
         public SeatReservationViewModel(Movie movie)
         {
@@ -67,13 +71,14 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             unavailableSeats = new List<string>();
             selectedSeats = new List<string>();
             SeeUnavailableSeatsForMovie();
+            SaveTicketImageToFileCommand = new RelayCommand(SaveTicketImageToFile);
         }
 
         private void SeeUnavailableSeatsForMovie()
         {
             foreach (var reservation in movieReservations)
             {
-                foreach(var seat in reservation.Seats)
+                foreach (var seat in reservation.Seats)
                 {
                     if (!seat.IsAvailable)
                     {
@@ -100,29 +105,29 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                     var seatButton = new Button
                     {
                         Margin = new Thickness(5),
-                        Background = Brushes.Green,
+                        Background = System.Windows.Media.Brushes.Green,
                         Command = SeatButtonCommand,
                         CommandParameter = row * cols + col + 1
 
                     };
                     if (unavailableSeats.Contains((row * cols + col + 1).ToString()))
                     {
-                        seatButton.Background = Brushes.Gray;
+                        seatButton.Background = System.Windows.Media.Brushes.Gray;
                         ToolTip toolTip = new ToolTip
                         {
                             Content = "To miejsce jest już zajęte",
-                            Background = (Brush)resourceDictionary["secondaryBackground"],
+                            Background = (System.Windows.Media.Brush)resourceDictionary["secondaryBackground"],
                             Margin = new Thickness(5),
                             Padding = new Thickness(5),
-                            Foreground= Brushes.White,
+                            Foreground = System.Windows.Media.Brushes.White,
 
-                    };
+                        };
                         ToolTipService.SetInitialShowDelay(seatButton, 200);
                         seatButton.ToolTip = toolTip;
                     }
 
                     var stackPanel = new StackPanel { Orientation = Orientation.Vertical };
-                    Image image = new Image
+                    System.Windows.Controls.Image image = new System.Windows.Controls.Image
                     {
                         Source = new BitmapImage(new Uri("pack://application:,,,/Assets/couch-solid.png")),
                         Height = 15,
@@ -132,7 +137,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                     {
                         Content = row * cols + col + 1,
                         HorizontalAlignment = HorizontalAlignment.Center,
-                        Foreground = Brushes.White
+                        Foreground = System.Windows.Media.Brushes.White
                     };
 
                     stackPanel.Children.Add(image);
@@ -155,13 +160,11 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                         int.Parse(label.Content.ToString()) == seatNumber &&
                         !(unavailableSeats.Contains(label.Content.ToString())))
                     {
-                        if(selectedSeats.Count < 5 || seat.Background == Brushes.Red)
-                        seat.Background = seat.Background == Brushes.Green ? Brushes.Red : Brushes.Green;
+                        if (selectedSeats.Count < 5 || seat.Background == System.Windows.Media.Brushes.Red)
+                            seat.Background = seat.Background == System.Windows.Media.Brushes.Green ? System.Windows.Media.Brushes.Red : System.Windows.Media.Brushes.Green;
                         else
                         {
-                            MessageBox.Show("Możesz wybrać maksymalnie 5 miejsc!","Osiągnięto limit miejsc",
-                                MessageBoxButton.OK, MessageBoxImage.Information);
-                            
+                            MakeAlert("Możesz wybrać maksynalnie 5 miejsc", Enums.AlertTypeEnum.Error, true);
                         }
                         break;
                     }
@@ -175,7 +178,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             var tempSelectedSeats = new List<string>();
             foreach (Button seat in SeatsPanel.Children)
             {
-                if (seat.Background == Brushes.Red)
+                if (seat.Background == System.Windows.Media.Brushes.Red)
                 {
                     if (seat.Content is StackPanel stack && stack.Children.Count > 1 && stack.Children[1] is Label label && !(unavailableSeats.Contains(label.Content.ToString())))
                     {
@@ -189,7 +192,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 
         private void BuyTicket_Click(object parameter)
         {
-            if(selectedSeats.Count > 0)
+            if (selectedSeats.Count > 0)
             {
                 BlurEffect.Radius = 5;
                 PurchasePopup.IsOpen = true;
@@ -197,10 +200,126 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             }
             else
             {
-                MessageBox.Show("Musisz wybrać co najmniej jedno miejsce!", "Wybierz miejsce",
-                                MessageBoxButton.OK, MessageBoxImage.Information);
+                MakeAlert("Musisz wybrać co najmniej jedno miejsce!", Enums.AlertTypeEnum.Error, true);
+
             }
         }
+        private RenderTargetBitmap GenerateTicketImage(string movieTitle, string seats, string date, string time, string ticketId, string duration, string price, string hall)
+        {
+            // Load the image
+            var imagePath = "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\Assets\\ticket_template_2.jpg";
+            var bitmapImage = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute));
+
+            // Create a DrawingVisual for combining the image and the text
+            var drawingVisual = new DrawingVisual();
+            using (var drawingContext = drawingVisual.RenderOpen())
+            {
+                // Draw the image
+                drawingContext.DrawImage(bitmapImage, new Rect(0, 0, bitmapImage.PixelWidth, bitmapImage.PixelHeight));
+
+                // Draw the text
+                var typeface = new Typeface("Arial");
+                var fontSize = 16;
+                var brush = (System.Windows.Media.Brush)resourceDictionary["purple_3"];
+
+                drawingContext.DrawText(
+                    new FormattedText(movieTitle, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, 22, brush),
+                    new System.Windows.Point(140, 170) // Adjust the position as needed
+                );
+
+
+                drawingContext.DrawText(
+                    new FormattedText(date, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
+                    new System.Windows.Point(100, 235) // Adjust the position as needed
+                );
+
+                drawingContext.DrawText(
+                    new FormattedText(price, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
+                    new System.Windows.Point(160, 270) // Adjust the position as needed
+                );
+
+                drawingContext.DrawText(
+                    new FormattedText(seats, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
+                    new System.Windows.Point(130, 305) // Adjust the position as needed
+                );
+                /*                drawingContext.DrawText(
+                                    new FormattedText(time, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
+                                    new System.Windows.Point(150, 250) // Adjust the position as needed
+                                );*/
+
+                /*                drawingContext.DrawText(
+                                    new FormattedText(ticketId, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
+                                    new System.Windows.Point(400, 300) // Adjust the position as needed
+                                );*/
+
+                drawingContext.DrawText(
+                    new FormattedText(duration, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
+                    new System.Windows.Point(400, 230) // Adjust the position as needed
+                );
+
+
+
+                drawingContext.DrawText(
+                    new FormattedText(hall, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
+                    new System.Windows.Point(320, 267) // Adjust the position as needed
+                );
+
+                var qrCodeImageSource = CreateQRCode(ticketId, movieTitle);
+                drawingContext.DrawImage(qrCodeImageSource, new Rect(515, 100, 190, 190));
+            }
+
+            // Render the visual to a bitmap
+            var renderTargetBitmap = new RenderTargetBitmap(bitmapImage.PixelWidth, bitmapImage.PixelHeight, 96, 96, PixelFormats.Pbgra32);
+            renderTargetBitmap.Render(drawingVisual);
+
+            // Save the bitmap to a file
+            /**/
+            ticketImage = renderTargetBitmap;
+            return renderTargetBitmap;
+        }
+
+        private void SaveTicketImageToFile(object parameter)
+        {
+            var pngImage = new PngBitmapEncoder();
+            pngImage.Frames.Add(BitmapFrame.Create(ticketImage));
+
+            var saveFileDialog = new Microsoft.Win32.SaveFileDialog
+            {
+                Filter = "PNG Image|*.png",
+                FileName = "MovieTicket.png"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                using (var stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                {
+                    pngImage.Save(stream);
+                }
+                MakeAlert("Zapisano bilet do plików", Enums.AlertTypeEnum.Success, true);
+            }
+        }
+        private ImageSource CreateQRCode(string ticket_id, string movie_title)
+        {
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode($"{ticket_id}_{movie_title}", QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+
+            using (Bitmap qrCodeImage = qrCode.GetGraphic(20))
+            {
+                using (MemoryStream memory = new MemoryStream())
+                {
+                    qrCodeImage.Save(memory, ImageFormat.Png);
+                    memory.Position = 0;
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.StreamSource = memory;
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.EndInit();
+                    return bitmapImage;
+                }
+            }
+        }
+
 
         private async void SubmitTicketPurchase(object parameter)
         {
@@ -210,12 +329,26 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             // Pokaż GIF
             BlurEffect.Radius = 0;
             GifImage.Visibility = Visibility.Visible;
-            GifPanel.Background = (Brush)resourceDictionary["primaryBackground"];
+            GifPanel.Background = (System.Windows.Media.Brush)resourceDictionary["primaryBackground"];
 
-            await Task.Delay(3000); 
-                                   
+            await Task.Delay(3000);
+
             // Ukryj GIF
             GifImage.Visibility = Visibility.Collapsed;
+
+            var ticketImage = GenerateTicketImage(
+            movie.Title,
+            string.Join(", ", selectedSeats),
+            DateTime.Now.ToString("dd-MM-yyyy"),
+            DateTime.Now.ToString("HH:mm"),
+            "12345", // Example ticket ID
+            "2h 30min", // Example duration
+            "20.00 PLN", // Example price
+            "1" // Example hall number
+        );
+            SelectedSeatsText.Text = "";
+            SaveButton.Visibility = Visibility.Visible;
+            FinalImage.Source = ticketImage;
             FinalImage.Visibility = Visibility.Visible;
 
             Reservation reservation = reservationRepository.GetLastReservation();

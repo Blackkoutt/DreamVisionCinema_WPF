@@ -10,7 +10,7 @@ namespace DreamVisionCinema_WPF.Views.ClientViews
     {
         public MovieListView()
         {
-            DataContext = new MovieListViewModel();
+            DataContext = MovieListViewModel.Instance;
             InitializeComponent();
         }
     }

@@ -7,12 +7,16 @@
              xmlns:fa5="http://schemas.fontawesome.com/icons/"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-   
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="50, 40">
-            <!--Serach bar-->
-            <Grid>
+
+        <Grid Margin="50, 40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Search bar -->
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
@@ -20,20 +24,30 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Foreground="White" FontSize="20" VerticalAlignment="Center"> Repertuar:</TextBlock>
-                <Label Grid.Column="2"  Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="18" VerticalAlignment="Center">Szukaj:</Label>
-                <TextBox Grid.Column="3" Margin="10,0,20,0" Width="250" Padding="0,1,0,1" FontSize="15" VerticalContentAlignment="Center"/>
-                <Button Grid.Column="4" Padding="5,2,5,2" Background="#4e51d9" IsDefault="True">
-                    <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Solid_Search" Foreground="{StaticResource ResourceKey=white}" Width="15" Height="15"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15" >Szukaj</Label>
-                    </StackPanel>
-                </Button>
-            </Grid>
-            <DataGrid ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle2}" CellStyle="{DynamicResource DataGridCellStyle2}" Style="{DynamicResource DataGridStyle2}" x:Name="moviesList" Padding="10, 12"
-                    Margin="0,50,0,0" ItemsSource="{Binding Movies}">
-                <DataGrid.Columns>
+                <TextBlock Grid.Column="0" Foreground="White" FontSize="20" VerticalAlignment="Center">Repertuar:</TextBlock>
+            <Label Grid.Column="2"  Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="18" VerticalAlignment="Center">Szukaj:</Label>
+            <TextBox Text="{Binding SearchValue}" Grid.Column="3" Margin="10,0,20,0" Style="{StaticResource searchInput}"/>
+            <Button Command="{Binding SearchMovieListCommand}" Grid.Column="4" Height="42" Padding="5,0,5,0" IsDefault="True" Style="{StaticResource searchButton}">
+                <StackPanel Orientation="Horizontal">
+                    <fa5:ImageAwesome Icon="Solid_Search" Foreground="{StaticResource ResourceKey=white}" Width="15" Height="15"/>
+                    <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15" >Szukaj</Label>
+                </StackPanel>
+            </Button>
+        </Grid>
 
+            <!-- DataGrid -->
+            <DataGrid Grid.Row="1"
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
+                      RowStyle="{DynamicResource DataGridRowStyle2}" 
+                      CellStyle="{DynamicResource DataGridCellStyle2}" 
+                      Style="{DynamicResource DataGridStyle2}" 
+                      x:Name="moviesList" 
+                      Padding="10, 12"
+                      Margin="0,50,0,0" 
+                      ItemsSource="{Binding MoviesList}"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch">
+                <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="20" Binding="{Binding Id}">
                         <DataGridTextColumn.Header>
                             <StackPanel Orientation="Horizontal">
@@ -82,12 +96,12 @@
                             </StackPanel>
                         </DataGridTextColumn.Header>
                     </DataGridTextColumn>
-                    <DataGridTemplateColumn Header="Akcja" IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100"  HeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}">
+                    <DataGridTemplateColumn Header="Akcja" IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Style="{StaticResource detailsButton}"
-                                    Command="{Binding DataContext.MovieDetailsViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                    CommandParameter="{Binding}">
+                                        Command="{Binding DataContext.MovieDetailsViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        CommandParameter="{Binding}">
                                     <StackPanel Orientation="Horizontal">
                                         <fa5:ImageAwesome Icon="Solid_ShoppingBasket" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
                                         <Label Margin="5,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14">Kup Bilet</Label>
@@ -98,6 +112,6 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
-    </ScrollViewer>
+        </Grid>
+
 </UserControl>

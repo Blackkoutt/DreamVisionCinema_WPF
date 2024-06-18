@@ -35,7 +35,7 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             string roomNumberString = RoomNumber.ToString();    
             try
             {
-                movieRepository.AddMovie(null, Title, dateString, priceString, durationString, roomNumberString);   // Wywołanie metody dodającej film
+                movieRepository.AddMovie(null, Title, dateString, priceString, durationString, roomNumberString, "a", "a", "a");   // Wywołanie metody dodającej film
             }
             catch (CannotConvertException CCE)
             {
