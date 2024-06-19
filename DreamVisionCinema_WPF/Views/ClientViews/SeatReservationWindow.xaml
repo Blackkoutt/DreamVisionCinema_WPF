@@ -58,9 +58,9 @@
                 Command="{Binding SaveTicketImageToFileCommand}">
             <fa5:ImageAwesome Icon="Solid_Download" Foreground="{StaticResource ResourceKey=white}" Width="35" Height="35"/>
         </Button>
-        <Grid x:Name="gifPanel" Grid.Row="1" Panel.ZIndex="1">
+        <Grid x:Name="gifPanel" Grid.Row="1" Grid.RowSpan="2" Panel.ZIndex="1">
             <Image x:Name="gifImage"  Visibility="Collapsed" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Assets/printer2.gif"/>
-            <Image Grid.Row="1" x:Name="finalImage" Visibility="Collapsed" Source="pack://application:,,,/Assets/ticket_template_2.jpg" Width="500" Panel.ZIndex="2"/>
+            <Image Grid.Row="1" x:Name="finalImage" Visibility="Collapsed" Source="pack://application:,,,/Assets/ticket_template_2.jpg" Width="700" Panel.ZIndex="2"/>
         </Grid>
 
         
@@ -150,7 +150,7 @@
                 Grid.Row="2"
                 HorizontalAlignment="Right"
                 Margin="10"
-                    Command="{Binding SaveTicketImageToFileCommand}">
+                    Command="{Binding UndoLastSelectionCommand}">
                 <StackPanel Orientation="Horizontal">
                     <fa5:ImageAwesome Icon="Solid_ArrowLeft" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
                     <Label Margin="5,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14">Cofnij wybór</Label>

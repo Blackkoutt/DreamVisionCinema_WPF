@@ -14,7 +14,6 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
-
 namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 {
     public class SeatReservationViewModel : BaseViewModel
@@ -25,7 +24,8 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
         public ICommand SeatButtonCommand { get; private set; }
         public ICommand BuyTicketCommand { get; private set; }
         public ICommand SubmitTicketPurchaseCommand { get; private set; }
-        public ICommand SaveTicketImageToFileCommand { get; private set;}
+        public ICommand SaveTicketImageToFileCommand { get; private set; }
+        public ICommand UndoLastSelectionCommand { get; private set; }
 
         public System.Windows.Controls.Image GifImage { get; set; }
         public System.Windows.Controls.Image FinalImage { get; set; }
@@ -42,6 +42,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
         List<string> selectedSeats;
         List<string> unavailableSeats;
         List<Reservation> movieReservations { get; set; }
+        Stack<string> selectedSeatsStack;
 
         private RenderTargetBitmap ticketImage;
 
@@ -51,6 +52,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             SeatButtonCommand = new RelayCommand(SeatButton_Click);
             BuyTicketCommand = new RelayCommand(BuyTicket_Click);
             SubmitTicketPurchaseCommand = new RelayCommand(SubmitTicketPurchase);
+            UndoLastSelectionCommand = new RelayCommand(UndoLastSelection);
 
             this.movie = movie;
 
@@ -58,7 +60,6 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             {
                 Source = new Uri("pack://application:,,,/Styles/Colors.xaml")
             };
-
 
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(3);
@@ -70,6 +71,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             movieReservations = reservationRepository.GetReservationForMovie(movie);
             unavailableSeats = new List<string>();
             selectedSeats = new List<string>();
+            selectedSeatsStack = new Stack<string>();
             SeeUnavailableSeatsForMovie();
             SaveTicketImageToFileCommand = new RelayCommand(SaveTicketImageToFile);
         }
@@ -108,7 +110,6 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                         Background = System.Windows.Media.Brushes.Green,
                         Command = SeatButtonCommand,
                         CommandParameter = row * cols + col + 1
-
                     };
                     if (unavailableSeats.Contains((row * cols + col + 1).ToString()))
                     {
@@ -120,7 +121,6 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                             Margin = new Thickness(5),
                             Padding = new Thickness(5),
                             Foreground = System.Windows.Media.Brushes.White,
-
                         };
                         ToolTipService.SetInitialShowDelay(seatButton, 200);
                         seatButton.ToolTip = toolTip;
@@ -161,11 +161,40 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                         !(unavailableSeats.Contains(label.Content.ToString())))
                     {
                         if (selectedSeats.Count < 5 || seat.Background == System.Windows.Media.Brushes.Red)
+                        {
                             seat.Background = seat.Background == System.Windows.Media.Brushes.Green ? System.Windows.Media.Brushes.Red : System.Windows.Media.Brushes.Green;
+                            if (seat.Background == System.Windows.Media.Brushes.Red)
+                            {
+                                selectedSeatsStack.Push(label.Content.ToString());
+                            }
+                            else
+                            {
+                                selectedSeatsStack = new Stack<string>(selectedSeatsStack.Where(s => s != label.Content.ToString()));
+                            }
+                        }
                         else
                         {
                             MakeAlert("Możesz wybrać maksynalnie 5 miejsc", Enums.AlertTypeEnum.Error, true);
                         }
+                        break;
+                    }
+                }
+                UpdateSelectedSeatsDisplay();
+            }
+        }
+
+        private void UndoLastSelection(object parameter)
+        {
+            if (selectedSeatsStack.Any())
+            {
+                var lastSelectedSeat = selectedSeatsStack.Pop();
+                foreach (Button seat in SeatsPanel.Children)
+                {
+                    if (seat.Content is StackPanel stack &&
+                        stack.Children[1] is Label label &&
+                        label.Content.ToString() == lastSelectedSeat)
+                    {
+                        seat.Background = System.Windows.Media.Brushes.Green;
                         break;
                     }
                 }
@@ -201,13 +230,13 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             else
             {
                 MakeAlert("Musisz wybrać co najmniej jedno miejsce!", Enums.AlertTypeEnum.Error, true);
-
             }
         }
+
         private RenderTargetBitmap GenerateTicketImage(string movieTitle, string seats, string date, string time, string ticketId, string duration, string price, string hall)
         {
             // Load the image
-            var imagePath = "C:\\Users\\kubap\\OneDrive\\Pulpit\\6_SEMESTR_MATERIAŁY\\WPF\\DreamVisionCinema_WPF\\DreamVisionCinema_WPF\\Assets\\ticket_template_2.jpg";
+            var imagePath = "pack://application:,,,/Assets/ticket_template_2.jpg";
             var bitmapImage = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute));
 
             // Create a DrawingVisual for combining the image and the text
@@ -227,7 +256,6 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                     new System.Windows.Point(140, 170) // Adjust the position as needed
                 );
 
-
                 drawingContext.DrawText(
                     new FormattedText(date, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
                     new System.Windows.Point(100, 235) // Adjust the position as needed
@@ -242,22 +270,11 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                     new FormattedText(seats, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
                     new System.Windows.Point(130, 305) // Adjust the position as needed
                 );
-                /*                drawingContext.DrawText(
-                                    new FormattedText(time, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
-                                    new System.Windows.Point(150, 250) // Adjust the position as needed
-                                );*/
-
-                /*                drawingContext.DrawText(
-                                    new FormattedText(ticketId, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
-                                    new System.Windows.Point(400, 300) // Adjust the position as needed
-                                );*/
 
                 drawingContext.DrawText(
                     new FormattedText(duration, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
                     new System.Windows.Point(400, 230) // Adjust the position as needed
                 );
-
-
 
                 drawingContext.DrawText(
                     new FormattedText(hall, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, typeface, fontSize, brush),
@@ -298,6 +315,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                 MakeAlert("Zapisano bilet do plików", Enums.AlertTypeEnum.Success, true);
             }
         }
+
         private ImageSource CreateQRCode(string ticket_id, string movie_title)
         {
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
@@ -320,7 +338,6 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             }
         }
 
-
         private async void SubmitTicketPurchase(object parameter)
         {
             PurchasePopup.IsOpen = false;
@@ -337,25 +354,27 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             GifImage.Visibility = Visibility.Collapsed;
 
             var ticketImage = GenerateTicketImage(
-            movie.Title,
-            string.Join(", ", selectedSeats),
-            DateTime.Now.ToString("dd-MM-yyyy"),
-            DateTime.Now.ToString("HH:mm"),
-            "12345", // Example ticket ID
-            "2h 30min", // Example duration
-            "20.00 PLN", // Example price
-            "1" // Example hall number
-        );
+                movie.Title,
+                string.Join(", ", selectedSeats),
+                DateTime.Now.ToString("dd-MM-yyyy"),
+                DateTime.Now.ToString("HH:mm"),
+                "12345", // Example ticket ID
+                "2h 30min", // Example duration
+                "20.00 PLN", // Example price
+                "1" // Example hall number
+            );
+
             SelectedSeatsText.Text = "";
             SaveButton.Visibility = Visibility.Visible;
             FinalImage.Source = ticketImage;
             FinalImage.Visibility = Visibility.Visible;
-
+            
             Reservation reservation = reservationRepository.GetLastReservation();
             reservationRepository.MakeReservation((reservation.Id + 1).ToString(), movie.Id.ToString(), selectedSeats);
             reservationRepository.SaveReservationsToFile();
+            reservation = reservationRepository.GetLastReservation();
+            ClientReservationListViewModel.Instance.SessionReservations.Add(reservation);
         }
-
 
         private void SetIsHitTestVisibleForElements(bool isVisible)
         {
@@ -369,6 +388,5 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
                 }
             }
         }
-
     }
 }
