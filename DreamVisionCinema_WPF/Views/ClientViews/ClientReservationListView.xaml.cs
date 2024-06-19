@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DreamVisionCinema_WPF.ViewModels.ClientViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace DreamVisionCinema_WPF.Views.ClientViews
     {
         public ClientReservationListView()
         {
+            DataContext = ClientReservationListViewModel.Instance;
             InitializeComponent();
         }
     }

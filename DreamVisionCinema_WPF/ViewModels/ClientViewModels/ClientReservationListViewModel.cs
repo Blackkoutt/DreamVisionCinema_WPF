@@ -1,30 +1,17 @@
-﻿using DreamVisionCinema_WPF.DI;
-using DreamVisionCinema_WPF.Enums;
+﻿using DreamVisionCinema_WPF.Enums;
 using DreamVisionCinema_WPF.Observable;
-using DreamVisionCinema_WPF.ViewModels.AdminViewModels;
-using DreamVisionCinema_WPF.Views.AdminViews;
 using DreamVisionCinema_WPF_Logic.Exceptions;
-using DreamVisionCinema_WPF_Logic.Interfaces;
-using DreamVisionCinema_WPF_Logic.Interfaces.IRepositories;
 using DreamVisionCinema_WPF_Logic.Model;
-using System;
-using System.Collections.Generic;
+using QRCoder;
 using System.Collections.ObjectModel;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 using System.Windows.Media;
-using System.Windows.Shapes;
-using Unity;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using QRCoder;
-using System.Drawing;
-using System.IO;
-using System.Drawing.Imaging;
+using System.Windows.Media.Imaging;
 
 namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 {
@@ -32,7 +19,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
     {
         private static ClientReservationListViewModel _instance = null;
 
-        public ObservableCollection<Reservation> SessionReservations { get; set; }
+        private ObservableCollection<Reservation> sessionReservations { get; set; }
         //public static List<Reservation> SessionReservations { get; set; } = new List<Reservation>();
 
         public ICommand SearchReservationListCommand { get; set; }
@@ -43,7 +30,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
 
         public ClientReservationListViewModel()
         {
-            SessionReservations = new ObservableCollection<Reservation>();
+            sessionReservations = new ObservableCollection<Reservation>();
             SearchReservationListCommand = new RelayCommand(SearchReservationList);
             DownloadTicketCommand = new RelayCommand(DownloadTicket);
             resourceDictionary = new ResourceDictionary
@@ -56,7 +43,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
         {
             try
             {
-                SessionReservations = new ObservableCollection<Reservation>();
+                sessionReservations = new ObservableCollection<Reservation>();
             }
             catch (Exception ex)
             {
@@ -224,6 +211,17 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
         {
             get { return searchValue; }
             set { searchValue = value; }
+        }
+
+        public ObservableCollection<Reservation> SessionReservations
+        {
+            get { return sessionReservations; }
+            set
+            {
+                sessionReservations = value;
+                OnPropertyChanged();
+                    }
+
         }
     }
 }

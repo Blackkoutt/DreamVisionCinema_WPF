@@ -1,6 +1,7 @@
 ﻿using DreamVisionCinema_WPF.Observable;
 using DreamVisionCinema_WPF_Logic.Model;
 using QRCoder;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
@@ -43,6 +44,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
         List<string> unavailableSeats;
         List<Reservation> movieReservations { get; set; }
         Stack<string> selectedSeatsStack;
+        //private ObservableCollection<Reservation> reservations;
 
         private RenderTargetBitmap ticketImage;
 
@@ -60,7 +62,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             {
                 Source = new Uri("pack://application:,,,/Styles/Colors.xaml")
             };
-
+            //reservations = new ObservableCollection<Reservation>();
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(3);
             timer.Tick += Timer_Tick;
@@ -373,6 +375,7 @@ namespace DreamVisionCinema_WPF.ViewModels.ClientViewModels
             reservationRepository.MakeReservation((reservation.Id + 1).ToString(), movie.Id.ToString(), selectedSeats);
             reservationRepository.SaveReservationsToFile();
             reservation = reservationRepository.GetLastReservation();
+            //reservations.Add( reservation );
             ClientReservationListViewModel.Instance.SessionReservations.Add(reservation);
         }
 
