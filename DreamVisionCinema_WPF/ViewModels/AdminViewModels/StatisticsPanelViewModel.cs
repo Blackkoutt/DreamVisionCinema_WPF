@@ -18,7 +18,7 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
         public StatisticsPanelViewModel(IReservationRepository reservationRepository)
         {
             TotalIncome = (int)reservationRepository.GetTotalIncome();
-            IncomeGuideline = 10000;
+            IncomeGuideline = 15000;
             IncomePercent = CalculateIncomePercent();
             MostPopularMoviesViewCommand = new RelayCommand(OpenMostPopularMoviesView);
             MostProfitableMoviesViewCommand = new RelayCommand(OpenMostProfitableMoviesView);
