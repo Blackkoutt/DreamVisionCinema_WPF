@@ -8,6 +8,7 @@
              mc:Ignorable="d" 
              Background="{StaticResource ResourceKey=primaryBackground}"
              d:DesignHeight="701" d:DesignWidth="1178">
+    
     <StackPanel Margin="30, 30">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -17,7 +18,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Foreground="White" FontSize="18" VerticalAlignment="Center"> Lista zawiera 100 filmów</TextBlock>
+            <TextBlock Grid.Column="0" Foreground="White" FontSize="18" VerticalAlignment="Center"> Lista filmów:</TextBlock>
             <Label Grid.Column="2"  Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="16" VerticalAlignment="Center">Szukaj:</Label>
             <TextBox Text="{Binding SearchValue}" Grid.Column="3" Margin="10,0,20,0" Style="{StaticResource searchInput}"/>
             <Button Command="{Binding SearchMovieListCommand}" Grid.Column="4" Height="42" Padding="5,0,5,0"  Style="{StaticResource searchButton}" IsDefault="True">

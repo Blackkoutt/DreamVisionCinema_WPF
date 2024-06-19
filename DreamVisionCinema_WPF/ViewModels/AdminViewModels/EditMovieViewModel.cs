@@ -4,6 +4,7 @@ using DreamVisionCinema_WPF.Observable;
 using DreamVisionCinema_WPF_Logic.Exceptions;
 using DreamVisionCinema_WPF_Logic.Interfaces;
 using DreamVisionCinema_WPF_Logic.Interfaces.IRepositories;
+using DreamVisionCinema_WPF_Logic.Model;
 using System.Windows;
 using System.Windows.Input;
 using Unity;
@@ -17,6 +18,10 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
         private int price;
         private int roomNumber;
         private int movieId;
+        private string? description;
+        private string? pathToPoster;
+        private int ageCategory;
+        private Movie? movie;
         private IMovieRepository movieRepository;
         private IReservationRepository reservationRepository;
         public ICommand DragMoveCommand => base.DragCommand;
@@ -34,12 +39,15 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             string dateString = Date.ToString("dd/MM/yyyy HH:mm");
             string priceString = Price.ToString();
             string roomNumberString = RoomNumber.ToString();
+            string ageCategoryString = AgeCategory.ToString();
+            string indirectPosterPath = "pack://application:,,,/Assets/Posters/";
+            string fullPosterPath = indirectPosterPath + PathToPoster;
 
-            if (priceString != "")
+            if (Movie.Price != Price || Movie.AgeCategory != ageCategoryString || Movie.Description != Description || Movie.PathToPoster != fullPosterPath)
             {
                 try
                 {
-                    movieRepository.ModifyMoviePrice(id, priceString);
+                    movieRepository.ModifyMoviePriceDescriptionAgeCategoryPathToPoster(id, priceString, Description, ageCategoryString, PathToPoster);
                 }
                 catch (CannotConvertException CCE)
                 {
@@ -61,17 +69,12 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
                     MakeAlert(ex.Message, AlertTypeEnum.Error, true);
                     return;
                 }
-
             }
-
-            // Jeżeli data lub numer sali filmu zostały zmienione
-            if (dateString != "" || roomNumberString != "")
+            if(Movie.Date.ToString("dd/MM/yyyy HH:mm") != Date.ToString("dd/MM/yyyy HH:mm") || Movie.Room.Number != RoomNumber)
             {
                 try
                 {
-                    // Zaktualizuj datę lub salę oraz odpowiedni bilet, a następnie także widok listy filmów
                     reservationRepository.ModifyMovieDateOrRoomWithReservation(id, dateString, roomNumberString);
-                   // ModifyTicketJPG(id);
                 }
                 catch (CannotConvertException CCE)
                 {
@@ -108,18 +111,10 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
                     MakeAlert(ex.Message, AlertTypeEnum.Error, true);
                     return;
                 }
-
             }
 
-            if (priceString == "" && dateString == "" && roomNumberString == "")
-            {
-                MakeAlert("Nie dokonano żadnej zmiany. Film nie został zmodyfikowany.", AlertTypeEnum.Info, true);
-            }
-            else
-            {
-                MakeAlert("Poprawnie zmodyfikowano film", AlertTypeEnum.Success, true);
-                MoviesListViewModel.Instance.LoadOrRefreshMovieList();
-            }
+            MakeAlert("Poprawnie zmodyfikowano film", AlertTypeEnum.Success, true);
+            MoviesListViewModel.Instance.LoadOrRefreshMovieList();
 
             if (parameter is Window window)
             {
@@ -139,6 +134,11 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
         {
             get { return movieId; }
             set { movieId = value; }
+        }
+        public Movie? Movie
+        {
+            get { return movie; }
+            set { movie = value; }
         }
         public int Price
         {
@@ -168,6 +168,35 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             set
             {
                 title = value;
+                OnPropertyChanged();
+            }
+        }
+        public int AgeCategory
+        {
+            get { return ageCategory; }
+            set
+            {
+                ageCategory = value;
+                OnPropertyChanged();
+            }
+        }
+        public string? Description
+        {
+            get { return description; }
+            set
+            {
+                description = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public string? PathToPoster
+        {
+            get { return pathToPoster; }
+            set
+            {
+                pathToPoster = value;
                 OnPropertyChanged();
             }
         }

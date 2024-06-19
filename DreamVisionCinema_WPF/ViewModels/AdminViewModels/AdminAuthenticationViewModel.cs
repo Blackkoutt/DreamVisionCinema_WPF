@@ -4,7 +4,9 @@ using DreamVisionCinema_WPF.Observable;
 using DreamVisionCinema_WPF.ViewModels.ClientViewModels;
 using DreamVisionCinema_WPF.Views.AdminViews;
 using DreamVisionCinema_WPF_Logic.Exceptions;
+using DreamVisionCinema_WPF_Logic.Interfaces;
 using DreamVisionCinema_WPF_Logic.Interfaces.IRepositories;
+using DreamVisionCinema_WPF_Logic.Model;
 using System.Windows;
 using System.Windows.Input;
 using Unity;
@@ -17,12 +19,16 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
         public ICommand LogInCommand { get; set; }
         public ICommand DragMoveCommand => base.DragCommand;
         private ILogin _login;
+        private IMovieRepository movieRepository;
+        private IReservationRepository reservationRepository;
 
         private string? username;
         private string? password;
 
-        public AdminAuthenticationViewModel(ILogin login)
+        public AdminAuthenticationViewModel(ILogin login, IMovieRepository movieRepository, IReservationRepository reservationRepository)
         {
+            this.movieRepository = movieRepository;
+            this.reservationRepository = reservationRepository;
             _login = login; 
             LogInCommand = new RelayCommand(LogInAsAdmin);
         }
@@ -66,6 +72,16 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             else
             {
                 MakeAlert("Błędny login lub hasło", AlertTypeEnum.Error, true);
+            }
+        }
+        protected override void CloseWindow(object parameter)
+        {
+            movieRepository.SaveMoviesToFile();
+            reservationRepository.SaveReservationsToFile();
+
+            if (parameter is Window window)
+            {
+                window.Close();
             }
         }
 

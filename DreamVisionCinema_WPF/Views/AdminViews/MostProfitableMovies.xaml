@@ -20,7 +20,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.RowSpan="2" Grid.Column="0" Margin="10,0,0,0" Style="{StaticResource backbutton}" Width="100" Height="40" IsDefault="True" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.496,-0.269">
+                <Button Command="{Binding BackFromProfitableMoviesCommand}" Grid.RowSpan="2" Grid.Column="0" Margin="10,0,0,0" Style="{StaticResource backbutton}" Width="100" Height="40" IsDefault="True" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.496,-0.269">
                     <StackPanel Orientation="Horizontal">
                         <fa5:ImageAwesome Icon="Solid_ArrowLeft" Foreground="{StaticResource ResourceKey=white}" Width="20" Height="20"/>
                         <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="17" FontWeight="Bold">Wróć</TextBlock>
@@ -30,7 +30,7 @@
                 <TextBlock Margin="20,0,0,0" HorizontalAlignment="Center" FontSize="18" Grid.Row="1" Grid.Column="1" Foreground="{StaticResource cyan}">[?] Dochody są zliczane na podstawie sumy cen sprzedanych biletów</TextBlock>
             </Grid>
             <Border Margin="0,20,0,0" >
-                <oxy:PlotView Height="430" x:Name="profitableChart" Margin="10" Background="{StaticResource statistics_containers_background}" Cursor="Hand"/>
+                <oxy:PlotView Model="{Binding ChartModel}" Height="430" x:Name="profitableChart" Margin="10" Background="{StaticResource statistics_containers_background}" Cursor="Hand"/>
             </Border>
         </StackPanel>
     </Grid>

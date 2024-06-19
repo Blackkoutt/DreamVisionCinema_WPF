@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DreamVisionCinema_WPF.ViewModels.AdminViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,10 @@ namespace DreamVisionCinema_WPF.Views.AdminViews
     {
         public StatisticsPanel()
         {
+            var viewModel = StatisticsPanelViewModel.Instance;
+            DataContext = viewModel;    
             InitializeComponent();
+            progressBar.BarValue = viewModel.IncomePercent;
         }
     }
 }

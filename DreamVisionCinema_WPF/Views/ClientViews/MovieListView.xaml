@@ -8,110 +8,107 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-
-        <Grid Margin="50, 40">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <!-- Search bar -->
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Foreground="White" FontSize="20" VerticalAlignment="Center">Repertuar:</TextBlock>
-            <Label Grid.Column="2"  Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="18" VerticalAlignment="Center">Szukaj:</Label>
+    <StackPanel Margin="30, 30">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Foreground="White" FontSize="18" VerticalAlignment="Center">Repertuar:</TextBlock>
+            <Label Grid.Column="2"  Foreground="{StaticResource ResourceKey=white}" Margin="20,0,0,0" FontSize="16" VerticalAlignment="Center">Szukaj:</Label>
             <TextBox Text="{Binding SearchValue}" Grid.Column="3" Margin="10,0,20,0" Style="{StaticResource searchInput}"/>
-            <Button Command="{Binding SearchMovieListCommand}" Grid.Column="4" Height="42" Padding="5,0,5,0" IsDefault="True" Style="{StaticResource searchButton}">
+            <Button Command="{Binding SearchMovieListCommand}" Grid.Column="4" Height="42" Padding="5,0,5,0"  Style="{StaticResource searchButton}" IsDefault="True">
                 <StackPanel Orientation="Horizontal">
                     <fa5:ImageAwesome Icon="Solid_Search" Foreground="{StaticResource ResourceKey=white}" Width="15" Height="15"/>
                     <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15" >Szukaj</Label>
                 </StackPanel>
             </Button>
         </Grid>
+        <DataGrid ItemsSource="{Binding MovieList}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}"  RowStyle="{DynamicResource DataGridRowStyle2}" CellStyle="{DynamicResource DataGridCellStyle2}" Style="{DynamicResource DataGridStyle2}"  Padding="10, 12"
+            Margin="0,50,0,0" Height="450">
+            <DataGrid.Columns>
 
-            <!-- DataGrid -->
-            <DataGrid Grid.Row="1"
-                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
-                      RowStyle="{DynamicResource DataGridRowStyle2}" 
-                      CellStyle="{DynamicResource DataGridCellStyle2}" 
-                      Style="{DynamicResource DataGridStyle2}" 
-                      x:Name="moviesList" 
-                      Padding="10, 12"
-                      Margin="0,50,0,0" 
-                      ItemsSource="{Binding MoviesList}"
-                      VerticalAlignment="Stretch"
-                      HorizontalAlignment="Stretch">
-                <DataGrid.Columns>
-                    <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="20" Binding="{Binding Id}">
-                        <DataGridTextColumn.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="0,0,5,0">#</TextBlock>
-                                <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
-                            </StackPanel>
-                        </DataGridTextColumn.Header>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding Title}">
-                        <DataGridTextColumn.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="0,0,5,0">Tytuł</TextBlock>
-                                <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
-                            </StackPanel>
-                        </DataGridTextColumn.Header>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="150" Binding="{Binding Date}">
-                        <DataGridTextColumn.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="0,0,5,0">Data</TextBlock>
-                                <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
-                            </StackPanel>
-                        </DataGridTextColumn.Header>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" Binding="{Binding Price}">
-                        <DataGridTextColumn.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="0,0,5,0">Cena</TextBlock>
-                                <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
-                            </StackPanel>
-                        </DataGridTextColumn.Header>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" Binding="{Binding Duration}">
-                        <DataGridTextColumn.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="0,0,5,0">Czas trwania</TextBlock>
-                                <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
-                            </StackPanel>
-                        </DataGridTextColumn.Header>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" Binding="{Binding Room.Number}">
-                        <DataGridTextColumn.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="0,0,5,0">Numer sali</TextBlock>
-                                <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
-                            </StackPanel>
-                        </DataGridTextColumn.Header>
-                    </DataGridTextColumn>
-                    <DataGridTemplateColumn Header="Akcja" IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" HeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Style="{StaticResource detailsButton}"
-                                        Command="{Binding DataContext.MovieDetailsViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                        CommandParameter="{Binding}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <fa5:ImageAwesome Icon="Solid_ShoppingBasket" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
-                                        <Label Margin="5,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14">Kup Bilet</Label>
-                                    </StackPanel>
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="10" Binding="{Binding Id}">
 
+                    <DataGridTextColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0">#</TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="12" Height="12"/>
+                        </StackPanel>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Title}">
+                    <DataGridTextColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0">Tytuł</TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="12" Height="12"/>
+                        </StackPanel>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="150" Binding="{Binding Date, StringFormat=\{0:dd.MM.yyyy HH:mm\}}">
+                    <DataGridTextColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0">Data</TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="12" Height="12"/>
+                        </StackPanel>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" Binding="{Binding Duration, StringFormat=\{0:hh\\:mm\} h}">
+                    <DataGridTextColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0" TextWrapping="Wrap" TextAlignment="Center">
+                            <Run>Czas</Run>
+                            <LineBreak />
+                            <Run>trwania</Run>
+                            </TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="12" Height="12"/>
+                        </StackPanel>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" Binding="{Binding Room.Number}">
+                    <DataGridTextColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0" TextWrapping="Wrap" TextAlignment="Center">
+                            <Run>Numer</Run>
+                            <LineBreak />
+                            <Run>sali</Run>
+                            </TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="12" Height="12"/>
+                        </StackPanel>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn IsReadOnly="True" CanUserResize="False" Width="auto" MinWidth="100" >
+                    <DataGridTemplateColumn.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0">Cena</TextBlock>
+                            <fa5:ImageAwesome Icon="Solid_Sort" Foreground="{StaticResource ResourceKey=white}" Width="12" Height="12"/>
+                        </StackPanel>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Price, StringFormat={}{0} zł}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Akcja" IsReadOnly="True" CanUserResize="False" Width="*" MinWidth="100"  HeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource detailsButton}"
+                                    Command="{Binding DataContext.MovieDetailsViewCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                    CommandParameter="{Binding}">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa5:ImageAwesome Icon="Solid_ShoppingBasket" Foreground="{StaticResource ResourceKey=white}" Width="14" Height="14"/>
+                                    <Label Margin="5,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14">Kup Bilet</Label>
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 </UserControl>

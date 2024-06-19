@@ -32,6 +32,12 @@
             <DataTemplate DataType="{x:Type viewModel_admin:ReservationListViewModel}">
                 <view_admin:ReservationList/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel_admin:MostPopularMoviesViewModel}">
+                <view_admin:MostPopularMovies/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel_admin:MostProfitableMoviesViewModel}">
+                <view_admin:MostProfitableMovies/>
+            </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel_client:MovieDetailsViewModel}">
                 <view_client:MovieDetailsView/>
@@ -39,9 +45,11 @@
             <DataTemplate DataType="{x:Type viewModel_client:MovieListViewModel}">
                 <view_client:MovieListView/>
             </DataTemplate>
+
             <DataTemplate DataType="{x:Type viewModel_client:ClientReservationListViewModel}">
                 <view_client:ClientReservationListView/>
             </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

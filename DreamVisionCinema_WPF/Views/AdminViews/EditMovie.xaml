@@ -13,7 +13,7 @@
         AllowsTransparency="True"
         Title="Edycja filmu"
         WindowStartupLocation="CenterScreen"
-        MinHeight="560" MinWidth="530" MaxHeight="560" MaxWidth="530"
+        MinHeight="570" MinWidth="760" MaxHeight="570" MaxWidth="760"
         Background="{StaticResource ResourceKey=primaryBackground}"
         Icon="../../Assets/app_icon1.ico">
     <Border Background="Transparent" BorderBrush="{StaticResource ResourceKey=secondaryBackground}" BorderThickness="4">
@@ -34,42 +34,56 @@
                     <StackPanel HorizontalAlignment="Right"
                                 Orientation="Horizontal">
 
-                        <Button Width="20" Height="20"
-                        Content="━"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Foreground="{StaticResource ResourceKey=purple_1}"
-                        FontWeight="Bold"
+                        <Button Style="{StaticResource ResourceKey=minimisebutton}"
                         Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                        <Button Width="20" Height="20"
-                        Content="☐"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Foreground="{StaticResource ResourceKey=purple_1}"
-                        FontWeight="Bold"
+                        <Button Style="{StaticResource ResourceKey=maximisebutton}"
                         Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                        <Button Width="20" Height="20"
-                        Content="✕"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Foreground="{StaticResource ResourceKey=purple_1}"
-                        FontWeight="Bold"
+                        <Button Style="{StaticResource ResourceKey=exitbutton}"
                         Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
                     </StackPanel>
                 </Grid>
             </Border>
-            <StackPanel Margin="90 5 90 10">
+            <StackPanel Margin="60 5 60 10">
                 <Image Source="pack://application:,,,/Assets/movie_png.png" Width="180" Height="100" />
                 <TextBlock Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="25" Margin="0,10,0,5" FontWeight="Bold">Edycja filmu:</TextBlock>
                 <TextBlock Text="{Binding Title}" Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="20" Margin="0,5,0,10" FontWeight="Bold"></TextBlock>
-                <Label Foreground="{StaticResource ResourceKey=white}" Margin="20,10,0,0" FontSize="17">Data:</Label>
-                <xctk:DateTimePicker Value="{Binding Date}" FontSize="17" Margin="20,0,20,0" FormatString="yyyy-MM-dd HH:mm:ss" Foreground="{StaticResource ResourceKey=black}" BorderThickness="0" />
-                <Label Foreground="{StaticResource ResourceKey=white}" Margin="20,15,0,0" FontSize="17">Cena (zł):</Label>
-                <controls:InputTypeNumber InputValue="{Binding DataContext.Price, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" FontSize="17" Foreground="{StaticResource ResourceKey=white}" Margin="20,0,20,0" Background="Transparent" BorderThickness="0,0,0,2"/>
-                <Label Foreground="{StaticResource ResourceKey=white}" Margin="20,15,0,0" FontSize="17">Numer sali:</Label>
-                <controls:InputTypeNumber InputValue="{Binding DataContext.RoomNumber, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" IsRoomNumber="True" FontSize="17" Foreground="{StaticResource ResourceKey=white}" Margin="20,0,20,0" Background="Transparent" BorderThickness="0,0,0,2"/>
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,20,5,0">
+                        <Label Foreground="{StaticResource ResourceKey=white}" Margin="15,0,15,0" FontSize="17">Data:</Label>
+                        <xctk:DateTimePicker Value="{Binding Date}" FontSize="17" Margin="15,0,15,0" FormatString="yyyy-MM-dd HH:mm:ss" Foreground="{StaticResource ResourceKey=black}" BorderThickness="0" />
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,20,5,0">
+                        <Label Foreground="{StaticResource ResourceKey=white}" Margin="15,0,15,0" FontSize="17">Cena (zł):</Label>
+                        <controls:InputTypeNumber InputValue="{Binding DataContext.Price, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" FontSize="17" Foreground="{StaticResource ResourceKey=white}" Margin="15,0,15,0" Background="Transparent" BorderThickness="0,0,0,2"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,20,5,0">
+                        <Label Foreground="{StaticResource ResourceKey=white}" Margin="15,0,15,0" FontSize="17">Numer sali:</Label>
+                        <controls:InputTypeNumber InputValue="{Binding DataContext.RoomNumber, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" IsRoomNumber="True" FontSize="17" Foreground="{StaticResource ResourceKey=white}" Margin="15,0,15,0" Background="Transparent" BorderThickness="0,0,0,2"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,20,5,0">
+                        <Label Foreground="{StaticResource ResourceKey=white}" Margin="15,0,15,0" FontSize="17">Opis:</Label>
+                        <TextBox Text="{Binding Description}" CaretBrush="{StaticResource ResourceKey=white}" FontSize="17" Foreground="{StaticResource ResourceKey=white}" Margin="15,0,15,0" Background="Transparent" BorderThickness="0,0,0,2"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,20,5,0">
+                        <Label Foreground="{StaticResource ResourceKey=white}" Margin="15,0,15,0" FontSize="17">Kategoria wiekowa:</Label>
+                        <controls:InputTypeNumber InputValue="{Binding DataContext.AgeCategory, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" IsRoomNumber="True" FontSize="17" Foreground="{StaticResource ResourceKey=white}" Margin="15,0,15,0" Background="Transparent" BorderThickness="0,0,0,2"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,20,5,0">
+                        <Label Foreground="{StaticResource ResourceKey=white}" Margin="15,0,15,0" FontSize="17">Nazwa pliku z plakatem:</Label>
+                        <TextBox Text="{Binding PathToPoster}" CaretBrush="{StaticResource ResourceKey=white}" FontSize="17" Foreground="{StaticResource ResourceKey=white}" Margin="15,0,15,0" Background="Transparent" BorderThickness="0,0,0,2"/>
+                    </StackPanel>
+                </Grid>
                 <Button Command="{Binding EditMovieCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Style="{StaticResource confirmButton}" Width="120" Margin="0,35,0,0" Height="35" IsDefault="True">
                     <StackPanel Orientation="Horizontal">
                         <fa5:ImageAwesome Icon="Solid_Save" Foreground="{StaticResource ResourceKey=white}" Width="20" Height="20"/>

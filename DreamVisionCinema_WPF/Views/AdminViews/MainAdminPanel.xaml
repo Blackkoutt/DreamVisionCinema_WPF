@@ -11,7 +11,7 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         Title="Panel administratora"
-        Height="700" Width="1200"
+        Height="700" Width="1220"
         Background="{StaticResource ResourceKey=primaryBackground}"
         Icon="../../Assets/app_icon1.ico"
         >
@@ -33,28 +33,13 @@
                 <StackPanel HorizontalAlignment="Right"
                 Orientation="Horizontal">
 
-                    <Button Width="20" Height="20"
-                    Content="━"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    Foreground="{StaticResource ResourceKey=purple_1}"
-                    FontWeight="Bold"
-                    Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>          
+                    <Button Style="{StaticResource ResourceKey=minimisebutton}"
+                    Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                    <Button Width="20" Height="20"
-                    Content="☐"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    Foreground="{StaticResource ResourceKey=purple_1}"
-                    FontWeight="Bold"
+                    <Button Style="{StaticResource ResourceKey=maximisebutton}"
                     Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                    <Button Width="20" Height="20"
-                    Content="✕"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    Foreground="{StaticResource ResourceKey=purple_1}"
-                    FontWeight="Bold"
+                    <Button Style="{StaticResource ResourceKey=exitbutton}"
                     Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
                 </StackPanel>
             </Grid>
@@ -65,34 +50,51 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-                <Button Command="{Binding HomeViewCommand}" Background="Transparent" BorderThickness="0">
-                    <Image Source="pack://application:,,,/Assets/logo.png" Width="200" Height="100" />
+                <Button Command="{Binding HomeViewCommand}"
+                        Style="{StaticResource ResourceKey=buttonMenuImg}"
+                        >
+                    <Image Source="pack://application:,,,/Assets/logo.png" Width="240" Height="100" />
                 </Button>
-                <Button Command="{Binding MovieListViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Solid_Film" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż listę filmów</Label>
+                <Button Command="{Binding MovieListViewCommand}"
+                        Style="{StaticResource ResourceKey=mainMenuButton}"
+                        BorderThickness="{Binding MovieListThickness}"
+                        BorderBrush="{Binding MovieListBrush}">
+                    <StackPanel Orientation="Horizontal" FlowDirection="{Binding MovieListButtonDirection}">
+                        <fa5:ImageAwesome Icon="Solid_Film" Foreground="{Binding MovieListBrush}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{Binding MovieListBrush}" FontSize="15">Pokaż listę filmów</Label>
                     </StackPanel>
                 </Button>
-                <Button x:Name="addMovieBtn" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0" Click="addMovieBtn_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Solid_PlusCircle" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Dodaj nowy film</Label>
+                <Button Command="{Binding AddMovieCommand}" 
+                        Style="{StaticResource ResourceKey=mainMenuButton}"
+                        BorderThickness="{Binding AddMovieThickness}" 
+                        BorderBrush="{Binding AddMovieBrush}">
+                    <StackPanel Orientation="Horizontal" FlowDirection="{Binding AddMovieButtonDirection}">
+                        <fa5:ImageAwesome Icon="Solid_PlusCircle" Foreground="{Binding AddMovieBrush}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{Binding AddMovieBrush}" FontSize="15">Dodaj nowy film</Label>
                     </StackPanel>
                 </Button>
-                <Button Command="{Binding ReservationListViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Solid_BookOpen" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż listę rezerwacji</Label>
+                <Button Command="{Binding ReservationListViewCommand}" 
+                        Style="{StaticResource ResourceKey=mainMenuButton}"
+                        Width="240"
+                        BorderThickness="{Binding ReservationThickness}"
+                        BorderBrush="{Binding ReservationBrush}">
+                    <StackPanel Orientation="Horizontal" FlowDirection="{Binding ReservationButtonDirection}">
+                        <fa5:ImageAwesome Icon="Solid_BookOpen" Foreground="{Binding ReservationBrush}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{Binding ReservationBrush}" FontSize="15">Pokaż listę rezerwacji</Label>
                     </StackPanel>
                 </Button>
-                <Button Command="{Binding StatisticsPanelViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <fa5:ImageAwesome Icon="Regular_ChartBar" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
-                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Pokaż statystyki</Label>
+                <Button Command="{Binding StatisticsPanelViewCommand}" 
+                        Style="{StaticResource ResourceKey=mainMenuButton}"
+                        BorderThickness="{Binding StatisticsThickness}"
+                        BorderBrush="{Binding StatisticsBrush}">
+                    <StackPanel Orientation="Horizontal" FlowDirection="{Binding StatisitcsButtonDirection}">
+                        <fa5:ImageAwesome Icon="Regular_ChartBar" Foreground="{Binding StatisticsBrush}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{Binding StatisticsBrush}" FontSize="15">Pokaż statystyki</Label>
                     </StackPanel>
                 </Button>
-                <Button Command="{Binding HomeViewCommand}" Background="Transparent" HorizontalContentAlignment="Left" Padding="20,15,25,15" BorderThickness="0,0,0,0">
+                <Button Command="{Binding BackFromAdminViewCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        Style="{StaticResource ResourceKey=mainMenuButton}"
+                        BorderThickness="0,0,0,0">
                     <StackPanel Orientation="Horizontal">
                         <fa5:ImageAwesome Icon="Regular_ArrowAltCircleLeft" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
                         <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Wróć</Label>
@@ -106,8 +108,8 @@
         </Grid>
         <Border  DockPanel.Dock="Top" Background="{StaticResource ResourceKey=secondaryBackground}" Padding="20,20,20,20">
             <StackPanel Orientation="Horizontal">
-                <fa5:ImageAwesome Icon="Solid_Home" Foreground="{StaticResource ResourceKey=purple_1}" Width="35" Height="35"/>
-                <TextBlock Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="17" VerticalAlignment="Center">Strona główna</TextBlock>
+                <fa5:ImageAwesome Icon="{Binding TopBarIcon}" Foreground="{Binding IconColor}" Width="35" Height="35"/>
+                <TextBlock Text="{Binding TopBarText}" Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="17" VerticalAlignment="Center"></TextBlock>
             </StackPanel>
         </Border>
         <Border>
