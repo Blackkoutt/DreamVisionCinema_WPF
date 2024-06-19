@@ -38,9 +38,11 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
             string durationString = $"{Duration / 60}:{(Duration % 60).ToString("D2")}";
             string roomNumberString = RoomNumber.ToString();  
             string ageCategoryString = AgeCategory.ToString();
+            string indirectPosterPath = "pack://application:,,,/Assets/Posters/";
+            string posterPath = indirectPosterPath + PathToPoster;
             try
             {
-                movieRepository.AddMovie(null, Title, dateString, priceString, durationString, roomNumberString, Description, ageCategoryString, PathToPoster);
+                movieRepository.AddMovie(null, Title, dateString, priceString, durationString, roomNumberString, Description, ageCategoryString, posterPath);
             }
             catch (CannotConvertException CCE)
             {
