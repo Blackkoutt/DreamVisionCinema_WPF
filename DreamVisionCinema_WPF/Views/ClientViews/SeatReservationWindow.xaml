@@ -45,8 +45,8 @@
         </Popup>
 
         <Grid x:Name="gifPanel" Grid.Row="1" Panel.ZIndex="1">
-            <Image x:Name="gifImage"  Visibility="Collapsed" gif:ImageBehavior.AnimatedSource="C:\Users\kubap\OneDrive\Pulpit\6_SEMESTR_MATERIAŁY\WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Assets\printer2.gif"/>
-            <Image Grid.Row="1" x:Name="finalImage" Visibility="Collapsed" Source="C:\Users\kubap\OneDrive\Pulpit\6_SEMESTR_MATERIAŁY\WPF\DreamVisionCinema_WPF\DreamVisionCinema_WPF\Assets\ticket_template.jpg" Width="500" Panel.ZIndex="2"/>
+            <Image x:Name="gifImage"  Visibility="Collapsed" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Assets/printer2.gif"/>
+            <Image Grid.Row="1" x:Name="finalImage" Visibility="Collapsed" Source="pack://application:,,,/Assets/ticket_template.jpg" Width="500" Panel.ZIndex="2"/>
         </Grid>
 
         

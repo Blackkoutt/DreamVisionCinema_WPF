@@ -23,6 +23,8 @@
     <None Remove="Assets\Posters\pamiec.png" />
     <None Remove="Assets\Posters\pulp.png" />
     <None Remove="Assets\Posters\skazani.png" />
+    <None Remove="Assets\printer2.gif" />
+    <None Remove="Assets\ticket_template.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,6 +54,8 @@
     <Resource Include="Assets\Posters\plakatDefault.png" />
     <Resource Include="Assets\Posters\pulp.png" />
     <Resource Include="Assets\Posters\skazani.png" />
+    <Resource Include="Assets\printer2.gif" />
+    <Resource Include="Assets\ticket_template.jpg" />
   </ItemGroup>
 
   <ItemGroup>

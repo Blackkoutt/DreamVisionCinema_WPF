@@ -7,105 +7,97 @@
         xmlns:local="clr-namespace:DreamVisionCinema_WPF.Views.ClientViews"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="Menu Główne" Height="800" Width="1300"
+        Title="Panel użytkownika" MaxHeight="700" MaxWidth="1220"
         Background="{StaticResource ResourceKey=primaryBackground}"
         WindowStyle="None"
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
         Icon="/Assets/app_icon1.ico"
-        MinWidth="1200" MinHeight="500">
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="175"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
-        <!--Pasek na samej górze zastępujący ten windosowy-->
-        <Border Grid.ColumnSpan="2"
-                Background="{StaticResource ResourceKey=secondaryBackground}">
+        MinWidth="1220" MinHeight="700">
+    <DockPanel>
+        <Border Grid.ColumnSpan="2" DockPanel.Dock="Top"
+            Background="{StaticResource ResourceKey=secondaryBackground}">
             <i:Interaction.Triggers>
-            <i:EventTrigger EventName="MouseDown">
-                <i:InvokeCommandAction Command="{Binding DragMoveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
-            </i:EventTrigger>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding DragMoveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                </i:EventTrigger>
             </i:Interaction.Triggers>
 
             <Grid HorizontalAlignment="Stretch">
                 <Label Content="DreamVisionCinema"
-                       Foreground="Gray"
-                       FontWeight="SemiBold"/>
+                        Foreground="Gray"
+                        FontWeight="SemiBold"/>
 
                 <StackPanel HorizontalAlignment="Right"
-                            Orientation="Horizontal">
+                    Orientation="Horizontal">
 
                     <Button Style="{StaticResource ResourceKey=minimisebutton}"
                         Command="{Binding MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                     <Button Style="{StaticResource ResourceKey=maximisebutton}"
-                            Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                        Command="{Binding MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                     <Button Style="{StaticResource ResourceKey=exitbutton}"
                         Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
-
-
                 </StackPanel>
             </Grid>
         </Border>
-        <!--Obraz w Lewym górnym rogu-->
-        <Border Grid.Row="1"
-                Background="{StaticResource ResourceKey=secondaryBackground}">
-            <Image Grid.Row="1" Source="pack://application:,,,/Assets/logo.png" />
-        </Border>
-        
-        
-        <!--Guziki po lewej stronie-->
-
-        <Border Grid.Row="2"
-                Background="{StaticResource ResourceKey=secondaryBackground}">
-            <StackPanel>
-                <RadioButton Content="Kup Bilet na Film"
-                         Height="50"
-                         Foreground="White"
-                         Style="{StaticResource MenuButton}"
-                         Command="{Binding MovieListViewCommand}"/>
-
-                <RadioButton Content="Pokaż listę rezerwacji"
-                Height="50"
-                Foreground="White"
-                Style="{StaticResource MenuButton}"
-                             Command="{Binding ClientReservationListViewCommand}"/>
-
-            <RadioButton Content="Wróć"
-                Height="50"
-                Foreground="White"
-                Style="{StaticResource MenuButton}"
-                         Command="{Binding HomeViewCommand}"/>
-
+        <Grid DockPanel.Dock="Left" Background="{StaticResource ResourceKey=secondaryBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <Button Command="{Binding HomeViewCommand}"
+                Style="{StaticResource ResourceKey=buttonMenuImg}"
+                >
+                    <Image Source="pack://application:,,,/Assets/logo.png" Width="240" Height="100" />
+                </Button>
+                <Button Command="{Binding MovieListViewCommand}"
+                    Style="{StaticResource ResourceKey=mainMenuButton}"
+                    BorderThickness="{Binding MovieListThickness}"
+                    BorderBrush="{Binding MovieListBrush}">
+                    <StackPanel Orientation="Horizontal" FlowDirection="{Binding MovieListButtonDirection}">
+                        <fa5:ImageAwesome Icon="Solid_Film" Foreground="{Binding MovieListBrush}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{Binding MovieListBrush}" FontSize="15">Kup bilet na film</Label>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding ClientReservationListViewCommand}" 
+                    Style="{StaticResource ResourceKey=mainMenuButton}"
+                    Width="240"
+                    BorderThickness="{Binding ReservationThickness}"
+                    BorderBrush="{Binding ReservationBrush}">
+                    <StackPanel Orientation="Horizontal" FlowDirection="{Binding ReservationButtonDirection}">
+                        <fa5:ImageAwesome Icon="Solid_BookOpen" Foreground="{Binding ReservationBrush}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{Binding ReservationBrush}" FontSize="15">Pokaż listę rezerwacji</Label>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding BackFromClientViewCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Style="{StaticResource ResourceKey=mainMenuButton}"
+                BorderThickness="0,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <fa5:ImageAwesome Icon="Regular_ArrowAltCircleLeft" Foreground="{StaticResource ResourceKey=white}" Width="24" Height="24"/>
+                        <Label Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="15">Wróć</Label>
+                    </StackPanel>
+                </Button>
             </StackPanel>
-        </Border>
-
-        
-        <!--Nazwa zakładki-->
-        <Border Grid.Column="1"
-                Grid.Row="1"
-                Background="{StaticResource primaryBackground}"
-                Padding="10">
+            <StackPanel Grid.Row="1">
+                <TextBlock Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="11" Padding="0,0,0,0">v 1.0.0</TextBlock>
+                <TextBlock Foreground="{StaticResource ResourceKey=white}" HorizontalAlignment="Center" FontSize="11" Padding="0,0,0,8">DreamVision Cinema©</TextBlock>
+            </StackPanel>
+        </Grid>
+        <Border  DockPanel.Dock="Top" Background="{StaticResource ResourceKey=secondaryBackground}" Padding="20,20,20,20">
             <StackPanel Orientation="Horizontal">
-                <fa5:ImageAwesome Icon="{Binding TopBarIcon}" Foreground="{Binding IconColor}" Width="30" Height="30"/>
-                <TextBlock Text="{Binding TopBarText}" Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="14" VerticalAlignment="Center"></TextBlock>
+                <fa5:ImageAwesome Icon="{Binding TopBarIcon}" Foreground="{Binding IconColor}" Width="35" Height="35"/>
+                <TextBlock Text="{Binding TopBarText}" Margin="10,0,0,0" Foreground="{StaticResource ResourceKey=white}" FontSize="17" VerticalAlignment="Center"></TextBlock>
             </StackPanel>
         </Border>
+        <Border>
+            <!--Tutaj zagnieżdzone okna-->
+            <ContentControl
+            Margin="10"
+            Content="{Binding CurentView}"/>
 
-        <ContentControl Grid.Row="2"
-                        Grid.Column="1"
-                        Margin="10"
-                        Content="{Binding CurentView}"/>
-
-    </Grid>
+        </Border>
+    </DockPanel>
 </Window>

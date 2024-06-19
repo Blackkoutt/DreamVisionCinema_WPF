@@ -54,7 +54,7 @@ namespace DreamVisionCinema_WPF.ViewModels.AdminViewModels
 
             HomeVM = new HomeViewModel();
             MovieListVM = DIContainer.GetContainer().Resolve<MoviesListViewModel>(); 
-            StatisticsPanelVM = DIContainer.GetContainer().Resolve<StatisticsPanelViewModel>();//new StatisticsPanelViewModel();
+            StatisticsPanelVM = DIContainer.GetContainer().Resolve<StatisticsPanelViewModel>();
             ReservationListViewVM = DIContainer.GetContainer().Resolve<ReservationListViewModel>();
 
             TopBarText = "Strona główna";
